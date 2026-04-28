@@ -1,0 +1,18 @@
+{
+    "heading": {
+        "title": "Drop it. We'll handle it.",
+        "subtitle": "Select a tool above or just drop your files here. We'll figure out what you need."
+    },
+    "uploadArea": {
+        "title": "Drag & drop your files here",
+        "hint": "or click to browse · PDF, JPG, PNG, WebP up to 50 MB",
+        "button": "Choose files"
+    },
+    "states": {
+        "processing": "Processing your files…",
+        "processingHint": "This won't take long",
+        "success": "Done! Your file is ready.",
+        "successHint": "This is a prototype — no actual processing occurred.",
+        "downloadBtn": "Download"
+    }
+}

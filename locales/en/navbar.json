@@ -1,0 +1,14 @@
+{
+    "brand": "docivo",
+    "links": {
+        "tools": "Tools",
+        "howItWorks": "How it works",
+        "architecture": "Architecture",
+        "upload": "Upload",
+        "dashboard": "Dashboard"
+    },
+    "actions": {
+        "tryNow": "Try now",
+        "languageLabel": "Language / Idioma"
+    }
+}

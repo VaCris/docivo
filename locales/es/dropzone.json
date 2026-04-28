@@ -1,0 +1,18 @@
+{
+    "heading": {
+        "title": "Suéltalo. Nosotros nos encargamos.",
+        "subtitle": "Selecciona una herramienta arriba o simplemente suelta tus archivos aquí. Nosotros averiguaremos qué necesitas."
+    },
+    "uploadArea": {
+        "title": "Arrastra y suelta tus archivos aquí",
+        "hint": "o haz clic para buscar · PDF, JPG, PNG, WebP hasta 50 MB",
+        "button": "Elegir archivos"
+    },
+    "states": {
+        "processing": "Procesando tus archivos…",
+        "processingHint": "Esto no tomará mucho tiempo",
+        "success": "¡Listo! Tu archivo está preparado.",
+        "successHint": "Esto es un prototipo — no hubo procesamiento real.",
+        "downloadBtn": "Descargar"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "brand": "docivo",
+    "links": {
+        "tools": "Herramientas",
+        "howItWorks": "Cómo funciona",
+        "architecture": "Arquitectura",
+        "upload": "Subir",
+        "dashboard": "Panel"
+    },
+    "actions": {
+        "tryNow": "Pruébalo ahora",
+        "languageLabel": "Idioma / Language"
+    }
+}
