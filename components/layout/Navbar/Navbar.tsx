@@ -3,14 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
-
+import { useLanguage } from '@/hooks/useLanguage';
 import enData from '@/locales/en/navbar.json';
 import esData from '@/locales/es/navbar.json';
 import { NAVBAR_CONFIG } from './Navbar.config';
 import styles from './Navbar.module.css';
 
 export const Navbar = () => {
-    const [currentLang, setCurrentLang] = useState<'en' | 'es'>('en');
+    const { currentLang, toggleLanguage } = useLanguage();
     const t = currentLang === 'en' ? enData : esData;
 
     const [scrolled, setScrolled] = useState(false);
@@ -22,20 +22,20 @@ export const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const toggleLanguage = () => setCurrentLang(currentLang === 'en' ? 'es' : 'en');
-
     return (
         <nav className={`${styles.navbarBase} ${scrolled ? styles.navbarScrolled : ''}`}>
             <div className="mx-auto px-6 max-w-6xl">
                 <div className="flex justify-between items-center h-16">
 
-                    <Link href="/" className="group flex items-center gap-2.5">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="group-hover:scale-105 transition-transform duration-300">
-                            <rect width="32" height="32" rx="8" fill="#14B8A6" fillOpacity="0.08" />
-                            <path d="M10 8H22C24.2 8 26 9.8 26 12V20C26 22.2 24.2 24 22 24H10C7.8 24 6 22.2 6 20V12C6 9.8 7.8 8 10 8Z" stroke="#14B8A6" strokeWidth="2" fill="none" />
-                            <path d="M10 8V24" stroke="#14B8A6" strokeWidth="2.5" strokeLinecap="round" />
-                        </svg>
-                        <span className="font-bold text-surface-800 text-lg tracking-tight">{t.brand}</span>
+                    <Link href="/" className="group flex items-center">
+                        <img
+                            src="/images/logo.png"
+                            alt="Brand Logo"
+                            className="w-auto h-12 object-contain transition-transform duration-300"
+                        />
+                        <span className="font-extrabold text-surface-800 text-xl tracking-tight">
+                            {t.brand}
+                        </span>
                     </Link>
 
                     <div className="hidden md:flex items-center gap-8">
@@ -69,7 +69,12 @@ export const Navbar = () => {
                 <div className="bg-white/95 shadow-lg backdrop-blur-xl px-6 py-4 border-surface-200 border-t">
                     <div className="space-y-1 mb-3">
                         {NAVBAR_CONFIG.navItems.map((item) => (
-                            <Link key={item.id} href={item.href} onClick={() => setMenuOpen(false)} className="block hover:bg-surface-50 px-4 py-3 rounded-xl font-medium text-surface-600 hover:text-surface-800 text-sm transition-colors">
+                            <Link
+                                key={item.id}
+                                href={item.href}
+                                onClick={() => setMenuOpen(false)}
+                                className="block hover:bg-surface-50 px-4 py-3 rounded-xl font-medium text-surface-600 hover:text-surface-800 text-sm transition-colors"
+                            >
                                 {t.links[item.id as keyof typeof t.links]}
                             </Link>
                         ))}
@@ -81,7 +86,11 @@ export const Navbar = () => {
                         </button>
                     </div>
                     <div className="pt-3 border-surface-100 border-t">
-                        <Link href="#upload" onClick={() => setMenuOpen(false)} className="flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 px-4 py-3 rounded-xl w-full font-semibold text-white text-sm text-center transition-colors">
+                        <Link
+                            href="#upload"
+                            onClick={() => setMenuOpen(false)}
+                            className="flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 px-4 py-3 rounded-xl w-full font-semibold text-white text-sm text-center transition-colors"
+                        >
                             {t.actions.tryNow}
                         </Link>
                     </div>
