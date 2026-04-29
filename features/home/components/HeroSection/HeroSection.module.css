@@ -1,0 +1,76 @@
+@reference "../../../../app/globals.css";
+
+.heroContainer {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .heroContainer {
+        padding-top: 11rem;
+        padding-bottom: 8rem;
+    }
+}
+
+.animFadeUp {
+    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animFloat {
+    animation: float 4s ease-in-out infinite;
+}
+
+.delay1 {
+    animation-delay: 0.1s;
+}
+
+.delay2 {
+    animation-delay: 0.2s;
+}
+
+.delay3 {
+    animation-delay: 0.3s;
+}
+
+.delay4 {
+    animation-delay: 0.4s;
+}
+
+.delay5 {
+    animation-delay: 0.5s;
+}
+
+.visualGlow {
+    position: absolute;
+    inset: -1rem;
+    z-index: -10;
+    background: linear-gradient(to top right, rgba(153, 246, 228, 0.2), transparent, rgba(191, 219, 254, 0.2));
+    filter: blur(3rem);
+    border-radius: 1.5rem;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
