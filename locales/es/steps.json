@@ -1,0 +1,15 @@
+{
+    "title": "Tres pasos. Eso es todo.",
+    "step1": {
+        "title": "Suelta tu archivo",
+        "desc": "Arrastra y suelta o haz clic para subir. PDF, JPG, PNG o WebP."
+    },
+    "step2": {
+        "title": "Elige tu acción",
+        "desc": "Selecciona una herramienta (unir, dividir, convertir) o deja que te sugiramos una según tu archivo."
+    },
+    "step3": {
+        "title": "Obtén tu resultado",
+        "desc": "Descarga el archivo procesado. Las herramientas del cliente son instantáneas; las del servidor toman unos segundos."
+    }
+}

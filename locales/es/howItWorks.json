@@ -1,0 +1,88 @@
+{
+    "title": "Cómo funciona cada herramienta",
+    "subtitle": "Una mirada más detallada de lo que sucede detrás de escena cuando procesas un archivo.",
+    "labels": {
+        "whatItDoes": "Qué hace",
+        "howItWorks": "Cómo funciona",
+        "bestFor": "Ideal para",
+        "important": "Importante:"
+    },
+    "tools": {
+        "merge": {
+            "title": "Unir PDF",
+            "badge": "Del lado del cliente · pdf-lib",
+            "whatItDoes": "Toma dos o más archivos PDF y los combina en un solo documento. Las páginas se unen en el orden que indiques: puedes arrastrarlas para reorganizarlas antes de unirlas. Sin pérdida de calidad ni reprocesamiento.",
+            "steps": [
+                "Subes varios archivos PDF mediante arrastrar y soltar o usando el selector de archivos.",
+                "pdf-lib lee el árbol de páginas de cada archivo y copia las páginas en un nuevo documento, completamente dentro de tu navegador.",
+                "El PDF combinado se genera y descarga. Tus archivos nunca se suben a ningún servidor."
+            ],
+            "bestFor": [
+                "Combinar capítulos de informes",
+                "Unir facturas",
+                "Preparar contratos"
+            ]
+        },
+        "split": {
+            "title": "Dividir PDF",
+            "badge": "Del lado del cliente · pdf-lib + pdf.js",
+            "whatItDoes": "Carga un PDF y renderiza vistas previas visuales de cada página usando pdf.js. Seleccionas las páginas que quieres extraer y pdf-lib crea un nuevo PDF que contiene solo esas páginas.",
+            "steps": [
+                "pdf.js (Mozilla) renderiza cada página como una miniatura en canvas dentro de tu navegador; esto solo sirve para la vista previa visual, no para la manipulación.",
+                "Haces clic en las páginas que deseas conservar. Las selecciones se almacenan como un arreglo de índices de páginas.",
+                "pdf-lib copia únicamente las páginas seleccionadas del PDF original a un nuevo documento, que luego se descarga."
+            ],
+            "bestFor": [
+                "Extraer un capítulo",
+                "Eliminar portadas",
+                "Dividir por rango de páginas"
+            ]
+        },
+        "ocr": {
+            "title": "OCR PDF",
+            "badge": "Del lado del servidor · PyMuPDF + Tesseract",
+            "whatItDoes": "Toma un PDF escaneado (básicamente imágenes de páginas) y ejecuta reconocimiento óptico de caracteres para agregar una capa de texto buscable. El resultado se ve igual, pero ahora puedes seleccionar, buscar y copiar texto.",
+            "steps": [
+                "Tu PDF se sube a nuestro servidor mediante una conexión segura y se coloca en una cola de procesamiento.",
+                "PyMuPDF renderiza cada página como una imagen de alta resolución. pytesseract analiza cada imagen y extrae el texto con datos de posición.",
+                "El texto reconocido se incrusta como una capa invisible sobre las imágenes originales del PDF. Luego el archivo se devuelve y se elimina automáticamente."
+            ],
+            "bestFor": [
+                "Contratos escaneados",
+                "Escaneos de libros antiguos",
+                "Recibos y formularios"
+            ]
+        },
+        "pdfToWord": {
+            "title": "PDF a Word",
+            "badge": "Del lado del servidor · pdf2docx",
+            "whatItDoes": "Convierte un PDF en un archivo .docx editable. Conserva párrafos, encabezados, tablas y formato básico. Funciona mejor con PDFs creados digitalmente.",
+            "steps": [
+                "El PDF se sube al servidor y se pone en cola para procesamiento asíncrono.",
+                "pdf2docx analiza la estructura interna del PDF — bloques de texto, fuentes, espaciado y tablas — y la convierte en elementos de un documento Word.",
+                "Se genera un archivo .docx y se devuelve para su descarga. El archivo del servidor se elimina después de entregarse."
+            ],
+            "bestFor": [
+                "Editar PDFs bloqueados",
+                "Reutilizar informes",
+                "Traducir documentos"
+            ],
+            "warning": "pdf2docx funciona con PDFs nativos o digitales. Si tu PDF es una imagen escaneada, primero ejecuta OCR y luego conviértelo. La herramienta no puede extraer texto directamente de imágenes."
+        },
+        "imageToPdf": {
+            "title": "Imagen a PDF",
+            "badge": "Del lado del cliente · pdf-lib + Canvas",
+            "whatItDoes": "Convierte una o más imágenes (JPG, PNG, WebP) en un documento PDF. Cada imagen se convierte en una página completa. También puedes combinar varias imágenes en un PDF de múltiples páginas.",
+            "steps": [
+                "Las imágenes se cargan en el navegador. HTML5 Canvas lee las dimensiones de cada imagen y la convierte en bytes.",
+                "pdf-lib crea una nueva página con la proporción de cada imagen e incrusta los datos directamente en el PDF.",
+                "El PDF resultante se genera y descarga. Todo permanece en tu navegador, sin subir nada al servidor."
+            ],
+            "bestFor": [
+                "Crear PDFs a partir de fotos",
+                "Archivar notas escaneadas",
+                "Crear presentaciones"
+            ]
+        }
+    }
+}

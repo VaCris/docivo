@@ -1,0 +1,35 @@
+{
+    "badge": "Todas las herramientas",
+    "title": "Todo lo que necesitas para tus PDFs",
+    "subtitle": "Cinco herramientas especializadas. Elige una, suelta tu archivo y listo.",
+    "labels": {
+        "clientSide": "Client-side",
+        "serverSide": "Server-side"
+    },
+    "items": {
+        "merge": {
+            "title": "Unir PDF",
+            "desc": "Combina múltiples PDFs en un solo documento. Arrastra para reordenar páginas."
+        },
+        "split": {
+            "title": "Dividir PDF",
+            "desc": "Extrae páginas específicas o divide un PDF en archivos individuales."
+        },
+        "ocr": {
+            "title": "OCR PDF",
+            "desc": "Haz que los documentos escaneados sean buscables con reconocimiento óptico."
+        },
+        "pdfToWord": {
+            "title": "PDF a Word",
+            "desc": "Convierte documentos PDF a archivos .docx editables conservando el formato original."
+        },
+        "imageToPdf": {
+            "title": "Imagen a PDF",
+            "desc": "Convierte imágenes JPG, PNG o WebP en un solo documento PDF."
+        }
+    },
+    "comingSoon": {
+        "title": "Próximamente",
+        "desc": "Editar, anotar, comprimir, marca de agua — construimos más herramientas."
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "brand": "docivo",
+    "slogan": "Herramientas PDF que respetan tu tiempo y tus datos.",
+    "columns": {
+        "tools": "Herramientas",
+        "project": "Proyecto",
+        "legal": "Legal"
+    },
+    "links": {
+        "merge": "Unir PDF",
+        "split": "Dividir PDF",
+        "ocr": "OCR PDF",
+        "pdfToWord": "PDF a Word",
+        "imageToPdf": "Imagen a PDF",
+        "architecture": "Arquitectura",
+        "howItWorks": "Cómo funciona",
+        "roadmap": "Hoja de ruta",
+        "contact": "Contacto",
+        "privacy": "Política de Privacidad",
+        "terms": "Términos de Servicio"
+    },
+    "copyright": "© 2026 Docivo. Todos los derechos reservados."
+}

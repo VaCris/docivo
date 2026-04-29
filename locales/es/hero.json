@@ -1,0 +1,23 @@
+{
+    "badge": "Procesamiento de PDF rápido y privado",
+    "titleLine1": "Herramientas PDF que",
+    "titleHighlight": "realmente",
+    "titleLine2": "funcionan",
+    "description": "Combina, divide, convierte y aplica OCR a tus documentos. Herramientas simples que hacen una cosa bien: sin relleno, sin tonterías.",
+    "buttons": {
+        "primary": "Sube tu PDF",
+        "secondary": "Ver herramientas"
+    },
+    "features": {
+        "speed": "Procesa en segundos",
+        "security": "Procesamiento seguro",
+        "tools": "5 herramientas especializadas"
+    },
+    "visual": {
+        "url": "docivo.app/es/tools/merge",
+        "fileName1": "reporte.pdf",
+        "fileName2": "datos.pdf",
+        "addMore": "Añadir más",
+        "actionBtn": "Combinar 2 PDFs"
+    }
+}
