@@ -1,0 +1,23 @@
+{
+    "badge": "Fast, private PDF processing",
+    "titleLine1": "PDF tools that",
+    "titleHighlight": "actually",
+    "titleLine2": "work",
+    "description": "Merge, split, convert, and OCR your documents. Simple tools that do one thing well — no bloat, no nonsense.",
+    "buttons": {
+        "primary": "Drop your PDF",
+        "secondary": "Browse all tools"
+    },
+    "features": {
+        "speed": "Process in seconds",
+        "security": "Secure processing",
+        "tools": "5 specialized tools"
+    },
+    "visual": {
+        "url": "docivo.app/tools/merge",
+        "fileName1": "report.pdf",
+        "fileName2": "data.pdf",
+        "addMore": "Add more",
+        "actionBtn": "Merge 2 PDFs"
+    }
+}

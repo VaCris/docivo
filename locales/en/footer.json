@@ -1,0 +1,23 @@
+{
+    "brand": "docivo",
+    "slogan": "PDF tools that respect your time and your data.",
+    "columns": {
+        "tools": "Tools",
+        "project": "Project",
+        "legal": "Legal"
+    },
+    "links": {
+        "merge": "Merge PDF",
+        "split": "Split PDF",
+        "ocr": "OCR PDF",
+        "pdfToWord": "PDF to Word",
+        "imageToPdf": "Image to PDF",
+        "architecture": "Architecture",
+        "howItWorks": "How it works",
+        "roadmap": "Roadmap",
+        "contact": "Contact",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
+    },
+    "copyright": "© 2026 Docivo. All rights reserved."
+}

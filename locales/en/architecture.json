@@ -1,0 +1,20 @@
+{
+    "badge": "Architecture",
+    "title": "Client-side and server-side",
+    "subtitle": "Not everything can run in a browser. Here's why we use a hybrid approach.",
+    "client": {
+        "title": "Client-side tools",
+        "tools": "Merge · Split · Image to PDF",
+        "desc": "These tools run entirely in your browser using pdf-lib. Your files are never uploaded.",
+        "guaranteeTitle": "Privacy guarantee",
+        "guaranteeDesc": "Zero network requests for file data. Nothing leaves your browser."
+    },
+    "server": {
+        "title": "Server-side tools",
+        "tools": "OCR · PDF to Word",
+        "desc": "These require heavy computation that browsers can't handle efficiently. We use a Python backend.",
+        "guaranteeTitle": "Auto-deletion",
+        "guaranteeDesc": "Uploaded files are automatically deleted from the server after delivery."
+    },
+    "techStack": "Technology stack"
+}

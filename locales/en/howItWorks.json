@@ -1,0 +1,88 @@
+{
+    "title": "How each tool works",
+    "subtitle": "A closer look at what happens behind the scenes when you process a file.",
+    "labels": {
+        "whatItDoes": "What it does",
+        "howItWorks": "How it works",
+        "bestFor": "Best for",
+        "important": "Important:"
+    },
+    "tools": {
+        "merge": {
+            "title": "Merge PDF",
+            "badge": "Client-side · pdf-lib",
+            "whatItDoes": "Takes two or more PDF files and combines them into a single document. Pages are joined in the order you specify — you can drag to rearrange before merging. No quality loss, no re-rendering.",
+            "steps": [
+                "You upload multiple PDF files via drag-and-drop or file picker.",
+                "pdf-lib reads each file's page tree and copies pages into a new document object — entirely in your browser.",
+                "The merged PDF is serialized and downloaded. Your files are never uploaded to any server."
+            ],
+            "bestFor": [
+                "Combining report chapters",
+                "Merging invoices",
+                "Assembling contracts"
+            ]
+        },
+        "split": {
+            "title": "Split PDF",
+            "badge": "Client-side · pdf-lib + pdf.js",
+            "whatItDoes": "Loads a PDF and renders visual previews of every page using pdf.js. You select which pages to extract, and pdf-lib creates a new PDF containing only those pages.",
+            "steps": [
+                "pdf.js (Mozilla) renders each page as a canvas thumbnail in your browser — this is only for visual preview, not manipulation.",
+                "You click the pages you want to keep. Selections are stored as an array of page indices.",
+                "pdf-lib copies only the selected pages from the original PDF into a new document, which is then downloaded."
+            ],
+            "bestFor": [
+                "Extracting a single chapter",
+                "Removing cover pages",
+                "Splitting by page range"
+            ]
+        },
+        "ocr": {
+            "title": "OCR PDF",
+            "badge": "Server-side · PyMuPDF + Tesseract",
+            "whatItDoes": "Takes a scanned PDF (essentially images of pages) and runs optical character recognition to add a searchable text layer. The output looks identical but you can now select, search, and copy text from it.",
+            "steps": [
+                "Your PDF is uploaded to our server via a secure connection and placed in a processing queue.",
+                "PyMuPDF renders each page as a high-resolution image. pytesseract analyzes each image and extracts text with position data.",
+                "The recognized text is embedded as an invisible layer over the original page images. The file is returned and automatically deleted."
+            ],
+            "bestFor": [
+                "Scanned contracts",
+                "Old book scans",
+                "Receipts & forms"
+            ]
+        },
+        "pdfToWord": {
+            "title": "PDF to Word",
+            "badge": "Server-side · pdf2docx",
+            "whatItDoes": "Converts a PDF into an editable .docx file. Preserves paragraphs, headings, tables, and basic formatting. Works best with digitally created PDFs.",
+            "steps": [
+                "PDF is uploaded to the server and queued for asynchronous processing.",
+                "pdf2docx parses the PDF's internal structure — text blocks, fonts, spacing, tables — and maps them to Word document elements.",
+                "A .docx file is generated and sent back for download. The server file is purged after delivery."
+            ],
+            "bestFor": [
+                "Editing locked PDFs",
+                "Repurposing reports",
+                "Translating documents"
+            ],
+            "warning": "pdf2docx works on native/digital PDFs. If your PDF is a scanned image, run OCR first, then convert. The tool cannot extract text from images directly."
+        },
+        "imageToPdf": {
+            "title": "Image to PDF",
+            "badge": "Client-side · pdf-lib + Canvas",
+            "whatItDoes": "Converts one or more images (JPG, PNG, WebP) into a PDF document. Each image becomes a full page. You can also mix images and combine them into a multi-page PDF.",
+            "steps": [
+                "Images are loaded into the browser. HTML5 Canvas reads each image's dimensions and converts it to raw bytes.",
+                "pdf-lib creates a new page matching each image's aspect ratio and embeds the image data directly into the PDF.",
+                "The resulting PDF is generated and downloaded. Everything stays in your browser — no server upload."
+            ],
+            "bestFor": [
+                "Creating PDFs from photos",
+                "Archiving scanned notes",
+                "Building presentations"
+            ]
+        }
+    }
+}

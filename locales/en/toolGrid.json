@@ -1,0 +1,35 @@
+{
+    "badge": "All tools",
+    "title": "Everything you need for PDFs",
+    "subtitle": "Five specialized tools. Pick one, drop your file, done.",
+    "labels": {
+        "clientSide": "Client-side",
+        "serverSide": "Server-side"
+    },
+    "items": {
+        "merge": {
+            "title": "Merge PDF",
+            "desc": "Combine multiple PDFs into a single document. Drag to reorder pages."
+        },
+        "split": {
+            "title": "Split PDF",
+            "desc": "Extract specific pages or split a PDF into individual page files."
+        },
+        "ocr": {
+            "title": "OCR PDF",
+            "desc": "Make scanned documents searchable with optical character recognition."
+        },
+        "pdfToWord": {
+            "title": "PDF to Word",
+            "desc": "Convert PDF documents to editable .docx files with formatting preserved."
+        },
+        "imageToPdf": {
+            "title": "Image to PDF",
+            "desc": "Convert JPG, PNG, or WebP images into a single PDF document."
+        }
+    },
+    "comingSoon": {
+        "title": "More coming soon",
+        "desc": "Edit, annotate, compress, watermark — building more every week."
+    }
+}

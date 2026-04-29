@@ -1,0 +1,15 @@
+{
+    "title": "Three steps. That's it.",
+    "step1": {
+        "title": "Drop your file",
+        "desc": "Drag and drop or click to upload. PDF, JPG, PNG, or WebP."
+    },
+    "step2": {
+        "title": "Choose your action",
+        "desc": "Pick a tool — merge, split, convert — or let us suggest one based on your file."
+    },
+    "step3": {
+        "title": "Get your result",
+        "desc": "Download the processed file. Client-side tools are instant; server-side take a few seconds."
+    }
+}
