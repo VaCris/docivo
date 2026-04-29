@@ -1,0 +1,70 @@
+@reference "../../../../app/globals.css";
+
+.section {
+    padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: 7rem 1.5rem;
+    }
+}
+
+.detailCard {
+    background-color: var(--color-surface-0);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.detailCard:hover {
+    box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.06);
+}
+
+.leftPanel {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.iconWrapper {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-width: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.rightPanel {
+    padding: 2rem;
+}
+
+.sectionTitle {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-surface-800);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
