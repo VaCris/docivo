@@ -1,0 +1,32 @@
+@reference "../../../../app/globals.css";
+
+.section {
+    padding: 5rem 1.5rem;
+    background-color: var(--color-surface-50);
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: 7rem 1.5rem;
+    }
+}
+
+.card {
+    background-color: var(--color-surface-0);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 1rem;
+    padding: 2rem;
+    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
