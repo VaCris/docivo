@@ -10,7 +10,7 @@
     "tools": {
         "merge": {
             "title": "Merge PDF",
-            "badge": "Client-side · pdf-lib",
+            "badge": "· pdf-lib",
             "whatItDoes": "Takes two or more PDF files and combines them into a single document. Pages are joined in the order you specify — you can drag to rearrange before merging. No quality loss, no re-rendering.",
             "steps": [
                 "You upload multiple PDF files via drag-and-drop or file picker.",
@@ -25,7 +25,7 @@
         },
         "split": {
             "title": "Split PDF",
-            "badge": "Client-side · pdf-lib + pdf.js",
+            "badge": "pdf-lib + pdf.js",
             "whatItDoes": "Loads a PDF and renders visual previews of every page using pdf.js. You select which pages to extract, and pdf-lib creates a new PDF containing only those pages.",
             "steps": [
                 "pdf.js (Mozilla) renders each page as a canvas thumbnail in your browser — this is only for visual preview, not manipulation.",
@@ -40,7 +40,7 @@
         },
         "ocr": {
             "title": "OCR PDF",
-            "badge": "Server-side · PyMuPDF + Tesseract",
+            "badge": "PyMuPDF + Tesseract",
             "whatItDoes": "Takes a scanned PDF (essentially images of pages) and runs optical character recognition to add a searchable text layer. The output looks identical but you can now select, search, and copy text from it.",
             "steps": [
                 "Your PDF is uploaded to our server via a secure connection and placed in a processing queue.",
@@ -55,7 +55,7 @@
         },
         "pdfToWord": {
             "title": "PDF to Word",
-            "badge": "Server-side · pdf2docx",
+            "badge": "pdf2docx",
             "whatItDoes": "Converts a PDF into an editable .docx file. Preserves paragraphs, headings, tables, and basic formatting. Works best with digitally created PDFs.",
             "steps": [
                 "PDF is uploaded to the server and queued for asynchronous processing.",
@@ -71,7 +71,7 @@
         },
         "imageToPdf": {
             "title": "Image to PDF",
-            "badge": "Client-side · pdf-lib + Canvas",
+            "badge": "pdf-lib + Canvas",
             "whatItDoes": "Converts one or more images (JPG, PNG, WebP) into a PDF document. Each image becomes a full page. You can also mix images and combine them into a multi-page PDF.",
             "steps": [
                 "Images are loaded into the browser. HTML5 Canvas reads each image's dimensions and converts it to raw bytes.",

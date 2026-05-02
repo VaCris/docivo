@@ -1,0 +1,30 @@
+{
+    "header": {
+        "title": "OCR PDF",
+        "subtitle": "Convert scanned documents and images into editable, searchable text."
+    },
+    "workspace": {
+        "uploadTitle": "Upload scanned document",
+        "uploadHint": "PDF, JPG, or PNG up to 20MB",
+        "fileLoaded": "Document ready:",
+        "changeFile": "Change"
+    },
+    "settings": {
+        "title": "OCR Settings",
+        "languageLabel": "Document Language",
+        "languages": {
+            "eng": "English",
+            "spa": "Spanish",
+            "fra": "French",
+            "deu": "German"
+        },
+        "formatLabel": "Output Format",
+        "formats": {
+            "searchablePdf": "Searchable PDF",
+            "plainText": "Plain Text (.txt)"
+        }
+    },
+    "actions": {
+        "recognizeText": "Recognize Text"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "header": {
+        "title": "PDF a Word",
+        "subtitle": "Convierte documentos PDF a archivos Word editables (.docx) con máxima precisión."
+    },
+    "workspace": {
+        "uploadTitle": "Selecciona un archivo PDF",
+        "uploadHint": "Tamaño máximo: 50MB",
+        "fileLoaded": "Listo para convertir:",
+        "changeFile": "Cambiar"
+    },
+    "settings": {
+        "title": "Opciones de Conversión",
+        "flowLabel": "Retención de Formato",
+        "flowOptions": {
+            "exact": {
+                "title": "Diseño Exacto",
+                "desc": "Mantiene el formato complejo, tablas e imágenes originales."
+            },
+            "flowing": {
+                "title": "Texto Fluido",
+                "desc": "Optimizado para editar fácilmente el texto."
+            }
+        }
+    },
+    "actions": {
+        "convertButton": "Convertir a Word"
+    }
+}

@@ -2,10 +2,6 @@
     "badge": "All tools",
     "title": "Everything you need for PDFs",
     "subtitle": "Five specialized tools. Pick one, drop your file, done.",
-    "labels": {
-        "clientSide": "Client-side",
-        "serverSide": "Server-side"
-    },
     "items": {
         "merge": {
             "title": "Merge PDF",

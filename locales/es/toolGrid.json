@@ -2,10 +2,6 @@
     "badge": "Todas las herramientas",
     "title": "Todo lo que necesitas para tus PDFs",
     "subtitle": "Cinco herramientas especializadas. Elige una, suelta tu archivo y listo.",
-    "labels": {
-        "clientSide": "Client-side",
-        "serverSide": "Server-side"
-    },
     "items": {
         "merge": {
             "title": "Unir PDF",

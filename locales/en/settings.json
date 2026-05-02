@@ -1,0 +1,35 @@
+{
+    "header": {
+        "title": "Settings",
+        "subtitle": "Manage your account preferences and subscription details."
+    },
+    "sections": {
+        "profile": {
+            "title": "Profile Information",
+            "nameLabel": "Full Name",
+            "emailLabel": "Email Address",
+            "avatarBtn": "Change Avatar"
+        },
+        "preferences": {
+            "title": "App Preferences",
+            "languageLabel": "Interface Language",
+            "themeLabel": "Theme",
+            "themes": {
+                "light": "Light Mode",
+                "dark": "Dark Mode",
+                "system": "System Default"
+            }
+        },
+        "subscription": {
+            "title": "Subscription & Storage",
+            "plan": "Current Plan",
+            "freePlan": "Docivo Free",
+            "storageUsed": "Storage Used",
+            "upgradeBtn": "Upgrade to Pro"
+        }
+    },
+    "actions": {
+        "saveChanges": "Save Changes",
+        "cancel": "Cancel"
+    }
+}

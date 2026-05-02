@@ -1,0 +1,29 @@
+{
+    "header": {
+        "title": "PDF to Word",
+        "subtitle": "Convert PDF documents to editable Word files (.docx) with maximum accuracy."
+    },
+    "workspace": {
+        "uploadTitle": "Select a PDF file",
+        "uploadHint": "Max file size: 50MB",
+        "fileLoaded": "Ready to convert:",
+        "changeFile": "Change"
+    },
+    "settings": {
+        "title": "Conversion Options",
+        "flowLabel": "Layout Preservation",
+        "flowOptions": {
+            "exact": {
+                "title": "Exact Layout",
+                "desc": "Retains complex formatting, tables, and images."
+            },
+            "flowing": {
+                "title": "Flowing Text",
+                "desc": "Optimized for easy editing and text wrapping."
+            }
+        }
+    },
+    "actions": {
+        "convertButton": "Convert to Word"
+    }
+}

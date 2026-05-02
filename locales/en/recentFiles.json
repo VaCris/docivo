@@ -1,0 +1,18 @@
+{
+    "title": "Recent Files",
+    "subtitle": "Your latest processed documents",
+    "columns": {
+        "name": "File Name",
+        "tool": "Tool Used",
+        "date": "Date",
+        "size": "Size",
+        "status": "Status",
+        "actions": "Actions"
+    },
+    "status": {
+        "completed": "Completed",
+        "processing": "Processing",
+        "failed": "Failed"
+    },
+    "emptyState": "No files processed yet. Start by using a tool from the menu."
+}

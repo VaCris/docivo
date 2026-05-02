@@ -1,0 +1,19 @@
+{
+    "header": {
+        "title": "Unir PDF",
+        "subtitle": "Combina múltiples PDFs en un solo documento. Arrastra para reordenar tus archivos."
+    },
+    "workspace": {
+        "addMore": "Añadir más archivos",
+        "dropHint": "o suéltalos aquí"
+    },
+    "actions": {
+        "mergeButton": "Unir PDFs",
+        "clearAll": "Limpiar todo"
+    },
+    "mockFiles": {
+        "file1": "Reporte_Anual_2025.pdf",
+        "file2": "Resumen_Financiero.pdf",
+        "file3": "Tablas_Apéndice.pdf"
+    }
+}

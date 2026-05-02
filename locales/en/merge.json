@@ -1,0 +1,19 @@
+{
+    "header": {
+        "title": "Merge PDF",
+        "subtitle": "Combine multiple PDFs into a single document. Drag to reorder your files."
+    },
+    "workspace": {
+        "addMore": "Add more files",
+        "dropHint": "or drop them here"
+    },
+    "actions": {
+        "mergeButton": "Merge PDFs",
+        "clearAll": "Clear all"
+    },
+    "mockFiles": {
+        "file1": "Annual_Report_2025.pdf",
+        "file2": "Financial_Summary.pdf",
+        "file3": "Appendix_Tables.pdf"
+    }
+}

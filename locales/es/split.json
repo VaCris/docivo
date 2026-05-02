@@ -1,0 +1,25 @@
+{
+    "header": {
+        "title": "Dividir PDF",
+        "subtitle": "Extrae páginas específicas o separa un documento en múltiples archivos individuales."
+    },
+    "workspace": {
+        "fileName": "Reporte_Anual_2025.pdf",
+        "pageCount": "12 páginas",
+        "selectAll": "Seleccionar Todo",
+        "clearSelection": "Limpiar"
+    },
+    "sidebar": {
+        "title": "Opciones de Extracción",
+        "modeLabel": "Modo de división",
+        "modes": {
+            "extract": "Extraer páginas seleccionadas",
+            "separate": "Guardar como archivos individuales"
+        },
+        "rangeLabel": "Rango personalizado (ej. 1-5, 8)",
+        "summary": "Páginas seleccionadas:"
+    },
+    "actions": {
+        "splitButton": "Dividir PDF"
+    }
+}

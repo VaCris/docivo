@@ -1,0 +1,13 @@
+{
+    "menu": "Menú",
+    "links": {
+      "overview": "Resumen",
+      "merge": "Unir PDF",
+      "split": "Dividir PDF",
+      "ocr": "OCR PDF",
+      "convert-pdf": "PDF a Word",
+      "convert-image": "Imagen a PDF",
+      "settings": "Configuración"
+    },
+    "language": "Idioma"
+  }

@@ -1,0 +1,25 @@
+{
+    "header": {
+        "title": "Split PDF",
+        "subtitle": "Extract specific pages or separate a document into multiple individual files."
+    },
+    "workspace": {
+        "fileName": "Annual_Report_2025.pdf",
+        "pageCount": "12 pages",
+        "selectAll": "Select All",
+        "clearSelection": "Clear"
+    },
+    "sidebar": {
+        "title": "Extraction Options",
+        "modeLabel": "Split Mode",
+        "modes": {
+            "extract": "Extract selected pages",
+            "separate": "Save as individual files"
+        },
+        "rangeLabel": "Custom Range (e.g., 1-5, 8)",
+        "summary": "Selected pages:"
+    },
+    "actions": {
+        "splitButton": "Split PDF"
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "header": {
+        "title": "Configuración",
+        "subtitle": "Administra las preferencias de tu cuenta y detalles de suscripción."
+    },
+    "sections": {
+        "profile": {
+            "title": "Información del Perfil",
+            "nameLabel": "Nombre Completo",
+            "emailLabel": "Correo Electrónico",
+            "avatarBtn": "Cambiar Avatar"
+        },
+        "preferences": {
+            "title": "Preferencias de la App",
+            "languageLabel": "Idioma de la Interfaz",
+            "themeLabel": "Tema",
+            "themes": {
+                "light": "Modo Claro",
+                "dark": "Modo Oscuro",
+                "system": "Predeterminado del Sistema"
+            }
+        },
+        "subscription": {
+            "title": "Suscripción y Almacenamiento",
+            "plan": "Plan Actual",
+            "freePlan": "Docivo Gratis",
+            "storageUsed": "Almacenamiento Usado",
+            "upgradeBtn": "Mejorar a Pro"
+        }
+    },
+    "actions": {
+        "saveChanges": "Guardar Cambios",
+        "cancel": "Cancelar"
+    }
+}

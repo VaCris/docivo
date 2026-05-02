@@ -1,0 +1,18 @@
+{
+    "title": "Archivos recientes",
+    "subtitle": "Tus documentos procesados más recientes",
+    "columns": {
+        "name": "Nombre del archivo",
+        "tool": "Herramienta usada",
+        "date": "Fecha",
+        "size": "Tamaño",
+        "status": "Estado",
+        "actions": "Acciones"
+    },
+    "status": {
+        "completed": "Completado",
+        "processing": "Procesando",
+        "failed": "Fallido"
+    },
+    "emptyState": "Aún no se han procesado archivos. Comienza usando una herramienta del menú."
+}
