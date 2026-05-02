@@ -27,7 +27,6 @@ export const ToolGrid = () => {
                 <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     {TOOLGRID_CONFIG.map((tool) => {
                         const toolContent = t.items[tool.id as keyof typeof t.items];
-                        const typeLabel = t.labels[tool.type as keyof typeof t.labels];
 
                         return (
                             <div key={tool.id} className={`${styles.toolCard} ${tool.delay}`}>
@@ -37,7 +36,7 @@ export const ToolGrid = () => {
                                 <h3 className="mb-2 font-bold text-surface-800 text-base">{toolContent.title}</h3>
                                 <p className="mb-4 text-surface-500 text-sm leading-relaxed">{toolContent.desc}</p>
                                 <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider ${tool.bgClass}`}>
-                                    {typeLabel}
+                                   
                                 </span>
                             </div>
                         );
