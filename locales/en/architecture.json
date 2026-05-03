@@ -1,20 +1,20 @@
 {
     "badge": "Architecture",
-    "title": "Client-side and server-side",
-    "subtitle": "Not everything can run in a browser. Here's why we use a hybrid approach.",
+    "title": "Hybrid Architecture",
+    "subtitle": "We combine the privacy of local processing with the power of the cloud to give you the best of both worlds.",
     "client": {
-        "title": "Client-side tools",
+        "title": "Local Processing (Client-side)",
         "tools": "Merge · Split · Image to PDF",
-        "desc": "These tools run entirely in your browser using pdf-lib. Your files are never uploaded.",
-        "guaranteeTitle": "Privacy guarantee",
-        "guaranteeDesc": "Zero network requests for file data. Nothing leaves your browser."
+        "desc": "These tools run entirely in your browser using pdf-lib. Your files never leave your device, ensuring total privacy and speed.",
+        "guaranteeTitle": "Guaranteed Privacy",
+        "guaranteeDesc": "Zero uploads. Processing happens on your hardware, eliminating any risk of data interception."
     },
     "server": {
-        "title": "Server-side tools",
+        "title": "Server-side Processing",
         "tools": "OCR · PDF to Word",
-        "desc": "These require heavy computation that browsers can't handle efficiently. We use a Python backend.",
-        "guaranteeTitle": "Auto-deletion",
-        "guaranteeDesc": "Uploaded files are automatically deleted from the server after delivery."
+        "desc": "For high-complexity computational tasks, we use a specialized Python backend that ensures surgical precision in document handling.",
+        "guaranteeTitle": "Secure Deletion",
+        "guaranteeDesc": "End-to-end encryption. Files are permanently and automatically deleted from our infrastructure after processing."
     },
-    "techStack": "Technology stack"
+    "techStack": "Technology Stack"
 }
