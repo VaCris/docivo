@@ -1,20 +1,20 @@
 {
     "badge": "Arquitectura",
-    "title": "Cliente y servidor",
-    "subtitle": "No todo puede ejecutarse en el navegador. Por eso usamos un enfoque híbrido.",
+    "title": "Arquitectura Híbrida",
+    "subtitle": "Combinamos la privacidad del procesamiento local con la potencia de la nube para ofrecerte lo mejor de ambos mundos.",
     "client": {
-        "title": "Herramientas del lado del cliente",
-        "tools": "Unir · Dividir · Imagen a PDF",
-        "desc": "Estas herramientas se ejecutan completamente en tu navegador usando pdf-lib. Tus archivos nunca se suben.",
-        "guaranteeTitle": "Garantía de privacidad",
-        "guaranteeDesc": "Cero solicitudes de red para los archivos. Nada sale de tu navegador."
+        "title": "Procesamiento Local (Cliente)",
+        "tools": "Merge · Split · Image to PDF",
+        "desc": "Estas herramientas se ejecutan íntegramente en tu navegador usando pdf-lib. Tus archivos nunca salen de tu dispositivo, garantizando privacidad total y rapidez.",
+        "guaranteeTitle": "Privacidad Garantizada",
+        "guaranteeDesc": "Zero subidas. El procesamiento ocurre en tu hardware, eliminando cualquier riesgo de interceptación de datos."
     },
     "server": {
-        "title": "Herramientas del lado del servidor",
-        "tools": "OCR · PDF a Word",
-        "desc": "Estas requieren procesamiento intensivo que los navegadores no pueden manejar eficientemente. Usamos un backend en Python.",
-        "guaranteeTitle": "Eliminación automática",
-        "guaranteeDesc": "Los archivos subidos se eliminan automáticamente del servidor después de la entrega."
+        "title": "Procesamiento en Servidor",
+        "tools": "OCR · PDF to Word",
+        "desc": "Para tareas de alta complejidad computacional, utilizamos un backend especializado en Python que garantiza precisión quirúrgica en el manejo de documentos.",
+        "guaranteeTitle": "Borrado Seguro",
+        "guaranteeDesc": "Cifrado de extremo a extremo. Los archivos se eliminan permanentemente de nuestra infraestructura de forma automática tras el procesamiento."
     },
-    "techStack": "Tecnologías utilizadas"
+    "techStack": "Stack tecnológico"
 }
