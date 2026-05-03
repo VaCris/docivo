@@ -19,7 +19,7 @@ export const Footer = () => {
                     <div className="col-span-2 md:col-span-1">
                         <Link href="/" className={styles.brandLogo}>
                             <img
-                                src="/images/logo.png"
+                                src="/images/Logo.png"
                                 alt="Brand Logo"
                                 className="w-auto h-12 object-contain transition-transform duration-300"
                             />
