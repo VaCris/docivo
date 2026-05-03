@@ -29,7 +29,7 @@ export const Navbar = () => {
 
                     <Link href="/" className="group flex items-center">
                         <img
-                            src="/images/logo.png"
+                            src="/images/Logo.png"
                             alt="Brand Logo"
                             className="w-auto h-12 object-contain transition-transform duration-300"
                         />
