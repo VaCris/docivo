@@ -7,6 +7,11 @@ export type SplitOptions = {
     pages: number[];
 };
 
+function toPdfBlob(bytes: Uint8Array): Blob {
+    const safeBuffer = new Uint8Array(bytes).buffer;
+    return new Blob([safeBuffer], { type: "application/pdf" });
+}
+
 export const splitPdf = async (
     file: File,
     options: SplitOptions
@@ -40,7 +45,7 @@ export const splitPdf = async (
 
         const outputBytes = await newPdf.save();
 
-        return [new Blob([outputBytes], { type: "application/pdf" })];
+        return [toPdfBlob(outputBytes)];
     }
 
     const results: Blob[] = [];
@@ -53,9 +58,7 @@ export const splitPdf = async (
 
         const outputBytes = await newPdf.save();
 
-        results.push(
-            new Blob([outputBytes], { type: "application/pdf" })
-        );
+        results.push(toPdfBlob(outputBytes));
     }
 
     return results;
