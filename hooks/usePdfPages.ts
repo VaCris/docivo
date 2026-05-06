@@ -9,8 +9,8 @@ export function usePdfPages(file: File | null) {
         let cancelled = false;
 
         const load = async () => {
-            const pdfjs = await import("pdfjs-dist");
-            pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+            const pdfjs = await import("pdfjs-dist/legacy/build/pdf");
+            pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
             const buffer = await file.arrayBuffer();
             const pdf = await pdfjs.getDocument({ data: buffer }).promise;
