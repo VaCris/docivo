@@ -1,4 +1,4 @@
-declare module "pdfjs-dist/build/pdf.worker.mjs" {
-    const workerSrc: string;
-    export default workerSrc;
+declare module "pdfjs-dist/legacy/build/pdf" {
+    import * as pdfjs from "pdfjs-dist";
+    export = pdfjs;
 }
