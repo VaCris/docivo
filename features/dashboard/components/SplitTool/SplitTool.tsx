@@ -22,9 +22,13 @@ export const SplitTool = () => {
         if (!file) return;
 
         const load = async () => {
-            const pdfjs = await import("pdfjs-dist");
-            pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+            const pdfjs = await import("pdfjs-dist/legacy/build/pdf");
 
+            pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+                "pdfjs-dist/build/pdf.worker.min.mjs",
+                import.meta.url
+            ).toString();
+            
             const buffer = await file.arrayBuffer();
             const pdf = await pdfjs.getDocument({ data: buffer }).promise;
 
@@ -72,7 +76,7 @@ export const SplitTool = () => {
                         }}
                     />
 
-                    <div className="flex justify-between items-center mt-6 mb-6 pb-4 border-surface-100 border-b"/>
+                    <div className="flex justify-between items-center mt-6 mb-6 pb-4 border-surface-100 border-b" />
 
                     <div className="flex justify-between items-center mb-6 pb-4 border-surface-100 border-b">
                         <div className="flex items-center gap-3">
