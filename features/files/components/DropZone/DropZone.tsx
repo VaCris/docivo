@@ -1,23 +1,30 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
-import { useRouter } from 'next/navigation';
-import { Icon } from '@iconify/react';
-import { useLanguage } from '@/hooks/useLanguage';
+import React, { useState, useRef } from "react";
+import { Icon } from "@iconify/react";
+import { useLanguage } from "@/hooks/useLanguage";
 
-import enData from '@/locales/en/dropzone.json';
-import esData from '@/locales/es/dropzone.json';
-import { DROPZONE_CONFIG } from './DropZone.config';
+import enData from "@/locales/en/dropzone.json";
+import esData from "@/locales/es/dropzone.json";
+import { DROPZONE_CONFIG } from "./DropZone.config";
 
-import styles from './DropZone.module.css';
+import styles from "./DropZone.module.css";
 
-export const DropZone = () => {
+interface DropZoneProps {
+    onFiles?: (files: FileList) => void;
+}
+
+export const DropZone = ({ onFiles }: DropZoneProps) => {
     const { currentLang } = useLanguage();
-    const t = currentLang === 'en' ? enData : esData;
+    const t = currentLang === "en" ? enData : esData;
 
     const [isDragging, setIsDragging] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const router = useRouter();
+
+    const handleFiles = (files: FileList) => {
+        if (!files.length) return;
+        onFiles?.(files);
+    };
 
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -32,20 +39,15 @@ export const DropZone = () => {
     const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsDragging(false);
-
-        if (e.dataTransfer.files.length > 0) {
-            router.push('/dashboard');
-        }
+        handleFiles(e.dataTransfer.files);
     };
 
     const handleClick = () => {
-        router.push('/dashboard');
+        fileInputRef.current?.click();
     };
 
     const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files.length > 0) {
-            router.push('/dashboard');
-        }
+        if (e.target.files) handleFiles(e.target.files);
     };
 
     return (
@@ -67,8 +69,8 @@ export const DropZone = () => {
                         onDragLeave={handleDragLeave}
                         onDrop={handleDrop}
                         className={`relative flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-10 md:p-16 text-center cursor-pointer transition-all duration-300 ${isDragging
-                            ? styles.dropzoneActive
-                            : 'border-surface-300 bg-white hover:border-surface-400 hover:bg-surface-50/50'
+                                ? styles.dropzoneActive
+                                : "border-surface-300 bg-white hover:border-surface-400 hover:bg-surface-50/50"
                             }`}
                     >
                         <input
@@ -85,7 +87,8 @@ export const DropZone = () => {
                                 <Icon
                                     icon={DROPZONE_CONFIG.icons.uploadMain}
                                     width="28"
-                                    className={`transition-all duration-300 ${isDragging ? styles.dropIconActive : 'text-surface-400'}`}
+                                    className={`transition-all duration-300 ${isDragging ? styles.dropIconActive : "text-surface-400"
+                                        }`}
                                 />
                             </div>
                         </div>
@@ -97,7 +100,7 @@ export const DropZone = () => {
                             {t.uploadArea.hint}
                         </p>
 
-                        <button className="inline-flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 px-6 py-2.5 rounded-xl font-semibold text-white text-sm transition-colors pointer-events-none">
+                        <button className="inline-flex justify-center items-center gap-2 bg-brand-600 px-6 py-2.5 rounded-xl font-semibold text-white text-sm pointer-events-none">
                             <Icon icon={DROPZONE_CONFIG.icons.folderOpen} width="16" />
                             {t.uploadArea.button}
                         </button>

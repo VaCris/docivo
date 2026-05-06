@@ -1,6 +1,6 @@
 export const CTA_CONFIG = {
     links: {
-        primary: '#upload',
+        primary: '/dashboard',
         secondary: '#tools'
     },
     icons: {

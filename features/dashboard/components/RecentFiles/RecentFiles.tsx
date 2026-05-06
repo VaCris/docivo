@@ -3,22 +3,34 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { useLanguage } from '@/hooks/useLanguage';
+import { useJobs } from '@/hooks/useJobs';
 
-import enData from '@/locales/en/recentFiles.json';
-import esData from '@/locales/es/recentFiles.json';
-import { MOCK_RECENT_FILES, STATUS_STYLES } from './RecentFiles.config';
+import { STATUS_STYLES } from './RecentFiles.config';
+import { mapJobStatusToUI } from "@/utils/jobStatus";
+
+const TOOL_LABELS: Record<string, string> = {
+    merge: "Merge",
+    split: "Split",
+    ocr: "OCR",
+    "pdf-to-word": "PDF → Word",
+    "image-to-pdf": "Image → PDF"
+};
 
 export const RecentFiles = () => {
-    const { currentLang } = useLanguage();
-    const t = currentLang === 'en' ? enData : esData;
+    const { t } = useLanguage();
+
+    const files = useJobs()
+        .sort((a, b) => b.createdAt - a.createdAt)
+        .slice(0, 10);
 
     return (
         <div className="bg-white shadow-sm border border-surface-200 rounded-2xl overflow-hidden">
             <div className="flex justify-between items-center bg-surface-0 px-6 py-5 border-surface-100 border-b">
                 <div>
-                    <h2 className="font-bold text-surface-900 text-lg">{t.title}</h2>
-                    <p className="text-surface-500 text-sm">{t.subtitle}</p>
+                    <h2 className="font-bold text-surface-900 text-lg">{t.recentFiles.title}</h2>
+                    <p className="text-surface-500 text-sm">{t.recentFiles.subtitle}</p>
                 </div>
+
                 <button className="hover:bg-brand-50 p-2 rounded-lg text-surface-400 hover:text-brand-600 transition-colors">
                     <Icon icon="solar:menu-dots-bold" width="24" />
                 </button>
@@ -26,64 +38,57 @@ export const RecentFiles = () => {
 
             <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
+
                     <thead>
                         <tr className="bg-surface-50 border-surface-100 border-b font-semibold text-surface-500 text-xs uppercase tracking-wider">
-                            <th className="px-6 py-4">{t.columns.name}</th>
-                            <th className="px-6 py-4">{t.columns.tool}</th>
-                            <th className="px-6 py-4">{t.columns.date}</th>
-                            <th className="px-6 py-4">{t.columns.size}</th>
-                            <th className="px-6 py-4">{t.columns.status}</th>
-                            <th className="px-6 py-4 text-right">{t.columns.actions}</th>
+                            <th className="px-6 py-4">{t.recentFiles.columns.name}</th>
+                            <th className="px-6 py-4">{t.recentFiles.columns.tool}</th>
+                            <th className="px-6 py-4">{t.recentFiles.columns.date}</th>
+                            <th className="px-6 py-4">{t.recentFiles.columns.status}</th>
                         </tr>
                     </thead>
+
                     <tbody className="divide-y divide-surface-100">
-                        {MOCK_RECENT_FILES.map((file) => (
-                            <tr key={file.id} className="group hover:bg-surface-50/50 transition-colors">
+
+                        {files.map((file) => (
+                            <tr key={file.jobId} className="group hover:bg-surface-50/50 transition-colors">
+
                                 <td className="px-6 py-4">
-                                    <div className="flex items-center gap-3">
-                                        <div className="flex justify-center items-center bg-surface-100 rounded-xl w-10 h-10 shrink-0">
-                                            <Icon icon={file.icon} width="20" className="text-brand-600" />
-                                        </div>
-                                        <div>
-                                            <p className="font-semibold text-surface-800 text-sm line-clamp-1">{file.name}</p>
-                                            <p className="mt-0.5 font-mono text-surface-400 text-xs">{file.id}</p>
-                                        </div>
+                                    <div>
+                                        <p className="font-semibold text-surface-800 text-sm line-clamp-1">
+                                            {file.jobId}
+                                        </p>
+                                        <p className="mt-0.5 font-mono text-surface-400 text-xs">
+                                            {file.jobId}
+                                        </p>
                                     </div>
                                 </td>
 
                                 <td className="px-6 py-4">
                                     <span className="inline-flex items-center gap-1.5 bg-surface-100 px-2.5 py-1 rounded-md font-semibold text-surface-600 text-xs">
-                                        {file.toolLabel}
+                                        {TOOL_LABELS[file.tool] ?? file.tool}
                                     </span>
                                 </td>
 
                                 <td className="px-6 py-4 text-surface-500 text-sm">
-                                    {file.date}
-                                </td>
-
-                                <td className="px-6 py-4 font-medium text-surface-600 text-sm">
-                                    {file.size}
+                                    {new Date(file.createdAt).toLocaleString()}
                                 </td>
 
                                 <td className="px-6 py-4">
-                                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border ${STATUS_STYLES[file.status as keyof typeof STATUS_STYLES]}`}>
-                                        <span className="bg-current opacity-60 rounded-full w-1.5 h-1.5"></span>
-                                        {t.status[file.status as keyof typeof t.status]}
-                                    </span>
-                                </td>
+                                    {(() => {
+                                        const status = mapJobStatusToUI(file.status);
 
-                                <td className="px-6 py-4 text-right">
-                                    <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button className="hover:bg-brand-50 p-2 rounded-lg text-surface-400 hover:text-brand-600 transition-colors" aria-label="Download">
-                                            <Icon icon="solar:download-square-linear" width="20" />
-                                        </button>
-                                        <button className="hover:bg-red-50 p-2 rounded-lg text-surface-400 hover:text-red-600 transition-colors" aria-label="Delete">
-                                            <Icon icon="solar:trash-bin-trash-linear" width="20" />
-                                        </button>
-                                    </div>
+                                        return (
+                                            <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border ${STATUS_STYLES[status]}`}>
+                                                <span className="bg-current opacity-60 rounded-full w-1.5 h-1.5"></span>
+                                                {t.recentFiles.status[status]}
+                                            </span>
+                                        );
+                                    })()}
                                 </td>
                             </tr>
                         ))}
+
                     </tbody>
                 </table>
             </div>

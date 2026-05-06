@@ -1,98 +1,141 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { useLanguage } from '@/hooks/useLanguage';
-
-import enData from '@/locales/en/split.json';
-import esData from '@/locales/es/split.json';
-
-const MOCK_PAGES = Array.from({ length: 8 }, (_, i) => ({
-    id: i + 1,
-    number: i + 1,
-}));
+import { useClientSplit } from '@/hooks/useClientSplit';
+import { PdfPreview } from '@/features/files/components/PdfPreview/PdfPreview';
+import { FileUploader } from "@/features/files/components/FileUploader/FileUploader";
 
 export const SplitTool = () => {
-    const { currentLang } = useLanguage();
-    const t = currentLang === 'en' ? enData : esData;
+    const { t } = useLanguage();
+    const strings = t.split;
 
-    const [selectedPages, setSelectedPages] = useState<number[]>([1, 2, 4]);
+    const { run, isLoading } = useClientSplit();
 
-    const togglePage = (pageNumber: number) => {
+    const [file, setFile] = useState<File | null>(null);
+    const [totalPages, setTotalPages] = useState(0);
+    const [selectedPages, setSelectedPages] = useState<number[]>([]);
+    const [mode, setMode] = useState<"extract" | "separate">("extract");
+
+    useEffect(() => {
+        if (!file) return;
+
+        const load = async () => {
+            const pdfjs = await import("pdfjs-dist");
+            pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+
+            const buffer = await file.arrayBuffer();
+            const pdf = await pdfjs.getDocument({ data: buffer }).promise;
+
+            setTotalPages(pdf.numPages);
+            setSelectedPages([]);
+        };
+
+        load();
+    }, [file]);
+
+    const togglePage = (page: number) => {
         setSelectedPages(prev =>
-            prev.includes(pageNumber)
-                ? prev.filter(p => p !== pageNumber)
-                : [...prev, pageNumber]
+            prev.includes(page)
+                ? prev.filter(p => p !== page)
+                : [...prev, page]
         );
+    };
+
+    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+    const handleRun = () => {
+        if (!file) return;
+        run(file, selectedPages, mode);
     };
 
     return (
         <div className="flex flex-col h-[calc(100vh-8rem)]">
             <div className="mb-8">
                 <h1 className="font-extrabold text-surface-900 text-2xl md:text-3xl tracking-tight">
-                    {t.header.title}
+                    {strings.header.title}
                 </h1>
                 <p className="mt-2 text-surface-500 text-sm md:text-base">
-                    {t.header.subtitle}
+                    {strings.header.subtitle}
                 </p>
             </div>
 
             <div className="flex lg:flex-row flex-col flex-1 gap-6 overflow-hidden">
                 <div className="relative flex flex-col flex-1 bg-white shadow-sm p-6 border border-surface-200 rounded-2xl overflow-y-auto">
+
+                    <FileUploader
+                        accept="application/pdf"
+                        onFiles={(files) => {
+                            const file = files[0];
+                            if (file) setFile(file);
+                        }}
+                    />
+
+                    <div className="flex justify-between items-center mt-6 mb-6 pb-4 border-surface-100 border-b"/>
+
                     <div className="flex justify-between items-center mb-6 pb-4 border-surface-100 border-b">
                         <div className="flex items-center gap-3">
                             <div className="flex justify-center items-center bg-brand-50 rounded-xl w-10 h-10">
                                 <Icon icon="solar:file-bold-duotone" width="24" className="text-brand-600" />
                             </div>
                             <div>
-                                <p className="font-bold text-surface-800 text-sm">{t.workspace.fileName}</p>
-                                <p className="text-surface-500 text-xs">{t.workspace.pageCount}</p>
+                                <p className="font-bold text-surface-800 text-sm">
+                                    {file?.name || strings.workspace.fileNameLabel}
+                                </p>
+                                <p className="text-surface-500 text-xs">
+                                    {file
+                                        ? strings.workspace.pageCount.replace("{count}", String(totalPages))
+                                        : strings.workspace.pageCountLabel}
+                                </p>
                             </div>
                         </div>
+
                         <div className="flex gap-2">
                             <button
-                                onClick={() => setSelectedPages(MOCK_PAGES.map(p => p.id))}
+                                onClick={() => setSelectedPages(pages)}
                                 className="bg-brand-50 px-3 py-1.5 rounded-lg font-semibold text-brand-600 hover:text-brand-700 text-xs transition-colors"
                             >
-                                {t.workspace.selectAll}
+                                {strings.workspace.selectAll}
                             </button>
+
                             <button
                                 onClick={() => setSelectedPages([])}
                                 className="bg-surface-50 px-3 py-1.5 rounded-lg font-semibold text-surface-500 hover:text-red-600 text-xs transition-colors"
                             >
-                                {t.workspace.clearSelection}
+                                {strings.workspace.clearSelection}
                             </button>
                         </div>
                     </div>
 
                     <div className="gap-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 pb-6">
-                        {MOCK_PAGES.map((page) => {
-                            const isSelected = selectedPages.includes(page.id);
+                        {pages.map((page) => {
+                            const isSelected = selectedPages.includes(page);
 
                             return (
                                 <div
-                                    key={page.id}
-                                    onClick={() => togglePage(page.id)}
-                                    className={`relative cursor-pointer group flex flex-col items-center transition-all ${isSelected ? 'scale-[0.98]' : 'hover:scale-[1.02]'
-                                        }`}
+                                    key={page}
+                                    onClick={() => togglePage(page)}
+                                    className={`relative cursor-pointer group flex flex-col items-center transition-all ${isSelected ? 'scale-[0.98]' : 'hover:scale-[1.02]'}`}
                                 >
                                     <div className={`w-full aspect-[1/1.4] rounded-xl flex items-center justify-center shadow-sm transition-all border-2 ${isSelected
-                                            ? 'bg-brand-50 border-brand-500 shadow-brand-500/20'
-                                            : 'bg-white border-surface-200 group-hover:border-surface-300'
+                                        ? 'bg-brand-50 border-brand-500 shadow-brand-500/20'
+                                        : 'bg-white border-surface-200 group-hover:border-surface-300'
                                         }`}>
                                         <div className={`absolute top-3 left-3 w-6 h-6 rounded-full flex items-center justify-center transition-all ${isSelected
-                                                ? 'bg-brand-500 text-white scale-100'
-                                                : 'bg-surface-100 border border-surface-200 text-transparent opacity-0 group-hover:opacity-100 scale-90'
+                                            ? 'bg-brand-500 text-white scale-100'
+                                            : 'bg-surface-100 border border-surface-200 text-transparent opacity-0 group-hover:opacity-100 scale-90'
                                             }`}>
                                             <Icon icon="solar:check-read-linear" width="14" />
                                         </div>
 
-                                        <Icon icon="solar:document-text-linear" width="32" className={isSelected ? 'text-brand-300' : 'text-surface-300'} />
+                                        {file && (
+                                            <PdfPreview file={file} page={page} />
+                                        )}
                                     </div>
 
-                                    <p className={`mt-3 text-xs font-bold transition-colors ${isSelected ? 'text-brand-600' : 'text-surface-500'
-                                        }`}>
-                                        Page {page.number}
+                                    <p className={`mt-3 text-xs font-bold transition-colors ${isSelected ? 'text-brand-600' : 'text-surface-500'}`}>
+                                        Page {page}
                                     </p>
                                 </div>
                             );
@@ -101,33 +144,50 @@ export const SplitTool = () => {
                 </div>
 
                 <div className="flex flex-col bg-white shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80 shrink-0">
-                    <h3 className="mb-6 font-bold text-surface-800 text-base">{t.sidebar.title}</h3>
+                    <h3 className="mb-6 font-bold text-surface-800 text-base">
+                        {strings.sidebar.title}
+                    </h3>
 
                     <div className="flex-1 space-y-6">
                         <div>
-                            <p className="mb-3 font-bold text-surface-500 text-xs uppercase tracking-wider">{t.sidebar.modeLabel}</p>
+                            <p className="mb-3 font-bold text-surface-500 text-xs uppercase tracking-wider">
+                                {strings.sidebar.modeLabel}
+                            </p>
+
                             <div className="space-y-2">
                                 <label className="flex items-start gap-3 bg-brand-50 p-3 border-2 border-brand-500 rounded-xl cursor-pointer">
-                                    <input type="radio" name="splitMode" defaultChecked className="mt-1 focus:ring-brand-500 text-brand-600" />
-                                    <span className="font-semibold text-brand-900 text-sm leading-tight">
-                                        {t.sidebar.modes.extract}
+                                    <input
+                                        type="radio"
+                                        checked={mode === "extract"}
+                                        onChange={() => setMode("extract")}
+                                        className="mt-1"
+                                    />
+                                    <span className="font-semibold text-brand-900 text-sm">
+                                        {strings.sidebar.modes.extract}
                                     </span>
                                 </label>
+
                                 <label className="flex items-start gap-3 hover:bg-surface-50 p-3 border border-surface-200 rounded-xl transition-colors cursor-pointer">
-                                    <input type="radio" name="splitMode" className="mt-1 text-surface-400" />
-                                    <span className="font-medium text-surface-600 text-sm leading-tight">
-                                        {t.sidebar.modes.separate}
+                                    <input
+                                        type="radio"
+                                        checked={mode === "separate"}
+                                        onChange={() => setMode("separate")}
+                                        className="mt-1"
+                                    />
+                                    <span className="font-medium text-surface-600 text-sm">
+                                        {strings.sidebar.modes.separate}
                                     </span>
                                 </label>
                             </div>
                         </div>
 
                         <div>
-                            <p className="mb-3 font-bold text-surface-500 text-xs uppercase tracking-wider">{t.sidebar.rangeLabel}</p>
+                            <p className="mb-3 font-bold text-surface-500 text-xs uppercase tracking-wider">
+                                {strings.sidebar.rangeLabel}
+                            </p>
                             <input
                                 type="text"
-                                placeholder="1, 3, 5-8"
-                                className="bg-surface-50 px-4 py-2.5 border border-surface-200 focus:border-brand-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 w-full font-mono text-surface-800 text-sm transition-all"
+                                className="bg-surface-50 px-4 py-2.5 border border-surface-200 rounded-xl w-full font-mono text-sm"
                                 value={selectedPages.sort((a, b) => a - b).join(', ')}
                                 readOnly
                             />
@@ -136,17 +196,21 @@ export const SplitTool = () => {
 
                     <div className="mt-6 pt-6 border-surface-100 border-t">
                         <div className="flex justify-between items-center mb-4">
-                            <span className="text-surface-500 text-sm">{t.sidebar.summary}</span>
+                            <span className="text-surface-500 text-sm">
+                                {strings.sidebar.summary}
+                            </span>
                             <span className="bg-brand-50 px-2 py-0.5 rounded-md font-bold text-brand-600 text-sm">
                                 {selectedPages.length}
                             </span>
                         </div>
+
                         <button
-                            className="inline-flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 disabled:opacity-50 shadow-brand-500/20 shadow-lg px-6 py-3.5 rounded-xl w-full font-bold text-white text-sm active:scale-95 transition-all disabled:cursor-not-allowed"
-                            disabled={selectedPages.length === 0}
+                            onClick={handleRun}
+                            disabled={!file || selectedPages.length === 0 || isLoading}
+                            className="inline-flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 disabled:opacity-50 px-6 py-3.5 rounded-xl w-full font-bold text-white text-sm"
                         >
                             <Icon icon="solar:scissors-bold" width="18" />
-                            {t.actions.splitButton}
+                            {strings.actions.splitButton}
                         </button>
                     </div>
                 </div>

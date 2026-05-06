@@ -31,7 +31,7 @@ export const HeroSection = () => {
                     </p>
 
                     <div className={`${styles.animFadeUp} ${styles.delay3} mt-10 flex flex-col sm:flex-row items-center justify-center gap-4`}>
-                        <Link href="#upload" className="group inline-flex items-center gap-2.5 bg-brand-600 hover:bg-brand-700 shadow-brand-600/20 shadow-lg px-7 py-3.5 rounded-xl font-semibold text-white text-sm transition-all">
+                        <Link href="/dashboard" className="group inline-flex items-center gap-2.5 bg-brand-600 hover:bg-brand-700 shadow-brand-600/20 shadow-lg px-7 py-3.5 rounded-xl font-semibold text-white text-sm transition-all">
                             {t.buttons.primary}
                             <Icon icon={HERO_CONFIG.icons.arrowDown} width="16" className="transition-transform group-hover:translate-y-0.5" />
                         </Link>
