@@ -25,7 +25,8 @@ export const PdfPreview = ({ file, page = 1, scale = 0.3 }: Props) => {
                 setError(false);
 
                 const pdfjs = await import("pdfjs-dist");
-                pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+                pdfjs.GlobalWorkerOptions.workerSrc =
+                `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
                 let pdf = pdfCache.get(file.name);
 
@@ -61,9 +62,14 @@ export const PdfPreview = ({ file, page = 1, scale = 0.3 }: Props) => {
                 await task.promise;
 
             } catch (err) {
-                if (!cancelled) {
+                if (err instanceof Error) {
+                    console.error("[Docivo Preview Error]:", {
+                        message: err.message,
+                        name: err.name,
+                        stack: err.stack,
+                    });
+                } else {
                     console.error("[Docivo Preview Error]:", err);
-                    setError(true);
                 }
             }
         };
