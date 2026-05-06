@@ -1,5 +1,10 @@
 import { PDFDocument } from "pdf-lib";
 
+function toPdfBlob(bytes: Uint8Array): Blob {
+    const safeBuffer = new Uint8Array(bytes).buffer;
+    return new Blob([safeBuffer], { type: "application/pdf" });
+}
+
 export const pdfClient = {
     merge: async (files: File[]): Promise<Blob> => {
         const mergedPdf = await PDFDocument.create();
@@ -13,7 +18,7 @@ export const pdfClient = {
         }
 
         const finalBytes = await mergedPdf.save();
-        return new Blob([finalBytes], { type: "application/pdf" });
+        return toPdfBlob(finalBytes);
     },
 
     split: async (file: File): Promise<Blob[]> => {
@@ -27,8 +32,8 @@ export const pdfClient = {
             const [page] = await newPdf.copyPages(pdf, [index]);
             newPdf.addPage(page);
 
-            const bytes = await newPdf.save();
-            result.push(new Blob([bytes], { type: "application/pdf" }));
+            const newBytes = await newPdf.save();
+            result.push(toPdfBlob(newBytes));
         }
 
         return result;
