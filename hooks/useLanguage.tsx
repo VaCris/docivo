@@ -1,24 +1,36 @@
 "use client";
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from "react";
+import { en } from "@/locales/en";
+import { es } from "@/locales/es";
+import type { Dictionary, Language } from "@/types/i18n";
+
+const dictionaries: Record<Language, Dictionary> = {
+    en,
+    es,
+};
 
 type LanguageContextType = {
-    currentLang: 'en' | 'es';
+    currentLang: Language;
     toggleLanguage: () => void;
+    t: Dictionary;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-    const [currentLang, setCurrentLang] = useState<'en' | 'es'>('en');
+    const [currentLang, setCurrentLang] = useState<Language>("en");
 
     const toggleLanguage = () => {
-        setCurrentLang((prev) => (prev === 'en' ? 'es' : 'en'));
+        setCurrentLang((prev: Language) =>
+            prev === "en" ? "es" : "en"
+        );
     };
 
+    const t = useMemo(() => dictionaries[currentLang], [currentLang]);
+
     return (
-        <LanguageContext.Provider value={{ currentLang, toggleLanguage }
-        }>
+        <LanguageContext.Provider value={{ currentLang, toggleLanguage, t }}>
             {children}
         </LanguageContext.Provider>
     );
@@ -26,8 +38,6 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
 export const useLanguage = () => {
     const context = useContext(LanguageContext);
-    if (!context) {
-        throw new Error('useLanguage must be used within a LanguageProvider');
-    }
+    if (!context) throw new Error("useLanguage must be used within a LanguageProvider");
     return context;
 };
