@@ -26,7 +26,10 @@ export const PdfPreview = ({ file, page = 1, scale = 0.3 }: Props) => {
 
                 const pdfjs = await import("pdfjs-dist/legacy/build/pdf");
 
-                pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+                pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+                    "pdfjs-dist/build/pdf.worker.min.mjs",
+                    import.meta.url
+                ).toString();
 
                 let pdf = pdfCache.get(file.name);
 
