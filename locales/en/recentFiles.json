@@ -6,10 +6,10 @@
         "tool": "Tool Used",
         "date": "Date",
         "size": "Size",
-        "status": "Status",
-        "actions": "Actions"
+        "status": "Status"
     },
     "status": {
+        "pending": "Pending",
         "completed": "Completed",
         "processing": "Processing",
         "failed": "Failed"

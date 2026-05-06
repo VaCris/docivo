@@ -6,10 +6,10 @@
         "tool": "Herramienta usada",
         "date": "Fecha",
         "size": "Tamaño",
-        "status": "Estado",
-        "actions": "Acciones"
+        "status": "Estado"
     },
     "status": {
+        "pending": "Pendiente",
         "completed": "Completado",
         "processing": "Procesando",
         "failed": "Fallido"

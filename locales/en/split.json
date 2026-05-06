@@ -4,8 +4,9 @@
         "subtitle": "Extract specific pages or separate a document into multiple individual files."
     },
     "workspace": {
-        "fileName": "Annual_Report_2025.pdf",
-        "pageCount": "12 pages",
+        "fileNameLabel": "File",
+        "pageCountLabel": "Total Pages",
+        "pageCount": "{count} Pages",
         "selectAll": "Select All",
         "clearSelection": "Clear"
     },
@@ -21,5 +22,12 @@
     },
     "actions": {
         "splitButton": "Split PDF"
+    },
+    "notifications": {
+        "loading": "Processing PDF...",
+        "success": "PDF split successfully",
+        "error": "Error splitting PDF",
+        "validation_error": "Invalid selection",
+        "validation_desc": "Select at least one page"
     }
 }

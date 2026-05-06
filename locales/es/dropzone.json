@@ -14,5 +14,6 @@
         "success": "¡Listo! Tu archivo está preparado.",
         "successHint": "Esto es un prototipo — no hubo procesamiento real.",
         "downloadBtn": "Descargar"
-    }
+    },
+    "preview_error": "Error de vista previa"
 }

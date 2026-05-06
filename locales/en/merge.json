@@ -11,9 +11,13 @@
         "mergeButton": "Merge PDFs",
         "clearAll": "Clear all"
     },
-    "mockFiles": {
-        "file1": "Annual_Report_2025.pdf",
-        "file2": "Financial_Summary.pdf",
-        "file3": "Appendix_Tables.pdf"
+    "notifications": {
+        "validation_error": "Missing files",
+        "validation_desc": "Select at least 2 PDFs to perform the merge.",
+        "loading": "Merging PDF layers locally...",
+        "success_title": "Document generated",
+        "success_desc": "The merge was completed without sending data to the server.",
+        "error_title": "Engine failure",
+        "error_desc": "The merge could not be processed. Check file permissions."
     }
 }

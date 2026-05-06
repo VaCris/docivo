@@ -11,9 +11,13 @@
         "mergeButton": "Unir PDFs",
         "clearAll": "Limpiar todo"
     },
-    "mockFiles": {
-        "file1": "Reporte_Anual_2025.pdf",
-        "file2": "Resumen_Financiero.pdf",
-        "file3": "Tablas_Apéndice.pdf"
+    "notifications": {
+        "validation_error": "Faltan archivos",
+        "validation_desc": "Selecciona al menos 2 PDFs para realizar la unión.",
+        "loading": "Fusionando capas del PDF localmente...",
+        "success_title": "Documento generado",
+        "success_desc": "La unión se completó sin enviar datos al servidor.",
+        "error_title": "Fallo en el motor",
+        "error_desc": "No se pudo procesar la unión. Verifica los permisos del archivo."
     }
 }

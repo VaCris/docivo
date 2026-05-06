@@ -14,5 +14,6 @@
         "success": "Done! Your file is ready.",
         "successHint": "This is a prototype — no actual processing occurred.",
         "downloadBtn": "Download"
-    }
+    },
+    "preview_error": "Preview error"
 }
