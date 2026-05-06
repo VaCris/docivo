@@ -50,7 +50,7 @@ export const Navbar = () => {
                         <button onClick={toggleLanguage} className="px-2 font-bold text-surface-500 hover:text-brand-600 text-sm transition-colors">
                             {currentLang === 'en' ? 'ES' : 'EN'}
                         </button>
-                        <Link href="#upload" className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 px-5 py-2.5 rounded-xl font-semibold text-white text-sm transition-colors">
+                        <Link href="/dashboard" className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 px-5 py-2.5 rounded-xl font-semibold text-white text-sm transition-colors">
                             {t.actions.tryNow}
                             <Icon icon={NAVBAR_CONFIG.icons.arrowRight} width="15" />
                         </Link>
@@ -87,7 +87,7 @@ export const Navbar = () => {
                     </div>
                     <div className="pt-3 border-surface-100 border-t">
                         <Link
-                            href="#upload"
+                            href="/dashboard"
                             onClick={() => setMenuOpen(false)}
                             className="flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 px-4 py-3 rounded-xl w-full font-semibold text-white text-sm text-center transition-colors"
                         >

@@ -1,7 +1,7 @@
 export const SIDEBAR_CONFIG = {
     navItems: [
         { id: 'overview', href: '/dashboard', icon: 'solar:home-smile-linear' },
-        { id: 'merge', href: '/dashboard/merge', icon: 'solar:merge-linear' },
+        { id: 'merge', href: '/dashboard/merge', icon: "solar:shuffle-linear" },
         { id: 'split', href: '/dashboard/split', icon: 'solar:scissors-linear' },
         { id: 'ocr', href: '/dashboard/ocr', icon: 'solar:eye-scan-linear' },
         { id: 'convert-pdf', href: '/dashboard/convert-pdf-to-word', icon: 'solar:file-text-linear' },

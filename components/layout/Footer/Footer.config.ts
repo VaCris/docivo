@@ -19,6 +19,6 @@ export const FOOTER_CONFIG = {
         ]
     },
     social: [
-        { name: 'GitHub', icon: 'mdi:github', href: 'https://github.com' }
+        { name: 'GitHub', icon: 'mdi:github', href: 'https://github.com/VaCris' }
     ]
 };
