@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="es" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body suppressHydrationWarning className={`${plusJakarta.className} antialiased`}>
         <LanguageProvider>
           {children}
