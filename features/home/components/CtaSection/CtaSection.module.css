@@ -2,13 +2,43 @@
 
 .section {
     padding: 5rem 1.5rem;
-    background-color: var(--color-surface-900);
+    background:
+        linear-gradient(to bottom, #ffffff, #f8fafc);
 }
 
 @media (min-width: 768px) {
     .section {
         padding: 7rem 1.5rem;
     }
+}
+
+.ctaCard {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2rem;
+    padding: 4rem 1.5rem;
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.34), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(20, 184, 166, 0.24), transparent 34%),
+        #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 80px -36px rgba(15, 23, 42, 0.6);
+}
+
+@media (min-width: 768px) {
+    .ctaCard {
+        padding: 5rem 2rem;
+    }
+}
+
+.glow {
+    position: absolute;
+    inset: -8rem;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.25), transparent 28%),
+        radial-gradient(circle at 70% 70%, rgba(45, 212, 191, 0.18), transparent 28%);
+    filter: blur(2rem);
+    pointer-events: none;
 }
 
 .animFadeUp {
@@ -18,30 +48,57 @@
 .primaryBtn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.625rem;
     background-color: var(--color-brand-600);
     color: white;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.875rem;
-    padding: 0.875rem 1.75rem;
-    border-radius: 0.75rem;
-    transition: background-color 0.2s ease;
+    padding: 0.9rem 1.75rem;
+    border-radius: 9999px;
+    box-shadow: 0 16px 40px -18px rgba(37, 99, 235, 0.9);
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .primaryBtn:hover {
     background-color: var(--color-brand-500);
+    transform: translateY(-1px);
 }
 
 .secondaryBtn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    color: var(--color-surface-400);
-    font-weight: 500;
+    color: rgba(226, 232, 240, 0.82);
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
     font-size: 0.875rem;
-    transition: color 0.2s ease;
+    padding: 0.9rem 1.5rem;
+    border-radius: 9999px;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .secondaryBtn:hover {
     color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
