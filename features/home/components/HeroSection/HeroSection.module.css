@@ -1,10 +1,27 @@
 @reference "../../../../app/globals.css";
 
 .heroContainer {
+    position: relative;
+    overflow: hidden;
     padding-top: 8rem;
     padding-bottom: 5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    background:
+        radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 32rem),
+        linear-gradient(to bottom, #ffffff, #f8fafc);
+}
+
+.heroContainer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 70%);
 }
 
 @media (min-width: 768px) {
@@ -14,12 +31,15 @@
     }
 }
 
-.animFadeUp {
-    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+.gradientText {
+    background: linear-gradient(135deg, #2563eb, #0f766e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-.animFloat {
-    animation: float 4s ease-in-out infinite;
+.animFadeUp {
+    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .delay1 {
@@ -44,11 +64,13 @@
 
 .visualGlow {
     position: absolute;
-    inset: -1rem;
-    z-index: -10;
-    background: linear-gradient(to top right, rgba(153, 246, 228, 0.2), transparent, rgba(191, 219, 254, 0.2));
+    inset: -1.5rem;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.22), transparent 30%),
+        radial-gradient(circle at 80% 40%, rgba(20, 184, 166, 0.18), transparent 30%);
     filter: blur(3rem);
-    border-radius: 1.5rem;
+    border-radius: 2rem;
 }
 
 @keyframes fade-up {
@@ -60,17 +82,5 @@
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-8px);
     }
 }

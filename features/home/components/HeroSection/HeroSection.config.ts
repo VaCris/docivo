@@ -8,8 +8,5 @@ export const HERO_CONFIG = {
         addCircle: 'solar:add-circle-linear',
         merge: 'solar:merge-linear'
     },
-    mockFiles: {
-        file1Size: "2.4 MB",
-        file2Size: "1.1 MB"
-    }
+
 };
