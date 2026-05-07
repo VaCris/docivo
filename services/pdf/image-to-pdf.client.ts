@@ -126,8 +126,9 @@ export async function imagesToPdf(
     }
 
     const pdfBytes = await pdf.save();
+    const safeBuffer = new Uint8Array(pdfBytes).buffer;
 
-    return new Blob([pdfBytes], {
+    return new Blob([safeBuffer], {
         type: "application/pdf",
     });
 }
