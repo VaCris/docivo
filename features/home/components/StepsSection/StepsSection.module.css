@@ -1,7 +1,11 @@
 @reference "../../../../app/globals.css";
 
 .section {
+    position: relative;
     padding: 5rem 1.5rem;
+    background:
+        radial-gradient(circle at center, rgba(37, 99, 235, 0.05), transparent 30rem),
+        linear-gradient(to bottom, #ffffff, #f8fafc);
 }
 
 @media (min-width: 768px) {
@@ -10,22 +14,72 @@
     }
 }
 
+.stepsGrid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .stepsGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .stepsGrid::before {
+        content: "";
+        position: absolute;
+        top: 2.15rem;
+        left: 16%;
+        right: 16%;
+        height: 1px;
+        background: linear-gradient(to right,
+                transparent,
+                rgba(37, 99, 235, 0.22),
+                transparent);
+        pointer-events: none;
+    }
+}
+
+.stepCard {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+    transition:
+        transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.3s ease;
+}
+
+.stepCard:hover {
+    transform: translateY(-3px);
+    border-color: rgba(37, 99, 235, 0.18);
+    box-shadow: 0 18px 50px -24px rgba(15, 23, 42, 0.2);
+}
+
 .numberBadge {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3.75rem;
+    height: 3.75rem;
     margin: 0 auto 1.25rem auto;
     border-radius: 1rem;
-    background-color: var(--color-surface-50);
-    border: 1px solid var(--color-surface-200);
+    background:
+        linear-gradient(to bottom right, #ffffff, #eff6ff);
+    border: 1px solid rgba(191, 219, 254, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 12px 30px -18px rgba(37, 99, 235, 0.45);
 }
 
 .numberText {
     font-size: 1.125rem;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--color-brand-600);
 }
 
