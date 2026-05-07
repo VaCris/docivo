@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useState, useMemo } from "react";
+import React, {
+    createContext,
+    useContext,
+    useEffect,
+    useMemo,
+    useState,
+} from "react";
 import { en } from "@/locales/en";
 import { es } from "@/locales/es";
 import type { Dictionary, Language } from "@/types/i18n";
@@ -16,15 +22,38 @@ type LanguageContextType = {
     t: Dictionary;
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LANGUAGE_STORAGE_KEY = "docivo-language";
 
-export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
+const isValidLanguage = (value: string | null): value is Language => {
+    return value === "en" || value === "es";
+};
+
+const LanguageContext = createContext<LanguageContextType | undefined>(
+    undefined
+);
+
+export const LanguageProvider = ({
+    children,
+}: {
+    children: React.ReactNode;
+}) => {
     const [currentLang, setCurrentLang] = useState<Language>("en");
 
+    useEffect(() => {
+        const savedLang = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+
+        if (isValidLanguage(savedLang)) {
+            setCurrentLang(savedLang);
+        }
+    }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
+        document.documentElement.lang = currentLang;
+    }, [currentLang]);
+
     const toggleLanguage = () => {
-        setCurrentLang((prev: Language) =>
-            prev === "en" ? "es" : "en"
-        );
+        setCurrentLang((prev: Language) => (prev === "en" ? "es" : "en"));
     };
 
     const t = useMemo(() => dictionaries[currentLang], [currentLang]);
@@ -38,6 +67,10 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
 export const useLanguage = () => {
     const context = useContext(LanguageContext);
-    if (!context) throw new Error("useLanguage must be used within a LanguageProvider");
+
+    if (!context) {
+        throw new Error("useLanguage must be used within a LanguageProvider");
+    }
+
     return context;
 };
