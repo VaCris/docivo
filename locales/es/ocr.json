@@ -11,13 +11,6 @@
     },
     "settings": {
         "title": "Configuración OCR",
-        "languageLabel": "Idioma del documento",
-        "languages": {
-            "eng": "Inglés",
-            "spa": "Español",
-            "fra": "Francés",
-            "deu": "Alemán"
-        },
         "formatLabel": "Formato de salida",
         "formats": {
             "searchablePdf": "PDF Buscable",
