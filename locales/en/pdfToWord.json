@@ -25,5 +25,12 @@
     },
     "actions": {
         "convertButton": "Convert to Word"
+    },
+    "notifications": {
+        "loading": "Converting PDF to Word...",
+        "success": "Word document created successfully",
+        "error": "Error converting PDF to Word",
+        "validation_error": "Invalid file",
+        "validation_desc": "Select a PDF file"
     }
 }
