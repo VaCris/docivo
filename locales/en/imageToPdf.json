@@ -5,8 +5,7 @@
     },
     "workspace": {
         "addMore": "Add more images",
-        "mockImage1": "IMG_20260430_1005.jpg",
-        "mockImage2": "Screenshot_UI.png"
+        "empty": "No images selected yet"
     },
     "settings": {
         "title": "Page Settings",
@@ -30,5 +29,12 @@
     },
     "actions": {
         "convertButton": "Convert to PDF"
+    },
+    "notifications": {
+        "loading": "Converting images...",
+        "success": "PDF created successfully",
+        "error": "Error creating PDF",
+        "validation_error": "Invalid selection",
+        "validation_desc": "Select at least one image"
     }
 }

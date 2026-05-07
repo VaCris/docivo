@@ -4,22 +4,21 @@
         "subtitle": "Convierte imágenes JPG, PNG o WebP en un único documento PDF."
     },
     "workspace": {
-        "addMore": "Añadir más imágenes",
-        "mockImage1": "IMG_20260430_1005.jpg",
-        "mockImage2": "Captura_UI.png"
+        "addMore": "Agregar más imágenes",
+        "empty": "Aún no hay imágenes seleccionadas"
     },
     "settings": {
-        "title": "Configuración de Página",
+        "title": "Configuración de página",
         "orientationLabel": "Orientación",
         "orientation": {
             "portrait": "Vertical",
             "landscape": "Horizontal"
         },
-        "pageSizeLabel": "Tamaño de Página",
+        "pageSizeLabel": "Tamaño de página",
         "sizes": {
-            "fit": "Ajustar (Igual a imagen)",
+            "fit": "Ajustar a la imagen",
             "a4": "A4 (210x297mm)",
-            "letter": "Carta (US Letter)"
+            "letter": "Carta US"
         },
         "marginLabel": "Margen",
         "margins": {
@@ -30,5 +29,12 @@
     },
     "actions": {
         "convertButton": "Convertir a PDF"
+    },
+    "notifications": {
+        "loading": "Convirtiendo imágenes...",
+        "success": "PDF creado correctamente",
+        "error": "Error al crear el PDF",
+        "validation_error": "Selección inválida",
+        "validation_desc": "Selecciona al menos una imagen"
     }
 }
