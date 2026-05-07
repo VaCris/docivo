@@ -27,5 +27,10 @@
     "comingSoon": {
         "title": "More coming soon",
         "desc": "Edit, annotate, compress, watermark — building more every week."
+    },
+    "meta": {
+        "local": "Local",
+        "cloud": "Cloud",
+        "openTool": "Open tool"
     }
 }

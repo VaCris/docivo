@@ -1,0 +1,36 @@
+{
+  "badge": "Legal",
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated: May 7, 2026",
+  "back": "Back to home",
+  "sections": [
+    {
+      "title": "1. Overview",
+      "body": "Docivo is a document processing application that helps users merge, split, convert, preview, and process PDF-related files. Some tools run directly in your browser, while others may require server-side processing."
+    },
+    {
+      "title": "2. Files processed locally",
+      "body": "Tools such as Merge PDF, Split PDF, Image to PDF, and PDF preview may run locally in your browser. For these tools, your files do not need to be uploaded to a server for processing."
+    },
+    {
+      "title": "3. Files processed on the server",
+      "body": "Some tools, such as OCR and PDF to Word, may require uploading your file to Docivo's backend service for processing. Uploaded files are used only to complete the requested conversion or extraction task."
+    },
+    {
+      "title": "4. Data retention",
+      "body": "Processed files may be temporarily stored so they can be downloaded after processing. Temporary file cleanup depends on the backend configuration."
+    },
+    {
+      "title": "5. Local storage",
+      "body": "Docivo may use browser storage to remember recent processing jobs, interface preferences, or language settings. This information stays in your browser unless explicitly sent to a server by a backend tool."
+    },
+    {
+      "title": "6. Third-party services",
+      "body": "Docivo may rely on hosting, deployment, storage, or processing providers to operate the application. These services may process technical data necessary to provide the service."
+    },
+    {
+      "title": "7. Contact",
+      "body": "For privacy-related questions, please contact the project maintainers through the official GitHub repository."
+    }
+  ]
+}

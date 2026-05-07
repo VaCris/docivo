@@ -1,0 +1,40 @@
+{
+  "badge": "Legal",
+  "title": "Terms of Service",
+  "lastUpdated": "Last updated: May 7, 2026",
+  "back": "Back to home",
+  "sections": [
+    {
+      "title": "1. Acceptance of terms",
+      "body": "By using Docivo, you agree to these Terms of Service. If you do not agree with these terms, you should not use the application."
+    },
+    {
+      "title": "2. Service description",
+      "body": "Docivo provides tools for working with PDF and document files, including merging, splitting, converting, previewing, and OCR-based processing."
+    },
+    {
+      "title": "3. User responsibility",
+      "body": "You are responsible for the files you upload or process using Docivo. Do not upload files that you do not have the right to use, process, or convert."
+    },
+    {
+      "title": "4. Prohibited use",
+      "body": "You may not use Docivo to process illegal, harmful, abusive, infringing, or unauthorized content. You may not attempt to disrupt, overload, reverse engineer, or abuse the service."
+    },
+    {
+      "title": "5. Availability",
+      "body": "Docivo is provided on an as-is and as-available basis. We do not guarantee uninterrupted availability, perfect accuracy, or error-free processing for every file."
+    },
+    {
+      "title": "6. File processing",
+      "body": "Some tools run in your browser, while others require backend processing. Backend processing may take time depending on file size, server availability, and tool complexity."
+    },
+    {
+      "title": "7. Limitation of liability",
+      "body": "To the maximum extent permitted by applicable law, Docivo and its maintainers are not liable for data loss, file corruption, downtime, or any indirect damages resulting from use of the service."
+    },
+    {
+      "title": "8. Changes to these terms",
+      "body": "These terms may be updated from time to time. Continued use of Docivo after changes means you accept the updated terms."
+    }
+  ]
+}
