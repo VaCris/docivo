@@ -11,16 +11,33 @@
     transition:
         background-color 0.3s ease,
         box-shadow 0.3s ease,
-        padding 0.3s ease;
+        padding 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .navbarScrolled {
-    padding: 0.5rem 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--color-surface-100);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    padding: 0.55rem 0;
+    background-color: rgba(255, 255, 255, 0.78);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.navLink {
+    padding: 0.55rem 0.9rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-surface-500);
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.navLink:hover {
+    color: var(--color-surface-900);
+    background-color: rgba(248, 250, 252, 0.9);
 }
 
 .mobileMenu {
