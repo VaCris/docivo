@@ -1,80 +1,146 @@
 "use client";
 
-import { Icon } from '@iconify/react';
-import { useLanguage } from '@/hooks/useLanguage';
-import enData from '@/locales/en/howItWorks.json';
-import esData from '@/locales/es/howItWorks.json';
-import { HOW_IT_WORKS_CONFIG } from './HowItWorksSection.config';
-import styles from './HowItWorksSection.module.css';
+import { Icon } from "@iconify/react";
+import { useLanguage } from "@/hooks/useLanguage";
+import { HOW_IT_WORKS_CONFIG } from "./HowItWorksSection.config";
+import styles from "./HowItWorksSection.module.css";
 
 export const HowItWorksSection = () => {
-    const { currentLang } = useLanguage();
-    const t = currentLang === 'en' ? enData : esData;
+    const { t } = useLanguage();
+    const strings = t.howItWorks;
 
     return (
         <section id="details" className={styles.section}>
             <div className="mx-auto max-w-6xl">
-                <div className="mx-auto mb-16 max-w-xl text-center">
+                <div className="mx-auto mb-16 max-w-2xl text-center">
+                    <div className="inline-flex items-center gap-2 bg-white shadow-sm mb-5 px-3 py-1 border border-surface-200 rounded-full">
+                        <Icon
+                            icon="solar:settings-minimalistic-linear"
+                            width="14"
+                            className="text-brand-600"
+                        />
+                        <span className="font-semibold text-surface-600 text-xs tracking-wide">
+                            Workflow
+                        </span>
+                    </div>
+
                     <h2 className="font-extrabold text-surface-900 text-3xl md:text-4xl tracking-tight">
-                        {t.title}
+                        {strings.title}
                     </h2>
+
                     <p className="mt-4 text-surface-500 text-base leading-relaxed">
-                        {t.subtitle}
+                        {strings.subtitle}
                     </p>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-5">
                     {HOW_IT_WORKS_CONFIG.map((tool) => {
-                        const toolData = t.tools[tool.id as keyof typeof t.tools];
+                        const toolData =
+                            strings.tools[
+                            tool.id as keyof typeof strings.tools
+                            ];
 
                         return (
                             <div key={tool.id} className={styles.detailCard}>
-                                <div className="grid md:grid-cols-5">
-                                    <div className={`md:col-span-2 bg-gradient-to-br ${tool.colors.gradient} ${styles.leftPanel}`}>
-                                        <div className={`${styles.iconWrapper} ${tool.colors.iconBorder}`}>
-                                            <Icon icon={tool.icon} width="30" className={tool.colors.iconText} />
+                                <div className="grid md:grid-cols-[0.9fr_1.4fr]">
+                                    <div
+                                        className={`bg-gradient-to-br ${tool.colors.gradient} ${styles.leftPanel}`}
+                                    >
+                                        <div
+                                            className={`${styles.iconWrapper} ${tool.colors.iconBorder}`}
+                                        >
+                                            <Icon
+                                                icon={tool.icon}
+                                                width="30"
+                                                className={tool.colors.iconText}
+                                            />
                                         </div>
-                                        <h3 className="font-bold text-surface-800 text-xl">{toolData.title}</h3>
-                                        <span className={`mt-2 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold ${tool.colors.badgeBg} ${tool.colors.badgeText}`}>
+
+                                        <h3 className="font-extrabold text-surface-900 text-xl tracking-tight">
+                                            {toolData.title}
+                                        </h3>
+
+                                        <span
+                                            className={`inline-flex items-center gap-1 mt-3 px-2.5 py-1 rounded-full font-bold text-xs ${tool.colors.badgeBg} ${tool.colors.badgeText}`}
+                                        >
                                             {toolData.badge}
                                         </span>
                                     </div>
 
-                                    <div className={`md:col-span-3 ${styles.rightPanel}`}>
-                                        <h4 className={styles.sectionTitle}>{t.labels.whatItDoes}</h4>
-                                        <p className="mb-6 text-surface-600 text-sm leading-relaxed">
-                                            {toolData.whatItDoes}
-                                        </p>
+                                    <div className={styles.rightPanel}>
+                                        <div className="gap-6 grid md:grid-cols-2">
+                                            <div>
+                                                <h4 className={styles.sectionTitle}>
+                                                    {strings.labels.whatItDoes}
+                                                </h4>
 
-                                        <h4 className={styles.sectionTitle}>{t.labels.howItWorks}</h4>
-                                        <div className="space-y-3">
-                                            {toolData.steps.map((stepDesc, idx) => (
-                                                <div key={idx} className="flex items-start gap-3">
-                                                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${tool.colors.stepBg} ${tool.colors.stepText}`}>
-                                                        {idx + 1}
-                                                    </div>
-                                                    <p className="text-surface-600 text-sm">{stepDesc}</p>
+                                                <p className="text-surface-600 text-sm leading-relaxed">
+                                                    {toolData.whatItDoes}
+                                                </p>
+                                            </div>
+
+                                            <div>
+                                                <h4 className={styles.sectionTitle}>
+                                                    {strings.labels.bestFor}
+                                                </h4>
+
+                                                <div className="flex flex-wrap gap-2">
+                                                    {toolData.bestFor.map(
+                                                        (tag, idx) => (
+                                                            <span
+                                                                key={idx}
+                                                                className="bg-surface-50 px-3 py-1 border border-surface-200 rounded-lg font-medium text-surface-600 text-xs"
+                                                            >
+                                                                {tag}
+                                                            </span>
+                                                        )
+                                                    )}
                                                 </div>
-                                            ))}
+                                            </div>
                                         </div>
 
-                                        {'warning' in toolData && (
+                                        <div className="mt-7 pt-6 border-surface-100 border-t">
+                                            <h4 className={styles.sectionTitle}>
+                                                {strings.labels.howItWorks}
+                                            </h4>
+
+                                            <div className="gap-3 grid md:grid-cols-3">
+                                                {toolData.steps.map(
+                                                    (stepDesc, idx) => (
+                                                        <div
+                                                            key={idx}
+                                                            className="bg-surface-50 p-4 border border-surface-100 rounded-xl"
+                                                        >
+                                                            <div
+                                                                className={`flex justify-center items-center mb-3 rounded-full w-7 h-7 font-bold text-xs ${tool.colors.stepBg} ${tool.colors.stepText}`}
+                                                            >
+                                                                {idx + 1}
+                                                            </div>
+
+                                                            <p className="text-surface-600 text-sm leading-relaxed">
+                                                                {stepDesc}
+                                                            </p>
+                                                        </div>
+                                                    )
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {"warning" in toolData && (
                                             <div className="flex items-start gap-2 bg-amber-50 mt-5 p-3 border border-amber-200/60 rounded-xl">
-                                                <Icon icon="solar:info-circle-bold" width="16" className="mt-0.5 text-amber-600 shrink-0" />
+                                                <Icon
+                                                    icon="solar:info-circle-bold"
+                                                    width="16"
+                                                    className="mt-0.5 text-amber-600 shrink-0"
+                                                />
                                                 <p className="text-amber-800 text-xs leading-relaxed">
-                                                    <strong>{t.labels.important}</strong> {toolData.warning}
+                                                    <strong>
+                                                        {strings.labels.important}
+                                                    </strong>{" "}
+                                                    {toolData.warning}
                                                 </p>
                                             </div>
                                         )}
-
-                                        <h4 className={`mt-6 ${styles.sectionTitle}`}>{t.labels.bestFor}</h4>
-                                        <div className="flex flex-wrap gap-2">
-                                            {toolData.bestFor.map((tag, idx) => (
-                                                <span key={idx} className="bg-surface-50 px-3 py-1 border border-surface-200 rounded-lg font-medium text-surface-600 text-xs">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
                                     </div>
                                 </div>
                             </div>

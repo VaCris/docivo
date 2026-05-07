@@ -1,7 +1,7 @@
 export const HOW_IT_WORKS_CONFIG = [
     {
         id: 'merge',
-        icon: 'solar:merge-linear',
+        icon: 'solar:layers-minimalistic-bold-duotone',
         colors: {
             gradient: 'from-brand-50 to-brand-100/50',
             iconText: 'text-brand-600',
