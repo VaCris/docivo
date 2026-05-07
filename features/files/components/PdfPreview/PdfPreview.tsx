@@ -3,18 +3,23 @@
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
 
+import type {
+    PDFDocumentProxy,
+    RenderTask,
+} from "pdfjs-dist";
+
 type Props = {
     file: File;
     page?: number;
     scale?: number;
 };
 
-const pdfCache = new Map<string, any>();
+const pdfCache = new Map<string, PDFDocumentProxy>();
 
 export const PdfPreview = ({ file, page = 1, scale = 0.3 }: Props) => {
     const { t } = useLanguage();
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const renderTaskRef = useRef<any>(null);
+    const renderTaskRef = useRef<RenderTask | null>(null);
     const [error, setError] = useState(false);
 
     useEffect(() => {
@@ -31,12 +36,13 @@ export const PdfPreview = ({ file, page = 1, scale = 0.3 }: Props) => {
                     import.meta.url
                 ).toString();
 
-                let pdf = pdfCache.get(file.name);
+                const cacheKey = `${file.name}-${file.size}-${file.lastModified}`;
+                let pdf = pdfCache.get(cacheKey);
 
                 if (!pdf) {
                     const buffer = await file.arrayBuffer();
                     pdf = await pdfjs.getDocument({ data: buffer }).promise;
-                    pdfCache.set(file.name, pdf);
+                    pdfCache.set(cacheKey, pdf);
                 }
 
                 if (cancelled) return;
@@ -50,10 +56,11 @@ export const PdfPreview = ({ file, page = 1, scale = 0.3 }: Props) => {
                 if (!canvas || !ctx || cancelled) return;
 
                 const viewport = pdfPage.getViewport({ scale });
+
                 canvas.width = viewport.width;
                 canvas.height = viewport.height;
 
-                renderTaskRef.current?.cancel?.();
+                renderTaskRef.current?.cancel();
 
                 const task = pdfPage.render({
                     canvasContext: ctx,
@@ -63,16 +70,19 @@ export const PdfPreview = ({ file, page = 1, scale = 0.3 }: Props) => {
 
                 renderTaskRef.current = task;
                 await task.promise;
-
             } catch (err) {
-                if (err instanceof Error) {
-                    console.error("[Docivo Preview Error]:", {
-                        message: err.message,
-                        name: err.name,
-                        stack: err.stack,
-                    });
-                } else {
-                    console.error("[Docivo Preview Error]:", err);
+                if (!cancelled) {
+                    setError(true);
+
+                    if (err instanceof Error) {
+                        console.error("[Docivo Preview Error]:", {
+                            message: err.message,
+                            name: err.name,
+                            stack: err.stack,
+                        });
+                    } else {
+                        console.error("[Docivo Preview Error]:", err);
+                    }
                 }
             }
         };
@@ -81,7 +91,7 @@ export const PdfPreview = ({ file, page = 1, scale = 0.3 }: Props) => {
 
         return () => {
             cancelled = true;
-            renderTaskRef.current?.cancel?.();
+            renderTaskRef.current?.cancel();
         };
     }, [file, page, scale]);
 
