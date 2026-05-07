@@ -1,0 +1,40 @@
+{
+  "badge": "Legal",
+  "title": "Términos de servicio",
+  "lastUpdated": "Última actualización: 7 de mayo de 2026",
+  "back": "Volver al inicio",
+  "sections": [
+    {
+      "title": "1. Aceptación de los términos",
+      "body": "Al usar Docivo, aceptas estos Términos de servicio. Si no estás de acuerdo con estos términos, no deberías usar la aplicación."
+    },
+    {
+      "title": "2. Descripción del servicio",
+      "body": "Docivo proporciona herramientas para trabajar con archivos PDF y documentos, incluyendo unión, división, conversión, previsualización y procesamiento mediante OCR."
+    },
+    {
+      "title": "3. Responsabilidad del usuario",
+      "body": "Eres responsable de los archivos que subes o procesas usando Docivo. No subas archivos que no tengas derecho a usar, procesar o convertir."
+    },
+    {
+      "title": "4. Uso prohibido",
+      "body": "No puedes usar Docivo para procesar contenido ilegal, dañino, abusivo, infractor o no autorizado. Tampoco puedes intentar interrumpir, sobrecargar, aplicar ingeniería inversa o abusar del servicio."
+    },
+    {
+      "title": "5. Disponibilidad",
+      "body": "Docivo se ofrece tal como está y según disponibilidad. No garantizamos disponibilidad ininterrumpida, precisión perfecta ni procesamiento libre de errores para todos los archivos."
+    },
+    {
+      "title": "6. Procesamiento de archivos",
+      "body": "Algunas herramientas se ejecutan en tu navegador, mientras que otras requieren procesamiento en backend. El procesamiento en servidor puede tardar según el tamaño del archivo, la disponibilidad del servidor y la complejidad de la herramienta."
+    },
+    {
+      "title": "7. Limitación de responsabilidad",
+      "body": "En la máxima medida permitida por la ley aplicable, Docivo y sus mantenedores no son responsables por pérdida de datos, corrupción de archivos, interrupciones del servicio o daños indirectos derivados del uso de la aplicación."
+    },
+    {
+      "title": "8. Cambios en estos términos",
+      "body": "Estos términos pueden actualizarse ocasionalmente. El uso continuo de Docivo después de los cambios implica que aceptas los términos actualizados."
+    }
+  ]
+}

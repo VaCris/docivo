@@ -27,5 +27,10 @@
     "comingSoon": {
         "title": "Próximamente",
         "desc": "Editar, anotar, comprimir, marca de agua — construimos más herramientas."
+    },
+    "meta": {
+        "local": "Local",
+        "cloud": "Nube",
+        "openTool": "Abrir herramienta"
     }
 }

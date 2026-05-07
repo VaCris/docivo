@@ -1,0 +1,36 @@
+  {
+    "badge": "Legal",
+    "title": "Política de privacidad",
+    "lastUpdated": "Última actualización: 7 de mayo de 2026",
+    "back": "Volver al inicio",
+    "sections": [
+      {
+        "title": "1. Resumen",
+        "body": "Docivo es una aplicación de procesamiento de documentos que permite unir, dividir, convertir, previsualizar y procesar archivos relacionados con PDF. Algunas herramientas se ejecutan directamente en tu navegador, mientras que otras pueden requerir procesamiento en servidor."
+      },
+      {
+        "title": "2. Archivos procesados localmente",
+        "body": "Herramientas como Unir PDF, Dividir PDF, Imagen a PDF y la previsualización de PDF pueden ejecutarse localmente en tu navegador. Para estas herramientas, tus archivos no necesitan subirse a un servidor para ser procesados."
+      },
+      {
+        "title": "3. Archivos procesados en el servidor",
+        "body": "Algunas herramientas, como OCR y PDF a Word, pueden requerir subir tu archivo al backend de Docivo para su procesamiento. Los archivos subidos se usan únicamente para completar la conversión o extracción solicitada."
+      },
+      {
+        "title": "4. Retención de datos",
+        "body": "Los archivos procesados pueden almacenarse temporalmente para que puedan descargarse después del procesamiento. La limpieza de archivos temporales depende de la configuración del backend."
+      },
+      {
+        "title": "5. Almacenamiento local",
+        "body": "Docivo puede usar almacenamiento del navegador para recordar trabajos recientes, preferencias de interfaz o configuración de idioma. Esta información permanece en tu navegador salvo que una herramienta de backend la envíe explícitamente al servidor."
+      },
+      {
+        "title": "6. Servicios de terceros",
+        "body": "Docivo puede depender de proveedores de hosting, despliegue, almacenamiento o procesamiento para operar la aplicación. Estos servicios pueden procesar datos técnicos necesarios para prestar el servicio."
+      },
+      {
+        "title": "7. Contacto",
+        "body": "Para consultas relacionadas con privacidad, contacta a los mantenedores del proyecto mediante el repositorio oficial de GitHub."
+      }
+    ]
+  }

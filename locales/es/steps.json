@@ -1,15 +1,17 @@
 {
-    "title": "Tres pasos. Eso es todo.",
-    "step1": {
-        "title": "Suelta tu archivo",
-        "desc": "Arrastra y suelta o haz clic para subir. PDF, JPG, PNG o WebP."
+    "badge": "Proceso simple",
+    "title": "Procesa documentos en tres pasos",
+    "subtitle": "Elige una herramienta, sube tu archivo y descarga el resultado.",
+    "upload": {
+        "title": "Sube tu archivo",
+        "desc": "Elige el PDF, imagen o documento que quieres procesar."
     },
-    "step2": {
-        "title": "Elige tu acción",
-        "desc": "Selecciona una herramienta (unir, dividir, convertir) o deja que te sugiramos una según tu archivo."
+    "process": {
+        "title": "Elige la herramienta",
+        "desc": "Ejecuta la acción localmente o con el motor de procesamiento de Docivo."
     },
-    "step3": {
-        "title": "Obtén tu resultado",
-        "desc": "Descarga el archivo procesado. Las herramientas del cliente son instantáneas; las del servidor toman unos segundos."
+    "download": {
+        "title": "Descarga el resultado",
+        "desc": "Obtén tu archivo convertido, unido, dividido o procesado con OCR."
     }
 }

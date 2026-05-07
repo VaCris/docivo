@@ -15,6 +15,8 @@ import sidebar from './sidebar.json';
 import split from './split.json';
 import steps from './steps.json';
 import toolGrid from './toolGrid.json';
+import privacy from './privacy.json';
+import terms from './terms.json';
 
 export const es = {
   architecture,
@@ -34,4 +36,6 @@ export const es = {
   split,
   steps,
   toolGrid,
+  privacy,
+  terms
 } as const;
