@@ -2,89 +2,89 @@
     "editor.fontSize": 16,
     "editor.fontFamily": "JetBrains Mono, Fira Code, monospace",
     "editor.fontLigatures": false,
-  
+
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
-  
+
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-  
+
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     },
-  
+
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-  
+
     "editor.wordWrap": "off",
     "editor.rulers": [80],
-  
+
     "editor.minimap.enabled": false,
-  
+
     "editor.inlineSuggest.enabled": true,
     "editor.linkedEditing": true,
-  
+
     "editor.bracketPairColorization.enabled": true,
-  
+
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 3000,
-  
+
     "files.trimTrailingWhitespace": true,
-  
+
     "explorer.confirmDelete": false,
-  
+
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.expand": false,
-  
+
     "typescript.updateImportsOnFileMove.enabled": "always",
     "javascript.updateImportsOnFileMove.enabled": "always",
-  
+
     "typescript.preferences.importModuleSpecifier": "non-relative",
     "javascript.preferences.importModuleSpecifier": "non-relative",
-  
+
     "typescript.suggest.completeFunctionCalls": true,
     "javascript.suggest.completeFunctionCalls": true,
-  
+
     "typescript.inlayHints.parameterNames.enabled": "literals",
     "typescript.inlayHints.variableTypes.enabled": true,
-  
+
 
     "prettier.singleQuote": true,
     "prettier.semi": false,
 
     "emmet.triggerExpansionOnTab": true,
-  
+
     "emmet.includeLanguages": {
       "javascript": "javascriptreact",
       "typescript": "typescriptreact"
     },
-  
+
     "git.autofetch": true,
     "git.confirmSync": false,
-  
+
     "terminal.integrated.fontSize": 14,
-  
+
     "workbench.colorTheme": "Rosé Pine Moon",
     "workbench.iconTheme": "file-icons",
-  
+
     "workbench.startupEditor": "none",
-  
+
     "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-  
+
     "[typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-  
+
     "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-  
+
     "[javascriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-  
+
     "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "vscode.json-language-features"
     }
   }
