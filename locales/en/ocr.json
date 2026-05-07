@@ -26,5 +26,12 @@
     },
     "actions": {
         "recognizeText": "Recognize Text"
+    },
+    "notifications": {
+        "loading": "Processing OCR...",
+        "success": "OCR completed successfully",
+        "error": "Error processing OCR",
+        "validation_error": "Invalid file",
+        "validation_desc": "Select a PDF file"
     }
 }
