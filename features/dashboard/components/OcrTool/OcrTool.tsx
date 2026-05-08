@@ -8,7 +8,13 @@ import { PdfPreview } from "@/features/files/components/PdfPreview/PdfPreview";
 import { useBackendJob } from "@/hooks/useBackendJob";
 import { toolsService } from "@/services/tools/tools.service";
 
-type OutputFormat = "searchablePdf" | "plainText";
+type OutputFormat = "searchablePdf" | "textPdf" | "word";
+
+type JobConfig = {
+    tool: string;
+    start: () => Promise<{ job_id: string }>;
+    filename: (jobId: string) => string;
+};
 
 export const OcrTool = () => {
     const { t } = useLanguage();
@@ -18,24 +24,37 @@ export const OcrTool = () => {
 
     const [outputFormat, setOutputFormat] =
         useState<OutputFormat>("searchablePdf");
+
     const [file, setFile] = useState<File | null>(null);
 
     const handleRun = async () => {
         if (!file) return;
 
-        const isWordOutput = outputFormat === "plainText";
+        const jobConfig = {
+            searchablePdf: {
+                tool: "ocr",
+                start: () => toolsService.ocr.start(file),
+                filename: (jobId: string) => `docivo-${jobId}.pdf`,
+            },
+            textPdf: {
+                tool: "extract-text-pdf",
+                start: () => toolsService.extractTextPdf.start(file),
+                filename: (jobId: string) => `docivo-${jobId}.pdf`,
+            },
+            word: {
+                tool: "ocr-to-word",
+                start: () => toolsService.ocrToWord.start(file),
+                filename: (jobId: string) => `docivo-${jobId}.docx`,
+            },
+        } satisfies Record<OutputFormat, JobConfig>;
+
+        const selected = jobConfig[outputFormat];
 
         await run({
-            tool: isWordOutput ? "ocr-to-word" : "ocr",
+            tool: selected.tool,
             strings: strings.notifications,
-            start: () =>
-                isWordOutput
-                    ? toolsService.ocrToWord.start(file)
-                    : toolsService.ocr.start(file),
-            filename: (jobId) =>
-                isWordOutput
-                    ? `docivo-${jobId}.docx`
-                    : `docivo-${jobId}.pdf`,
+            start: selected.start,
+            filename: selected.filename,
         });
     };
 
@@ -116,23 +135,20 @@ export const OcrTool = () => {
                             </p>
 
                             <div className="space-y-2">
-                                {(["searchablePdf", "plainText"] as const).map(
+                                {(["searchablePdf", "textPdf", "word"] as const).map(
                                     (format) => (
                                         <label
                                             key={format}
-                                            className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-colors ${
-                                                outputFormat === format
-                                                    ? "border-brand-500 bg-brand-50"
-                                                    : "border-surface-200 hover:bg-surface-50"
-                                            }`}
+                                            className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-colors ${outputFormat === format
+                                                ? "border-brand-500 bg-brand-50"
+                                                : "border-surface-200 hover:bg-surface-50"
+                                                }`}
                                         >
                                             <input
                                                 type="radio"
                                                 name="outputFormat"
                                                 value={format}
-                                                checked={
-                                                    outputFormat === format
-                                                }
+                                                checked={outputFormat === format}
                                                 onChange={() =>
                                                     setOutputFormat(format)
                                                 }
@@ -141,11 +157,10 @@ export const OcrTool = () => {
 
                                             <div className="flex flex-col">
                                                 <span
-                                                    className={`text-sm font-semibold leading-tight ${
-                                                        outputFormat === format
-                                                            ? "text-brand-900"
-                                                            : "text-surface-700"
-                                                    }`}
+                                                    className={`text-sm font-semibold leading-tight ${outputFormat === format
+                                                        ? "text-brand-900"
+                                                        : "text-surface-700"
+                                                        }`}
                                                 >
                                                     {
                                                         strings.settings

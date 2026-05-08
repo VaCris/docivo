@@ -13,8 +13,9 @@
         "title": "Configuración OCR",
         "formatLabel": "Formato de salida",
         "formats": {
-            "searchablePdf": "PDF Buscable",
-            "plainText": "Texto Plano (.txt)"
+            "searchablePdf": "PDF buscable",
+            "textPdf": "Extraer texto a PDF",
+            "word": "Word editable (.docx)"
         }
     },
     "actions": {

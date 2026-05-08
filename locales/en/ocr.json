@@ -14,7 +14,8 @@
         "formatLabel": "Output Format",
         "formats": {
             "searchablePdf": "Searchable PDF",
-            "plainText": "Plain Text (.txt)"
+            "textPdf": "Extract text to PDF",
+            "word": "Editable Word (.docx)"
         }
     },
     "actions": {
