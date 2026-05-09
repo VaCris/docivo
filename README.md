@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Docivo
 
-## Getting Started
+**Docivo** es una plataforma moderna y minimalista diseñada para el procesamiento de documentos PDF de forma rápida, privada y eficiente. Olvídate de herramientas pesadas o llenas de publicidad; Docivo se enfoca en hacer una sola cosa y hacerla bien.
 
-First, run the development server:
+## 🚀 Características Principales
+- **Fusión de PDFs:** Combina múltiples archivos en un solo documento sin complicaciones.
+- **División de PDFs:** Extrae páginas específicas o separa documentos grandes.
+- **OCR (Reconocimiento Óptico de Caracteres):** Convierte imágenes y escaneos en texto editable.
+- **Conversión de Archivos:** Herramientas especializadas para convertir imágenes a PDF y PDFs a Word.
+- **Privacidad Primero:** Procesamiento seguro de tus documentos.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Stack Tecnológico
+Este proyecto utiliza tecnologías de vanguardia para garantizar el máximo rendimiento:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework:** [Next.js 16](https://nextjs.org/) (Configuración personalizada)
+- **Frontend:** [React 19](https://react.dev/)
+- **Estilos:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **Librerías Core:** `pdf-lib`, `pdfjs-dist` y `jszip` para la manipulación de archivos en el cliente.
