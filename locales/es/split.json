@@ -29,5 +29,6 @@
         "error": "Error al dividir el PDF",
         "validation_error": "Selección no válida",
         "validation_desc": "Selecciona al menos una página"
-    }
+    },
+    "rangeLabel": "Orden de páginas"
 }

@@ -29,5 +29,6 @@
         "error": "Error splitting PDF",
         "validation_error": "Invalid selection",
         "validation_desc": "Select at least one page"
-    }
+    },
+    "rangeLabel": "Page order"
 }

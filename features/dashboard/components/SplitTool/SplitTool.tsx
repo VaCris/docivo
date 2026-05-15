@@ -18,6 +18,25 @@ export const SplitTool = () => {
     const [selectedPages, setSelectedPages] = useState<number[]>([]);
     const [mode, setMode] = useState<"extract" | "separate">("extract");
 
+    const moveSelectedPage = (index: number, direction: "up" | "down") => {
+        setSelectedPages((prev) => {
+            const next = [...prev];
+            const targetIndex = direction === "up" ? index - 1 : index + 1;
+
+            if (targetIndex < 0 || targetIndex >= next.length) {
+                return prev;
+            }
+
+            [next[index], next[targetIndex]] = [next[targetIndex], next[index]];
+
+            return next;
+        });
+    };
+
+    const removeSelectedPage = (page: number) => {
+        setSelectedPages((prev) => prev.filter((p) => p !== page));
+    };
+
     useEffect(() => {
         if (!file) return;
 
@@ -28,7 +47,7 @@ export const SplitTool = () => {
                 "pdfjs-dist/build/pdf.worker.min.mjs",
                 import.meta.url
             ).toString();
-            
+
             const buffer = await file.arrayBuffer();
             const pdf = await pdfjs.getDocument({ data: buffer }).promise;
 
@@ -185,16 +204,51 @@ export const SplitTool = () => {
                             </div>
                         </div>
 
-                        <div>
-                            <p className="mb-3 font-bold text-surface-500 text-xs uppercase tracking-wider">
-                                {strings.sidebar.rangeLabel}
-                            </p>
-                            <input
-                                type="text"
-                                className="bg-surface-50 px-4 py-2.5 border border-surface-200 rounded-xl w-full font-mono text-sm"
-                                value={selectedPages.sort((a, b) => a - b).join(', ')}
-                                readOnly
-                            />
+                        <div className="space-y-2">
+                            {selectedPages.length === 0 ? (
+                                <div className="bg-surface-50 px-4 py-3 border border-surface-200 rounded-xl text-surface-400 text-sm">
+                                    —
+                                </div>
+                            ) : (
+                                selectedPages.map((page, index) => (
+                                    <div
+                                        key={`${page}-${index}`}
+                                        className="flex justify-between items-center bg-surface-50 px-3 py-2 border border-surface-200 rounded-xl"
+                                    >
+                                        <span className="font-semibold text-surface-700 text-sm">
+                                            Page {page}
+                                        </span>
+
+                                        <div className="flex items-center gap-1">
+                                            <button
+                                                type="button"
+                                                onClick={() => moveSelectedPage(index, "up")}
+                                                disabled={index === 0}
+                                                className="flex justify-center items-center hover:bg-white disabled:opacity-30 border border-surface-200 rounded-lg w-7 h-7 text-surface-500 hover:text-brand-600 transition-colors"
+                                            >
+                                                <Icon icon="solar:alt-arrow-up-linear" width="14" />
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                onClick={() => moveSelectedPage(index, "down")}
+                                                disabled={index === selectedPages.length - 1}
+                                                className="flex justify-center items-center hover:bg-white disabled:opacity-30 border border-surface-200 rounded-lg w-7 h-7 text-surface-500 hover:text-brand-600 transition-colors"
+                                            >
+                                                <Icon icon="solar:alt-arrow-down-linear" width="14" />
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                onClick={() => removeSelectedPage(page)}
+                                                className="flex justify-center items-center hover:bg-red-50 border border-surface-200 rounded-lg w-7 h-7 text-surface-400 hover:text-red-600 transition-colors"
+                                            >
+                                                <Icon icon="solar:close-circle-linear" width="14" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                     </div>
 
