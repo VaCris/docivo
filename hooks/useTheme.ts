@@ -4,13 +4,21 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 export type Theme = "light" | "dark" | "system";
 
-const THEME_STORAGE_KEY = "docivo-theme";
+export const THEME_STORAGE_KEY = "docivo-theme";
 
-const isTheme = (value: string | null): value is Theme => {
+export const isTheme = (value: string | null): value is Theme => {
     return value === "light" || value === "dark" || value === "system";
 };
 
-const getSystemTheme = (): "light" | "dark" => {
+export const getStoredTheme = (): Theme => {
+    if (typeof window === "undefined") return "system";
+
+    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+
+    return isTheme(storedTheme) ? storedTheme : "system";
+};
+
+export const getSystemTheme = (): "light" | "dark" => {
     if (typeof window === "undefined") return "light";
 
     return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -18,12 +26,19 @@ const getSystemTheme = (): "light" | "dark" => {
         : "light";
 };
 
-const applyTheme = (theme: Theme) => {
-    const resolvedTheme = theme === "system" ? getSystemTheme() : theme;
+export const resolveTheme = (theme: Theme): "light" | "dark" => {
+    return theme === "system" ? getSystemTheme() : theme;
+};
+
+export const syncThemeClass = (theme: Theme) => {
+    if (typeof document === "undefined") return;
+
+    const resolvedTheme = resolveTheme(theme);
     const root = document.documentElement;
 
     root.classList.toggle("dark", resolvedTheme === "dark");
     root.dataset.theme = theme;
+    root.dataset.resolvedTheme = resolvedTheme;
 };
 
 export const useTheme = () => {
@@ -31,13 +46,12 @@ export const useTheme = () => {
     const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
 
     useEffect(() => {
-        const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-        const initialTheme = isTheme(savedTheme) ? savedTheme : "system";
+        const initialTheme = getStoredTheme();
         const initialSystemTheme = getSystemTheme();
 
         setThemeState(initialTheme);
         setSystemTheme(initialSystemTheme);
-        applyTheme(initialTheme);
+        syncThemeClass(initialTheme);
     }, []);
 
     useEffect(() => {
@@ -48,7 +62,7 @@ export const useTheme = () => {
             setSystemTheme(nextSystemTheme);
 
             if (theme === "system") {
-                applyTheme("system");
+                syncThemeClass("system");
             }
         };
 
@@ -62,7 +76,7 @@ export const useTheme = () => {
     const setTheme = useCallback((nextTheme: Theme) => {
         setThemeState(nextTheme);
         window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-        applyTheme(nextTheme);
+        syncThemeClass(nextTheme);
     }, []);
 
     const resolvedTheme = useMemo(
