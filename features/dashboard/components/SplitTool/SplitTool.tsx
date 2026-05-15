@@ -125,9 +125,9 @@ export const SplitTool = () => {
                                 <p className="text-surface-500 text-xs">
                                     {file
                                         ? strings.workspace.pageCount.replace(
-                                              "{count}",
-                                              String(totalPages)
-                                          )
+                                            "{count}",
+                                            String(totalPages)
+                                        )
                                         : strings.workspace.pageCountLabel}
                                 </p>
                             </div>
@@ -165,29 +165,26 @@ export const SplitTool = () => {
                                     onDragEnd={handleDragEnd}
                                     onDragOver={(event) => event.preventDefault()}
                                     onClick={() => togglePage(page)}
-                                    className={`relative cursor-move group flex flex-col items-center transition-all ${
-                                        isSelected
-                                            ? "scale-[0.98]"
-                                            : "hover:scale-[1.02]"
-                                    }`}
+                                    className={`relative cursor-move group flex flex-col items-center transition-all ${isSelected
+                                        ? "scale-[0.98]"
+                                        : "hover:scale-[1.02]"
+                                        }`}
                                 >
                                     <div
-                                        className={`w-full aspect-[1/1.4] rounded-xl flex items-center justify-center shadow-sm transition-all border-2 ${
-                                            isSelected
-                                                ? "bg-brand-50 border-brand-500 shadow-brand-500/20"
-                                                : "bg-white border-surface-200 group-hover:border-surface-300"
-                                        }`}
+                                        className={`w-full aspect-[1/1.4] rounded-xl flex items-center justify-center shadow-sm transition-all border-2 ${isSelected
+                                            ? "bg-brand-50 border-brand-500 shadow-brand-500/20"
+                                            : "bg-white border-surface-200 group-hover:border-surface-300"
+                                            }`}
                                     >
                                         <div className="-top-2 -left-2 z-20 absolute flex justify-center items-center bg-surface-800 rounded-full w-6 h-6 font-bold text-white text-xs">
                                             {index + 1}
                                         </div>
 
                                         <div
-                                            className={`absolute top-3 left-3 w-6 h-6 rounded-full flex items-center justify-center transition-all ${
-                                                isSelected
-                                                    ? "bg-brand-500 text-white scale-100"
-                                                    : "bg-surface-100 border border-surface-200 text-transparent opacity-0 group-hover:opacity-100 scale-90"
-                                            }`}
+                                            className={`absolute top-3 left-3 w-6 h-6 rounded-full flex items-center justify-center transition-all ${isSelected
+                                                ? "bg-brand-500 text-white scale-100"
+                                                : "bg-surface-100 border border-surface-200 text-transparent opacity-0 group-hover:opacity-100 scale-90"
+                                                }`}
                                         >
                                             <Icon
                                                 icon="solar:check-read-linear"
@@ -201,11 +198,10 @@ export const SplitTool = () => {
                                     </div>
 
                                     <p
-                                        className={`mt-3 text-xs font-bold transition-colors ${
-                                            isSelected
-                                                ? "text-brand-600"
-                                                : "text-surface-500"
-                                        }`}
+                                        className={`mt-3 text-xs font-bold transition-colors ${isSelected
+                                            ? "text-brand-600"
+                                            : "text-surface-500"
+                                            }`}
                                     >
                                         Page {page}
                                     </p>
@@ -228,11 +224,10 @@ export const SplitTool = () => {
 
                             <div className="space-y-2">
                                 <label
-                                    className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer border transition-colors ${
-                                        mode === "extract"
-                                            ? "bg-brand-50 border-2 border-brand-500"
-                                            : "hover:bg-surface-50 border-surface-200"
-                                    }`}
+                                    className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer border transition-colors ${mode === "extract"
+                                        ? "bg-brand-50 border-2 border-brand-500"
+                                        : "hover:bg-surface-50 border-surface-200"
+                                        }`}
                                 >
                                     <input
                                         type="radio"
@@ -241,22 +236,20 @@ export const SplitTool = () => {
                                         className="mt-1"
                                     />
                                     <span
-                                        className={`text-sm ${
-                                            mode === "extract"
-                                                ? "font-semibold text-brand-900"
-                                                : "font-medium text-surface-600"
-                                        }`}
+                                        className={`text-sm ${mode === "extract"
+                                            ? "font-semibold text-brand-900"
+                                            : "font-medium text-surface-600"
+                                            }`}
                                     >
                                         {strings.sidebar.modes.extract}
                                     </span>
                                 </label>
 
                                 <label
-                                    className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer border transition-colors ${
-                                        mode === "separate"
-                                            ? "bg-brand-50 border-2 border-brand-500"
-                                            : "hover:bg-surface-50 border-surface-200"
-                                    }`}
+                                    className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer border transition-colors ${mode === "separate"
+                                        ? "bg-brand-50 border-2 border-brand-500"
+                                        : "hover:bg-surface-50 border-surface-200"
+                                        }`}
                                 >
                                     <input
                                         type="radio"
@@ -265,11 +258,10 @@ export const SplitTool = () => {
                                         className="mt-1"
                                     />
                                     <span
-                                        className={`text-sm ${
-                                            mode === "separate"
-                                                ? "font-semibold text-brand-900"
-                                                : "font-medium text-surface-600"
-                                        }`}
+                                        className={`text-sm ${mode === "separate"
+                                            ? "font-semibold text-brand-900"
+                                            : "font-medium text-surface-600"
+                                            }`}
                                     >
                                         {strings.sidebar.modes.separate}
                                     </span>
