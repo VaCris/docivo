@@ -127,6 +127,72 @@
     width: 100%;
   }
 
+  html.dark .bg-white,
+  html.dark .bg-white\/70,
+  html.dark .bg-white\/80,
+  html.dark .bg-white\/90,
+  html.dark .bg-white\/92,
+  html.dark .bg-white\/95 {
+    background-color: rgba(15, 23, 42, 0.92) !important;
+  }
+
+  html.dark .hover\:bg-white:hover {
+    background-color: rgba(30, 41, 59, 0.95) !important;
+  }
+
+  html.dark .bg-slate-50,
+  html.dark .bg-slate-100 {
+    background-color: var(--color-surface-100) !important;
+  }
+
+  html.dark .from-white {
+    --tw-gradient-from: var(--color-surface-0) var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(2 6 23 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+
+  html.dark .to-white {
+    --tw-gradient-to: var(--color-surface-0) var(--tw-gradient-to-position) !important;
+  }
+
+  html.dark .to-surface-50 {
+    --tw-gradient-to: var(--color-surface-50) var(--tw-gradient-to-position) !important;
+  }
+
+  html.dark .from-surface-50 {
+    --tw-gradient-from: var(--color-surface-50) var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(15 23 42 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+
+  html.dark .border-white,
+  html.dark .border-white\/10,
+  html.dark .border-white\/20 {
+    border-color: rgba(51, 65, 85, 0.75) !important;
+  }
+
+  html.dark .shadow-surface-200\/40,
+  html.dark .shadow-surface-200\/60 {
+    --tw-shadow-color: rgba(2, 6, 23, 0.45) !important;
+  }
+
+  html.dark input,
+  html.dark select,
+  html.dark textarea {
+    background-color: var(--color-surface-50);
+    color: var(--color-surface-800);
+    border-color: var(--color-surface-200);
+  }
+
+  html.dark input::placeholder,
+  html.dark textarea::placeholder {
+    color: var(--color-surface-500);
+  }
+
+  html.dark canvas {
+    background-color: white;
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
   }
