@@ -73,6 +73,26 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  :root {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+
+    --color-surface-0: #020617;
+    --color-surface-50: #0F172A;
+    --color-surface-100: #1E293B;
+    --color-surface-200: #334155;
+    --color-surface-300: #475569;
+    --color-surface-400: #64748B;
+    --color-surface-500: #94A3B8;
+    --color-surface-600: #CBD5E1;
+    --color-surface-700: #E2E8F0;
+    --color-surface-800: #F1F5F9;
+    --color-surface-900: #F8FAFC;
+  }
+
   ::selection {
     background-color: var(--color-brand-100);
     color: var(--color-brand-900);
