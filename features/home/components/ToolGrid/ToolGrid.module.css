@@ -4,7 +4,7 @@
     position: relative;
     padding: 5rem 1.5rem;
     background:
-        linear-gradient(to bottom, #f8fafc, #ffffff);
+        linear-gradient(to bottom, var(--color-surface-50), var(--color-surface-0));
 }
 
 @media (min-width: 768px) {
@@ -16,8 +16,8 @@
 .toolCard {
     position: relative;
     display: block;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(226, 232, 240, 0.9);
+    background-color: color-mix(in srgb, var(--color-surface-0) 92%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-surface-200) 88%, transparent);
     border-radius: 1.25rem;
     padding: 1.5rem;
     cursor: pointer;
@@ -48,6 +48,10 @@
     box-shadow: 0 18px 50px -20px rgba(15, 23, 42, 0.18);
 }
 
+:global(html.dark) .toolCard:hover {
+    box-shadow: 0 18px 50px -20px rgba(2, 6, 23, 0.75);
+}
+
 .toolCard:hover::before {
     opacity: 1;
 }
@@ -68,6 +72,11 @@
         color 0.3s ease;
 }
 
+:global(html.dark) .iconWrap {
+    background-color: rgba(37, 99, 235, 0.16);
+    color: var(--color-brand-300);
+}
+
 .toolCard:hover .iconWrap {
     background-color: var(--color-brand-600);
     color: white;
@@ -77,8 +86,8 @@
 .toolCardMuted {
     position: relative;
     display: block;
-    background-color: rgba(248, 250, 252, 0.8);
-    border: 1px dashed rgba(203, 213, 225, 0.9);
+    background-color: color-mix(in srgb, var(--color-surface-50) 82%, transparent);
+    border: 1px dashed color-mix(in srgb, var(--color-surface-300) 80%, transparent);
     border-radius: 1.25rem;
     padding: 1.5rem;
     animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
