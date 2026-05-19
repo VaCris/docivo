@@ -3,7 +3,7 @@
 .section {
     padding: 5rem 1.5rem;
     background:
-        linear-gradient(to bottom, #ffffff, #f8fafc);
+        linear-gradient(to bottom, var(--color-surface-0), var(--color-surface-50));
 }
 
 @media (min-width: 768px) {
@@ -23,6 +23,14 @@
         #0f172a;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 24px 80px -36px rgba(15, 23, 42, 0.6);
+}
+
+:global(html.dark) .ctaCard {
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.28), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(20, 184, 166, 0.18), transparent 34%),
+        #020617;
+    border-color: rgba(148, 163, 184, 0.14);
 }
 
 @media (min-width: 768px) {
