@@ -3,15 +3,19 @@
 .footer {
     padding: 4rem 1.5rem;
     background:
-        linear-gradient(to bottom, #f8fafc, #ffffff);
+        linear-gradient(to bottom, var(--color-surface-50), var(--color-surface-0));
 }
 
 .footerCard {
-    background-color: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(226, 232, 240, 0.9);
+    background-color: color-mix(in srgb, var(--color-surface-0) 92%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-surface-200) 88%, transparent);
     border-radius: 1.5rem;
     padding: 2rem;
     box-shadow: 0 18px 50px -32px rgba(15, 23, 42, 0.18);
+}
+
+:global(html.dark) .footerCard {
+    box-shadow: 0 18px 50px -32px rgba(2, 6, 23, 0.75);
 }
 
 @media (min-width: 768px) {
@@ -63,10 +67,14 @@
     color: var(--color-brand-600);
 }
 
+:global(html.dark) .linkItem:hover {
+    color: var(--color-brand-300);
+}
+
 .bottomBar {
     padding-top: 2rem;
     margin-top: 3rem;
-    border-top: 1px solid rgba(226, 232, 240, 0.9);
+    border-top: 1px solid color-mix(in srgb, var(--color-surface-200) 88%, transparent);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -102,4 +110,10 @@
     background-color: var(--color-brand-50);
     border-color: var(--color-brand-100);
     transform: translateY(-1px);
+}
+
+:global(html.dark) .socialIcon:hover {
+    color: var(--color-brand-300);
+    background-color: rgba(37, 99, 235, 0.16);
+    border-color: rgba(96, 165, 250, 0.22);
 }
