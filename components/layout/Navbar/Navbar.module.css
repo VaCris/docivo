@@ -17,11 +17,15 @@
 
 .navbarScrolled {
     padding: 0.55rem 0;
-    background-color: rgba(255, 255, 255, 0.78);
+    background-color: color-mix(in srgb, var(--color-surface-0) 78%, transparent);
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-surface-200) 80%, transparent);
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+:global(html.dark) .navbarScrolled {
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.45);
 }
 
 .navLink {
@@ -37,7 +41,7 @@
 
 .navLink:hover {
     color: var(--color-surface-900);
-    background-color: rgba(248, 250, 252, 0.9);
+    background-color: color-mix(in srgb, var(--color-surface-50) 90%, transparent);
 }
 
 .mobileMenu {
