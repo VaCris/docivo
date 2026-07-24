@@ -37,7 +37,7 @@ export const Navbar = () => {
                 scrolled ? styles.navbarScrolled : ""
             }`}
         >
-            <div className="mx-auto px-6 max-w-6xl">
+            <div className="mx-auto px-6 max-w-7xl">
                 <div className="flex justify-between items-center h-16">
                     <Link href="/" className="group flex items-center gap-2">
                         <img
@@ -67,7 +67,7 @@ export const Navbar = () => {
                         <button
                             type="button"
                             onClick={toggleTheme}
-                            className="inline-flex justify-center items-center bg-white hover:bg-surface-50 border border-surface-200 rounded-full w-10 h-10 text-surface-500 hover:text-brand-600 transition-colors"
+                            className="inline-flex justify-center items-center bg-surface-0 hover:bg-surface-100 border border-surface-200 rounded-full w-10 h-10 text-surface-500 hover:text-brand-600 transition-colors"
                             aria-label={isDark ? "Activate light mode" : "Activate dark mode"}
                             title={isDark ? "Light mode" : "Dark mode"}
                         >
@@ -84,7 +84,7 @@ export const Navbar = () => {
                         <button
                             type="button"
                             onClick={toggleLanguage}
-                            className="inline-flex justify-center items-center bg-white hover:bg-surface-50 border border-surface-200 rounded-full w-10 h-10 font-bold text-surface-500 hover:text-brand-600 text-xs transition-colors"
+                            className="inline-flex justify-center items-center bg-surface-0 hover:bg-surface-100 border border-surface-200 rounded-full w-10 h-10 font-bold text-surface-500 hover:text-brand-600 text-xs transition-colors"
                             aria-label={strings.actions.languageLabel}
                         >
                             {currentLang === "en" ? "ES" : "EN"}
@@ -92,12 +92,13 @@ export const Navbar = () => {
 
                         <Link
                             href="/dashboard"
-                            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 shadow-lg shadow-slate-950/15 px-5 py-2.5 rounded-full font-semibold text-white text-sm transition-colors"
+                            className="group inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 shadow-lg shadow-slate-950/15 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-0.5 active:scale-95 active:translate-y-0 px-5 py-2.5 rounded-full font-semibold text-white text-sm transition-all duration-300"
                         >
                             {strings.actions.tryNow}
                             <Icon
                                 icon={NAVBAR_CONFIG.icons.arrowRight}
                                 width="15"
+                                className="transition-transform duration-300 group-hover:translate-x-0.5"
                             />
                         </Link>
                     </div>
@@ -106,7 +107,7 @@ export const Navbar = () => {
                         <button
                             type="button"
                             onClick={toggleTheme}
-                            className="flex justify-center items-center bg-white border border-surface-200 rounded-full w-10 h-10 text-surface-600 hover:text-surface-900 transition-colors"
+                            className="flex justify-center items-center bg-surface-0 border border-surface-200 rounded-full w-10 h-10 text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-colors"
                             aria-label={isDark ? "Activate light mode" : "Activate dark mode"}
                         >
                             <Icon
@@ -122,7 +123,7 @@ export const Navbar = () => {
                         <button
                             type="button"
                             onClick={() => setMenuOpen((prev) => !prev)}
-                            className="flex justify-center items-center bg-white border border-surface-200 rounded-full w-10 h-10 text-surface-600 hover:text-surface-900 transition-colors"
+                            className="flex justify-center items-center bg-surface-0 border border-surface-200 rounded-full w-10 h-10 text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-colors"
                             aria-label="Toggle menu"
                         >
                             <Icon
@@ -201,12 +202,13 @@ export const Navbar = () => {
                         <Link
                             href="/dashboard"
                             onClick={() => setMenuOpen(false)}
-                            className="flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-3 rounded-xl w-full font-semibold text-white text-sm text-center transition-colors"
+                            className="group flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-500 shadow-lg shadow-slate-950/15 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-0.5 active:scale-95 active:translate-y-0 px-4 py-3 rounded-xl w-full font-semibold text-white text-sm text-center transition-all duration-300"
                         >
                             {strings.actions.tryNow}
                             <Icon
                                 icon={NAVBAR_CONFIG.icons.arrowRight}
                                 width="15"
+                                className="transition-transform duration-300 group-hover:translate-x-0.5"
                             />
                         </Link>
                     </div>

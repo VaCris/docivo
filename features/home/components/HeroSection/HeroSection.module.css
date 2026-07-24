@@ -8,7 +8,7 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     background:
-        radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 32rem),
+        radial-gradient(ellipse at top, rgba(14, 165, 233, 0.15) 0%, rgba(37, 99, 235, 0.05) 40%, transparent 70%),
         linear-gradient(to bottom, var(--color-surface-0), var(--color-surface-50));
 }
 
