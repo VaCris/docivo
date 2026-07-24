@@ -12,7 +12,7 @@ export const CtaSection = () => {
 
     return (
         <section className={styles.section}>
-            <div className="mx-auto max-w-6xl">
+            <div className="mx-auto max-w-7xl">
                 <div className={`${styles.ctaCard} ${styles.animFadeUp}`}>
                     <div className={styles.glow} />
 
@@ -23,7 +23,7 @@ export const CtaSection = () => {
                             </span>
                         </div>
 
-                        <h2 className="font-extrabold text-white text-3xl md:text-5xl tracking-tight">
+                        <h2 className="font-extrabold text-white text-5xl md:text-7xl tracking-tighter">
                             {strings.title}
                         </h2>
 
@@ -34,24 +34,25 @@ export const CtaSection = () => {
                         <div className="flex sm:flex-row flex-col justify-center items-center gap-4 mt-10">
                             <Link
                                 href={CTA_CONFIG.links.primary}
-                                className={styles.primaryBtn}
+                                className={`${styles.primaryBtn} group`}
                             >
                                 {strings.buttons.primary}
                                 <Icon
                                     icon={CTA_CONFIG.icons.arrowRight}
                                     width="16"
-                                    className="transition-transform group-hover:translate-x-0.5"
+                                    className="transition-transform duration-300 group-hover:translate-x-1"
                                 />
                             </Link>
 
                             <Link
                                 href={CTA_CONFIG.links.secondary}
-                                className={styles.secondaryBtn}
+                                className={`${styles.secondaryBtn} group`}
                             >
                                 {strings.buttons.secondary}
                                 <Icon
                                     icon={CTA_CONFIG.icons.arrowRight}
                                     width="15"
+                                    className="transition-transform duration-300 group-hover:translate-x-1"
                                 />
                             </Link>
                         </div>

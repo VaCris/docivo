@@ -35,19 +35,10 @@ export const HeroSection = () => {
 
     return (
         <section className={styles.heroContainer}>
-            <div className="mx-auto max-w-6xl">
-                <div className="mx-auto max-w-3xl text-center">
-                    <div
-                        className={`${styles.animFadeUp} inline-flex items-center gap-2 bg-white/80 shadow-sm backdrop-blur px-4 py-1.5 border border-brand-200/70 rounded-full mb-8`}
-                    >
-                        <span className="bg-brand-500 rounded-full w-1.5 h-1.5" />
-                        <span className="font-semibold text-brand-700 text-xs tracking-wide">
-                            {strings.badge}
-                        </span>
-                    </div>
-
+            <div className="mx-auto max-w-7xl px-4 relative z-10">
+                <div className="flex flex-col items-center text-center">
                     <h1
-                        className={`${styles.animFadeUp} ${styles.delay1} font-extrabold text-surface-950 text-4xl md:text-6xl lg:text-[4rem] leading-[1.05] tracking-tight`}
+                        className={`${styles.animFadeUp} ${styles.delay1} font-extrabold text-surface-950 text-5xl md:text-7xl lg:text-[5rem] leading-[1.0] tracking-tighter max-w-4xl`}
                     >
                         {strings.titleLine1}
                         <br />
@@ -58,68 +49,55 @@ export const HeroSection = () => {
                     </h1>
 
                     <p
-                        className={`${styles.animFadeUp} ${styles.delay2} mx-auto mt-6 max-w-2xl text-surface-500 text-lg md:text-xl leading-relaxed`}
+                        className={`${styles.animFadeUp} ${styles.delay2} mt-8 text-surface-500 text-lg md:text-xl leading-relaxed max-w-2xl`}
                     >
                         {strings.description}
                     </p>
 
                     <div
-                        className={`${styles.animFadeUp} ${styles.delay3} flex sm:flex-row flex-col justify-center items-center gap-4 mt-10`}
+                        className={`${styles.animFadeUp} ${styles.delay3} flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 w-full sm:w-auto`}
                     >
                         <Link
                             href="/dashboard"
-                            className="group inline-flex items-center gap-2.5 bg-brand-600 hover:bg-brand-700 shadow-brand-600/20 shadow-lg px-7 py-3.5 rounded-xl font-semibold text-white text-sm transition-all"
+                            className="group flex w-full sm:w-auto justify-center items-center gap-2.5 bg-blue-600 hover:bg-blue-500 shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 hover:-translate-y-1 px-8 py-4 rounded-2xl font-bold text-white text-base transition-all duration-300"
                         >
                             {strings.buttons.primary}
-                            <Icon
-                                icon={HERO_CONFIG.icons.arrowDown}
-                                width="16"
-                                className="transition-transform group-hover:translate-y-0.5"
-                            />
                         </Link>
 
                         <Link
                             href="#tools"
-                            className="inline-flex items-center gap-2 bg-white hover:bg-surface-50 px-7 py-3.5 border border-surface-200 rounded-xl font-medium text-surface-600 hover:text-surface-900 text-sm transition-all"
+                            className="flex w-full sm:w-auto justify-center items-center gap-2.5 bg-white dark:bg-surface-100 hover:bg-surface-50 dark:hover:bg-surface-200 border border-surface-200 dark:border-surface-300 px-8 py-4 rounded-2xl font-bold text-surface-700 dark:text-surface-900 text-base transition-all duration-300"
                         >
                             {strings.buttons.secondary}
-                            <Icon
-                                icon={HERO_CONFIG.icons.arrowRight}
-                                width="16"
-                            />
                         </Link>
                     </div>
 
                     <div
                         className={`${styles.animFadeUp} ${styles.delay4} flex flex-wrap justify-center items-center gap-x-6 gap-y-3 mt-8 text-surface-400`}
                     >
-                        <div className="flex items-center gap-1.5 font-medium text-xs">
+                        <div className="flex items-center gap-1.5 font-medium text-sm">
                             <Icon
                                 icon={HERO_CONFIG.icons.speed}
-                                width="15"
-                                className="text-brand-500"
+                                width="18"
+                                className="text-surface-900"
                             />
                             {strings.features.speed}
                         </div>
-
-                        <div className="hidden sm:block bg-surface-200 w-px h-3" />
-
-                        <div className="flex items-center gap-1.5 font-medium text-xs">
+                        <div className="hidden sm:block bg-surface-200 w-1 h-1 rounded-full" />
+                        <div className="flex items-center gap-1.5 font-medium text-sm">
                             <Icon
                                 icon={HERO_CONFIG.icons.security}
-                                width="15"
-                                className="text-brand-500"
+                                width="18"
+                                className="text-surface-900"
                             />
                             {strings.features.security}
                         </div>
-
-                        <div className="hidden sm:block bg-surface-200 w-px h-3" />
-
-                        <div className="flex items-center gap-1.5 font-medium text-xs">
+                        <div className="hidden sm:block bg-surface-200 w-1 h-1 rounded-full" />
+                        <div className="flex items-center gap-1.5 font-medium text-sm">
                             <Icon
                                 icon={HERO_CONFIG.icons.tools}
-                                width="15"
-                                className="text-brand-500"
+                                width="18"
+                                className="text-surface-900"
                             />
                             {strings.features.tools}
                         </div>
@@ -127,117 +105,114 @@ export const HeroSection = () => {
                 </div>
 
                 <div
-                    className={`${styles.animFadeUp} ${styles.delay5} relative mx-auto mt-16 md:mt-20 max-w-4xl`}
+                    className={`${styles.animFadeUp} ${styles.delay5} relative mx-auto mt-20 max-w-5xl`}
                 >
                     <div className={styles.visualGlow} />
 
-                    <div className="relative bg-white/80 shadow-2xl shadow-surface-200/60 backdrop-blur p-2 border border-white rounded-3xl">
-                        <div className="bg-white border border-surface-100 rounded-2xl overflow-hidden">
-                            <div className="flex items-center gap-2 px-4 py-3 border-surface-100 border-b">
-                                <div className="flex gap-1.5">
-                                    <div className="bg-red-400/70 rounded-full w-3 h-3" />
-                                    <div className="bg-amber-400/70 rounded-full w-3 h-3" />
-                                    <div className="bg-green-400/70 rounded-full w-3 h-3" />
+                    <div className="relative bg-white/40 shadow-2xl shadow-surface-900/10 backdrop-blur-xl p-3 border border-white/60 rounded-[2rem]">
+                        <div className="bg-white border border-surface-100/50 rounded-3xl overflow-hidden shadow-inner">
+                            <div className="flex items-center gap-2 px-6 py-4 bg-surface-50/50 border-surface-100/50 border-b">
+                                <div className="flex gap-2">
+                                    <div className="bg-surface-300 rounded-full w-3.5 h-3.5 hover:bg-red-400 transition-colors" />
+                                    <div className="bg-surface-300 rounded-full w-3.5 h-3.5 hover:bg-amber-400 transition-colors" />
+                                    <div className="bg-surface-300 rounded-full w-3.5 h-3.5 hover:bg-green-400 transition-colors" />
                                 </div>
 
                                 <div className="flex flex-1 justify-center">
-                                    <div className="bg-surface-50 px-4 py-1 rounded-lg font-medium text-surface-400 text-xs">
+                                    <div className="bg-white shadow-sm border border-surface-100 px-6 py-1.5 rounded-full font-medium text-surface-400 text-xs flex items-center gap-2">
+                                        <Icon icon="solar:lock-bold" width="12" className="text-surface-300" />
                                         {strings.visual.url}
                                     </div>
                                 </div>
 
-                                <div className="w-12" />
+                                <div className="w-16" />
                             </div>
 
-                            <div className="gap-6 grid md:grid-cols-[1.1fr_0.9fr] p-6 md:p-8">
-                                <div className="space-y-3">
-                                    <div className="flex justify-between items-center mb-4">
+                            <div className="gap-8 grid md:grid-cols-2 p-8 md:p-12">
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-center mb-6">
                                         <div>
-                                            <p className="font-bold text-surface-900 text-sm">
+                                            <h3 className="font-bold text-surface-900 text-xl tracking-tight">
                                                 Document workflow
-                                            </p>
-                                            <p className="text-surface-400 text-xs">
-                                                Choose a tool and process files
-                                                securely
+                                            </h3>
+                                            <p className="text-surface-500 text-sm mt-1">
+                                                Choose a tool and process files securely
                                             </p>
                                         </div>
-
-                                        <span className="bg-brand-50 px-2.5 py-1 rounded-full font-bold text-[10px] text-brand-600">
-                                            Docivo
-                                        </span>
                                     </div>
 
-                                    {TOOL_PREVIEW.map((tool) => (
-                                        <div
-                                            key={tool.label}
-                                            className="flex justify-between items-center bg-surface-50 hover:bg-brand-50/60 p-3 border border-surface-100 rounded-xl transition-colors"
-                                        >
-                                            <div className="flex items-center gap-3">
-                                                <div className="flex justify-center items-center bg-white border border-surface-200 rounded-lg w-9 h-9 text-brand-600">
-                                                    <Icon
-                                                        icon={tool.icon}
-                                                        width="19"
-                                                    />
+                                    <div className="space-y-3">
+                                        {TOOL_PREVIEW.map((tool) => (
+                                            <div
+                                                key={tool.label}
+                                                className="group flex justify-between items-center bg-surface-0 hover:bg-surface-50 p-4 border border-surface-200 hover:border-surface-300 rounded-2xl transition-all cursor-pointer shadow-sm hover:shadow-md"
+                                            >
+                                                <div className="flex items-center gap-4">
+                                                    <div className="flex justify-center items-center bg-surface-100 group-hover:bg-surface-200 group-hover:shadow-sm border border-transparent group-hover:border-surface-300 rounded-xl w-12 h-12 text-surface-900 transition-all">
+                                                        <Icon
+                                                            icon={tool.icon}
+                                                            width="24"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-bold text-surface-900 text-sm">
+                                                            {tool.label}
+                                                        </p>
+                                                    </div>
                                                 </div>
 
-                                                <div>
-                                                    <p className="font-semibold text-surface-800 text-sm">
-                                                        {tool.label}
-                                                    </p>
-                                                    <p className="text-surface-400 text-xs">
-                                                        PDF utility
-                                                    </p>
-                                                </div>
+                                                <span className="bg-surface-100 group-hover:bg-brand-50 px-3 py-1.5 border border-surface-200 group-hover:border-brand-200 rounded-lg font-bold text-[10px] text-surface-600 group-hover:text-brand-600 uppercase tracking-wider transition-colors">
+                                                    {tool.mode}
+                                                </span>
                                             </div>
-
-                                            <span className="bg-white px-2 py-1 border border-surface-200 rounded-md font-semibold text-[10px] text-surface-500">
-                                                {tool.mode}
-                                            </span>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
 
-                                <div className="flex flex-col justify-between bg-surface-950 p-5 rounded-2xl overflow-hidden text-white">
+                                <div className="flex flex-col justify-between bg-surface-950 p-8 rounded-3xl overflow-hidden text-white relative isolate">
+                                    <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl -z-10" />
+
                                     <div>
-                                        <div className="flex justify-between items-center mb-6">
-                                            <p className="font-bold text-sm">
-                                                Current task
-                                            </p>
-                                            <Icon
-                                                icon="solar:shield-check-bold-duotone"
-                                                width="22"
-                                                className="text-brand-300"
-                                            />
+                                        <div className="flex justify-between items-start mb-8">
+                                            <div>
+                                                <p className="font-bold text-lg text-white mb-1">
+                                                    Engine Status
+                                                </p>
+                                                <p className="text-surface-400 text-sm">
+                                                    Active processing nodes
+                                                </p>
+                                            </div>
+                                            <div className="bg-white/10 p-2.5 rounded-xl backdrop-blur-md">
+                                                <Icon
+                                                    icon="solar:cpu-bolt-bold-duotone"
+                                                    width="28"
+                                                    className="text-white"
+                                                />
+                                            </div>
                                         </div>
 
-                                        <div className="space-y-3">
-                                            <div className="bg-white/10 rounded-full w-full h-2 overflow-hidden">
-                                                <div className="bg-brand-400 rounded-full w-2/3 h-full" />
+                                        <div className="space-y-4">
+                                            <div className="bg-white/5 rounded-full w-full h-2 overflow-hidden">
+                                                <div className="bg-white rounded-full w-2/3 h-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
                                             </div>
-
-                                            <p className="text-white/60 text-xs">
-                                                Files are processed with the
-                                                right engine depending on the
-                                                tool.
-                                            </p>
                                         </div>
                                     </div>
 
-                                    <div className="gap-3 grid grid-cols-2 mt-8">
-                                        <div className="bg-white/10 p-4 rounded-xl">
-                                            <p className="font-extrabold text-2xl">
+                                    <div className="gap-4 grid grid-cols-2 mt-12">
+                                        <div className="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors">
+                                            <p className="font-extrabold text-3xl mb-1 text-white">
                                                 3
                                             </p>
-                                            <p className="text-white/50 text-xs">
+                                            <p className="text-surface-400 text-xs font-bold uppercase tracking-wider">
                                                 Local tools
                                             </p>
                                         </div>
 
-                                        <div className="bg-white/10 p-4 rounded-xl">
-                                            <p className="font-extrabold text-2xl">
+                                        <div className="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors">
+                                            <p className="font-extrabold text-3xl mb-1 text-white">
                                                 2
                                             </p>
-                                            <p className="text-white/50 text-xs">
+                                            <p className="text-surface-400 text-xs font-bold uppercase tracking-wider">
                                                 Cloud tools
                                             </p>
                                         </div>

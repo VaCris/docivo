@@ -66,13 +66,19 @@
     border-radius: 9999px;
     box-shadow: 0 16px 40px -18px rgba(37, 99, 235, 0.9);
     transition:
-        background-color 0.2s ease,
-        transform 0.2s ease;
+        background-color 0.3s ease,
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease;
 }
 
 .primaryBtn:hover {
     background-color: var(--color-brand-500);
-    transform: translateY(-1px);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 24px 50px -15px rgba(37, 99, 235, 0.95);
+}
+
+.primaryBtn:active {
+    transform: translateY(0) scale(0.98);
 }
 
 .secondaryBtn {
@@ -88,15 +94,23 @@
     padding: 0.9rem 1.5rem;
     border-radius: 9999px;
     transition:
-        color 0.2s ease,
-        background-color 0.2s ease,
-        border-color 0.2s ease;
+        color 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease;
 }
 
 .secondaryBtn:hover {
     color: white;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.18);
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.5);
+}
+
+.secondaryBtn:active {
+    transform: translateY(0) scale(0.98);
 }
 
 @keyframes fade-up {
