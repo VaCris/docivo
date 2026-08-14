@@ -88,7 +88,6 @@ export function useClientImageToPdf() {
                 jobStorage.updateStatus(jobId, "success");
                 setStatus("success");
             } catch (error) {
-                console.error("[Docivo ImageToPdf Error]:", error);
                 jobStorage.updateStatus(jobId, "failure");
                 setStatus("error");
             }

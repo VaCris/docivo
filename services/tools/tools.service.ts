@@ -30,34 +30,28 @@ const createFileFormData = (file: File) => {
 export const toolsService = {
     pdfToWord: {
         start: async (file: File): Promise<JobInitResponse> => {
-            const { data } = await api.post<JobInitResponse>(
+            return api.post<JobInitResponse>(
                 "/tools/pdf-to-word",
                 createFileFormData(file)
             );
-
-            return data;
         },
     },
 
     ocr: {
         start: async (file: File): Promise<JobInitResponse> => {
-            const { data } = await api.post<JobInitResponse>(
+            return api.post<JobInitResponse>(
                 "/tools/ocr",
                 createFileFormData(file)
             );
-
-            return data;
         },
     },
 
     ocrToWord: {
         start: async (file: File): Promise<JobInitResponse> => {
-            const { data } = await api.post<JobInitResponse>(
+            return api.post<JobInitResponse>(
                 "/tools/ocr-to-word",
                 createFileFormData(file)
             );
-
-            return data;
         },
     },
 
@@ -69,40 +63,34 @@ export const toolsService = {
             const formData = createFileFormData(file);
             formData.append("pages", pages);
 
-            const { data } = await api.post<JobInitResponse>(
+            return api.post<JobInitResponse>(
                 "/tools/pdf-to-images",
                 formData
             );
-
-            return data;
         },
     },
 
     extractTextPdf: {
         start: async (file: File): Promise<JobInitResponse> => {
-            const { data } = await api.post<JobInitResponse>(
+            return api.post<JobInitResponse>(
                 "/tools/extract-text-pdf",
                 createFileFormData(file)
             );
-
-            return data;
         },
     },
 
     wordToPdf: {
         start: async (file: File): Promise<JobInitResponse> => {
-            const { data } = await api.post<JobInitResponse>(
+            return api.post<JobInitResponse>(
                 "/tools/word-to-pdf",
                 createFileFormData(file)
             );
-
-            return data;
         },
     },
 
     jobs: {
         getStatus: async (jobId: string) => {
-            const { data } = await api.get<JobStatusResponse>(
+            const data = await api.get<JobStatusResponse>(
                 `/jobs/${jobId}`
             );
 
@@ -114,11 +102,9 @@ export const toolsService = {
         },
 
         download: async (jobId: string): Promise<Blob> => {
-            const { data } = await api.get(`/downloads/${jobId}`, {
+            return api.get(`/downloads/${jobId}`, {
                 responseType: "blob",
             });
-
-            return data;
         },
     },
 };

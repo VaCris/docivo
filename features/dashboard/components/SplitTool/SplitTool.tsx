@@ -97,7 +97,7 @@ export const SplitTool = () => {
             </div>
 
             <div className="flex lg:flex-row flex-col flex-1 gap-6 overflow-hidden">
-                <div className="relative flex flex-col flex-1 bg-white shadow-sm p-6 border border-surface-200 rounded-2xl overflow-y-auto">
+                <div className="relative flex flex-col flex-1 bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl overflow-y-auto">
                     <FileUploader
                         accept="application/pdf"
                         onFiles={(files) => {
@@ -137,7 +137,7 @@ export const SplitTool = () => {
                             <button
                                 type="button"
                                 onClick={() => setSelectedPages(orderedPages)}
-                                className="bg-brand-50 px-3 py-1.5 rounded-lg font-semibold text-brand-600 hover:text-brand-700 text-xs transition-colors"
+                                className="bg-brand-50 px-3 py-1.5 rounded-lg font-sans font-semibold text-brand-600 hover:text-brand-700 text-xs transition-colors"
                             >
                                 {strings.workspace.selectAll}
                             </button>
@@ -173,7 +173,7 @@ export const SplitTool = () => {
                                     <div
                                         className={`w-full aspect-[1/1.4] rounded-xl flex items-center justify-center shadow-sm transition-all border-2 ${isSelected
                                             ? "bg-brand-50 border-brand-500 shadow-brand-500/20"
-                                            : "bg-white border-surface-200 group-hover:border-surface-300"
+                                            : "bg-surface-0 border-surface-200 group-hover:border-surface-300"
                                             }`}
                                     >
                                         <div className="-top-2 -left-2 z-20 absolute flex justify-center items-center bg-surface-800 rounded-full w-6 h-6 font-bold text-white text-xs">
@@ -211,7 +211,7 @@ export const SplitTool = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col bg-white shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80 shrink-0">
+                <div className="flex flex-col bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80 shrink-0">
                     <h3 className="mb-6 font-bold text-surface-800 text-base">
                         {strings.sidebar.title}
                     </h3>
@@ -295,7 +295,7 @@ export const SplitTool = () => {
                             type="button"
                             onClick={handleRun}
                             disabled={!file || selectedPages.length === 0 || isLoading}
-                            className="inline-flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 disabled:opacity-50 px-6 py-3.5 rounded-xl w-full font-bold text-white text-sm"
+                            className="inline-flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 disabled:opacity-50 px-6 py-3.5 rounded-xl w-full font-sans font-bold text-white text-sm"
                         >
                             <Icon icon="solar:scissors-bold" width="18" />
                             {strings.actions.splitButton}

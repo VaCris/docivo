@@ -4,7 +4,9 @@
         "tools": "Tools",
         "howItWorks": "How it works",
         "upload": "Upload",
-        "dashboard": "Dashboard"
+        "dashboard": "Dashboard",
+        "privacy": "Privacy",
+        "terms": "Terms"
     },
     "actions": {
         "tryNow": "Try now",

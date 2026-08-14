@@ -85,7 +85,7 @@ export const OcrTool = () => {
                         </div>
                     ) : (
                         <>
-                            <div className="top-6 right-6 left-6 z-10 absolute flex justify-between items-center bg-white shadow-sm p-4 border border-surface-200 rounded-xl">
+                            <div className="top-6 right-6 left-6 z-10 absolute flex justify-between items-center bg-surface-0 shadow-sm p-4 border border-surface-200 rounded-xl">
                                 <div className="flex items-center gap-3 overflow-hidden">
                                     <Icon
                                         icon="solar:scanner-bold-duotone"
@@ -105,7 +105,7 @@ export const OcrTool = () => {
 
                                 <button
                                     onClick={() => setFile(null)}
-                                    className="bg-surface-50 px-3 py-1.5 rounded-lg font-bold text-surface-500 hover:text-brand-600 text-xs transition-colors shrink-0"
+                                    className="bg-surface-50 px-3 py-1.5 rounded-lg font-sans font-bold text-surface-500 hover:text-brand-600 text-xs transition-colors shrink-0"
                                 >
                                     {strings.workspace.changeFile}
                                 </button>
@@ -118,7 +118,7 @@ export const OcrTool = () => {
                     )}
                 </div>
 
-                <div className="flex flex-col flex-shrink-0 bg-white shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80">
+                <div className="flex flex-col flex-shrink-0 bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80">
                     <h3 className="flex items-center gap-2 mb-6 font-bold text-surface-800 text-base">
                         <Icon
                             icon="solar:settings-bold-duotone"
@@ -179,7 +179,7 @@ export const OcrTool = () => {
                         <button
                             onClick={handleRun}
                             disabled={!file || isLoading}
-                            className="inline-flex justify-center items-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 shadow-amber-500/20 shadow-lg px-6 py-3.5 rounded-xl w-full font-bold text-white text-sm active:scale-95 transition-all disabled:cursor-not-allowed"
+                            className="inline-flex justify-center items-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 shadow-amber-500/20 shadow-lg px-6 py-3.5 rounded-xl w-full font-sans font-bold text-white text-sm active:scale-95 transition-all disabled:cursor-not-allowed"
                         >
                             <Icon icon="solar:eye-scan-bold" width="18" />
                             {strings.actions.recognizeText}

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { useLanguage } from "@/hooks/useLanguage";
 
@@ -17,14 +18,9 @@ interface DropZoneProps {
 export const DropZone = ({ onFiles }: DropZoneProps) => {
     const { currentLang } = useLanguage();
     const t = currentLang === "en" ? enData : esData;
+    const router = useRouter();
 
     const [isDragging, setIsDragging] = useState(false);
-    const fileInputRef = useRef<HTMLInputElement>(null);
-
-    const handleFiles = (files: FileList) => {
-        if (!files.length) return;
-        onFiles?.(files);
-    };
 
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -39,25 +35,21 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
     const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsDragging(false);
-        handleFiles(e.dataTransfer.files);
+        if (onFiles) onFiles(e.dataTransfer.files);
     };
 
     const handleClick = () => {
-        fileInputRef.current?.click();
-    };
-
-    const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) handleFiles(e.target.files);
+        router.push("/dashboard");
     };
 
     return (
-        <section id="upload" className="bg-surface-50 px-6 py-20 md:py-28">
+        <section id="upload" className="bg-surface-50 px-6 py-20 md:py-28 border-t border-surface-200 dark:bg-surface-900 dark:border-surface-300">
             <div className={`max-w-6xl mx-auto ${styles.dropzoneContainer}`}>
                 <div className="mx-auto mb-14 max-w-xl text-center">
-                    <h2 className="font-extrabold text-surface-900 text-3xl md:text-4xl tracking-tight">
+                    <h2 className={`font-extrabold text-surface-900 text-3xl md:text-4xl tracking-tight dark:text-surface-100`}>
                         {t.heading.title}
                     </h2>
-                    <p className="mt-4 text-surface-500 text-base leading-relaxed">
+                    <p className={`mt-4 text-surface-500 text-base leading-relaxed dark:text-surface-400`}>
                         {t.heading.subtitle}
                     </p>
                 </div>
@@ -70,7 +62,7 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
                         onDrop={handleDrop}
                         role="button"
                         tabIndex={0}
-                        aria-label="Upload files by clicking or dragging"
+                        aria-label="Go to dashboard"
                         onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
                                 e.preventDefault();
@@ -79,37 +71,28 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
                         }}
                         className={`relative flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-10 md:p-16 text-center cursor-pointer transition-all duration-300 ${isDragging
                                 ? styles.dropzoneActive
-                                : "border-surface-300 bg-white hover:border-surface-400 hover:bg-surface-50/50"
-                            }`}
+                                : "border-surface-300 bg-surface-0 hover:border-surface-400 hover:bg-surface-50/50"
+                            } dark:border-surface-300 dark:bg-surface-800`}
                     >
-                        <input
-                            type="file"
-                            ref={fileInputRef}
-                            className="hidden"
-                            multiple
-                            accept={DROPZONE_CONFIG.acceptedExtensions}
-                            onChange={handleFileSelect}
-                        />
-
                         <div className="mb-6">
-                            <div className="flex justify-center items-center bg-surface-50 mx-auto border border-surface-100 rounded-2xl w-16 h-16">
+                            <div className={`flex justify-center items-center bg-surface-50 mx-auto border border-surface-100 rounded-2xl w-16 h-16 dark:bg-surface-700/50 dark:border-surface-600`}>
                                 <Icon
                                     icon={DROPZONE_CONFIG.icons.uploadMain}
                                     width="28"
-                                    className={`transition-all duration-300 ${isDragging ? styles.dropIconActive : "text-surface-400"
+                                    className={`transition-all duration-300 ${isDragging ? styles.dropIconActive : "text-surface-400 dark:text-surface-500"
                                         }`}
                                 />
                             </div>
                         </div>
 
-                        <p className="mb-2 font-semibold text-surface-700 text-base">
+                        <p className={`mb-2 font-semibold text-surface-700 text-base dark:text-surface-200`}>
                             {t.uploadArea.title}
                         </p>
-                        <p className="mb-6 text-surface-400 text-sm">
+                        <p className={`mb-6 text-surface-400 text-sm dark:text-surface-500`}>
                             {t.uploadArea.hint}
                         </p>
 
-                        <button className="inline-flex justify-center items-center gap-2 bg-brand-600 px-6 py-2.5 rounded-xl font-semibold text-white text-sm pointer-events-none">
+                        <button className="inline-flex justify-center items-center gap-2 bg-brand-600 px-6 py-2.5 rounded-xl font-sans font-semibold text-surface-900 text-sm pointer-events-none dark:text-white">
                             <Icon icon={DROPZONE_CONFIG.icons.folderOpen} width="16" />
                             {t.uploadArea.button}
                         </button>

@@ -90,7 +90,6 @@ export function useClientMerge() {
 
         setStatus("success");
       } catch (error) {
-        console.error("[Docivo Client Error]:", error);
         setStatus("error");
       }
     },

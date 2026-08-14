@@ -104,8 +104,6 @@ export function useClientSplit() {
                 jobStorage.updateStatus(jobId, "success");
                 setStatus("success");
             } catch (error) {
-                console.error(error);
-
                 jobStorage.updateStatus(jobId, "failure");
                 setStatus("error");
 

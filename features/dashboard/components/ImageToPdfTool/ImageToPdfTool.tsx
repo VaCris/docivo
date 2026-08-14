@@ -84,7 +84,7 @@ export const ImageToPdfTool = () => {
             </div>
 
             <div className="flex lg:flex-row flex-col flex-1 gap-6 overflow-hidden">
-                <div className="relative flex flex-col flex-1 bg-white shadow-sm p-6 border border-surface-200 rounded-2xl overflow-y-auto">
+                <div className="relative flex flex-col flex-1 bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl overflow-y-auto">
                     <div className="gap-4 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
                         {images.map((item) => (
                             <div
@@ -99,7 +99,7 @@ export const ImageToPdfTool = () => {
 
                                 <button
                                     onClick={() => handleRemove(item.id)}
-                                    className="top-2 right-2 z-10 absolute flex justify-center items-center bg-white/90 opacity-0 group-hover:opacity-100 shadow-sm backdrop-blur-sm border border-surface-200 rounded-full w-7 h-7 text-surface-500 hover:text-red-600 transition-opacity"
+                                    className="top-2 right-2 z-10 absolute flex justify-center items-center bg-surface-0/90 opacity-0 group-hover:opacity-100 shadow-sm backdrop-blur-sm border border-surface-200 rounded-full w-7 h-7 text-surface-500 hover:text-red-600 transition-opacity"
                                 >
                                     <Icon
                                         icon="solar:trash-bin-trash-bold"
@@ -126,7 +126,7 @@ export const ImageToPdfTool = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col bg-white shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80 overflow-y-auto shrink-0">
+                <div className="flex flex-col bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80 overflow-y-auto shrink-0">
                     <h3 className="flex items-center gap-2 mb-6 font-bold text-surface-800 text-base">
                         <Icon
                             icon="solar:settings-bold-duotone"
@@ -241,7 +241,7 @@ export const ImageToPdfTool = () => {
                         <button
                             onClick={handleConvert}
                             disabled={images.length === 0 || isLoading}
-                            className="inline-flex justify-center items-center gap-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 shadow-emerald-600/20 shadow-lg px-6 py-3.5 rounded-xl w-full font-bold text-white text-sm active:scale-95 transition-all disabled:cursor-not-allowed"
+                            className="inline-flex justify-center items-center gap-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 shadow-emerald-600/20 shadow-lg px-6 py-3.5 rounded-xl w-full font-sans font-bold text-white text-sm active:scale-95 transition-all disabled:cursor-not-allowed"
                         >
                             <Icon icon="solar:gallery-send-bold" width="18" />
                             {strings.actions.convertButton}

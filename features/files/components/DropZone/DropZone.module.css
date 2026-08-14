@@ -1,5 +1,3 @@
-@reference "../../../../app/globals.css";
-
 .dropzoneContainer {
     animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -20,7 +18,7 @@
     inset: -2px;
     border-radius: inherit;
     padding: 2px;
-    background: linear-gradient(135deg, #0000EE, #6366F1, #0000EE);
+    background: linear-gradient(135deg, var(--color-brand-500), var(--color-accent), var(--color-brand-500));
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -41,7 +39,7 @@
 
 .dropIconActive {
     transform: scale(1.1);
-    color: #0000EE;
+    color: var(--color-brand-500);
     filter: drop-shadow(0 0 8px rgba(0, 0, 238, 0.4));
 }
 
@@ -50,7 +48,6 @@
         opacity: 0;
         transform: translateY(24px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);

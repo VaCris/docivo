@@ -164,6 +164,20 @@ export const Navbar = () => {
                                 }
                             </Link>
                         ))}
+                        {NAVBAR_CONFIG.footerItems.map((item) => (
+                            <Link
+                                key={item.id}
+                                href={item.href}
+                                onClick={() => setMenuOpen(false)}
+                                className="block hover:bg-surface-50 px-4 py-3 rounded-xl font-medium text-surface-600 hover:text-surface-900 text-sm transition-colors"
+                            >
+                                {
+                                    strings.links[
+                                        item.id as keyof typeof strings.links
+                                    ]
+                                }
+                            </Link>
+                        ))}
                     </div>
 
                     <div className="flex justify-between items-center px-4 pt-3 pb-2 border-surface-100 border-t">
