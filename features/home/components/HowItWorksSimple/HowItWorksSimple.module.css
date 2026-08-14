@@ -1,0 +1,232 @@
+@reference "../../../../app/globals.css";
+
+.section {
+    padding: 5rem 1.5rem;
+    background: var(--color-surface-50);
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: 7rem 1.5rem;
+    }
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    color: var(--color-surface-900);
+    letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+    }
+}
+
+.subtitle {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-surface-500);
+    max-width: 32rem;
+}
+
+/* ── Timeline ────────────────────────────────── */
+
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem 0;
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .timeline {
+        gap: 4rem;
+        padding: 2rem 0;
+    }
+}
+
+/* Gradient vertical line */
+.line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2rem;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--color-surface-200) 12%,
+        var(--color-brand-300) 50%,
+        var(--color-surface-200) 88%,
+        transparent 100%
+    );
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.line.revealed {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+@media (min-width: 768px) {
+    .line {
+        left: 50%;
+        transform: translateX(-50%) scaleY(0);
+    }
+
+    .line.revealed {
+        transform: translateX(-50%) scaleY(1);
+    }
+}
+
+/* ── Step ────────────────────────────────────── */
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 768px) {
+    .step {
+        gap: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .step:nth-child(odd) {
+        flex-direction: row;
+        padding-right: calc(50% + 2rem);
+    }
+
+    .step:nth-child(even) {
+        flex-direction: row-reverse;
+        padding-left: calc(50% + 2rem);
+    }
+}
+
+/* Float offsets for stagger */
+.float-offset-a {
+    transform: translateY(0);
+}
+
+.float-offset-b {
+    transform: translateY(0);
+}
+
+.scroll-reveal.float-offset-a.revealed {
+    transform: translateY(0);
+}
+
+.scroll-reveal.float-offset-b.revealed {
+    transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+    .float-offset-a.revealed {
+        transform: translateY(0);
+    }
+
+    .float-offset-b.revealed {
+        transform: translateY(12px);
+    }
+}
+
+/* ── Dot / connector ─────────────────────────── */
+
+.dotWrap {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.dot {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-brand-50), var(--color-brand-100));
+    border: 2px solid var(--color-brand-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-brand-500);
+    box-shadow: 0 0 0 4px var(--color-surface-50), 0 4px 16px rgba(0, 0, 238, 0.12);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.step:hover .dot {
+    border-color: var(--color-brand-500);
+    box-shadow: 0 0 0 4px var(--color-surface-50), 0 4px 20px rgba(0, 0, 238, 0.2);
+}
+
+/* ── Card ────────────────────────────────────── */
+
+.card {
+    flex: 1;
+    padding: 1.5rem;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .card {
+        padding: 2rem;
+        max-width: 24rem;
+    }
+}
+
+.step:hover .card {
+    border-color: var(--color-brand-300);
+    box-shadow: 0 12px 40px -12px rgba(0, 0, 238, 0.1);
+}
+
+.cardNumber {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--color-surface-200);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+}
+
+.cardTitle {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-surface-900);
+    margin-bottom: 0.5rem;
+}
+
+.cardDesc {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-surface-500);
+}
+
+/* ── Stagger reveal delays ───────────────────── */
+
+.reveal-delay-0 {
+    transition-delay: 0ms;
+}
+
+.reveal-delay-1 {
+    transition-delay: 120ms;
+}
+
+.reveal-delay-2 {
+    transition-delay: 240ms;
+}
