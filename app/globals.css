@@ -1,8 +1,24 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url("/fonts/anton-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-sans: "Inter Display", system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Anton", Impact, sans-serif;
 
   --color-brand-50: #EEEEFF;
   --color-brand-100: #DDDDFF;
@@ -86,17 +102,17 @@
   html.dark {
     color-scheme: dark;
 
-    --color-surface-0: #020617;
-    --color-surface-50: #0F172A;
-    --color-surface-100: #1E293B;
-    --color-surface-200: #334155;
-    --color-surface-300: #475569;
-    --color-surface-400: #64748B;
-    --color-surface-500: #94A3B8;
-    --color-surface-600: #CBD5E1;
-    --color-surface-700: #E2E8F0;
-    --color-surface-800: #F1F5F9;
-    --color-surface-900: #F8FAFC;
+    --color-surface-0: #111111;
+    --color-surface-50: #1A1A1A;
+    --color-surface-100: #222222;
+    --color-surface-200: #2E2E2E;
+    --color-surface-300: #404040;
+    --color-surface-400: #6B6B6B;
+    --color-surface-500: #999999;
+    --color-surface-600: #C8C8C8;
+    --color-surface-700: #E8E8E8;
+    --color-surface-800: #F5F5F5;
+    --color-surface-900: #FAFAFA;
   }
 
   ::selection {
@@ -182,22 +198,49 @@
     --tw-shadow-color: rgba(2, 6, 23, 0.45) !important;
   }
 
-  html.dark input,
-  html.dark select,
-  html.dark textarea {
+html.dark input,
+html.dark select,
+html.dark textarea {
     background-color: var(--color-surface-50);
     color: var(--color-surface-800);
     border-color: var(--color-surface-200);
-  }
+}
 
-  html.dark input::placeholder,
-  html.dark textarea::placeholder {
+html.dark input::placeholder,
+html.dark textarea::placeholder {
     color: var(--color-surface-500);
-  }
+}
 
-  html.dark canvas {
-    background-color: white;
-  }
+html.dark canvas {
+    background-color: var(--color-surface-0);
+}
+
+html.dark .text-slate-900,
+html.dark .text-slate-800 {
+    color: var(--color-surface-800) !important;
+}
+
+html.dark .text-white {
+    color: var(--color-surface-0) !important;
+}
+
+html.dark .ctaCard .subtitle {
+    color: var(--color-surface-200) !important;
+}
+
+html.dark .ctaCard .primaryBtn {
+    color: var(--color-surface-900) !important;
+}
+
+html.dark .ctaCard .secondaryBtn {
+    color: var(--color-surface-0) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+html.dark .ctaCard .secondaryBtn:hover {
+    color: var(--color-surface-900) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
 
   ::-webkit-scrollbar {
     width: 6px;
@@ -263,5 +306,32 @@
       transform: none;
       transition: none;
     }
+  }
+}
+
+/* ── View Transitions (theme switch) ── */
+::view-transition-group(root) {
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-new(root) {
+  mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="0" cy="0" r="18" fill="white" filter="url(%23blur)"/></svg>') top left / 0 no-repeat;
+  mask-origin: content-box;
+  animation: view-transition-scale 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+  transform-origin: top left;
+}
+
+::view-transition-old(root),
+:root.dark::view-transition-old(root) {
+  animation: view-transition-scale 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+  transform-origin: top left;
+  z-index: -1;
+}
+
+@keyframes view-transition-scale {
+  to {
+    mask-size: 350vmax;
   }
 }

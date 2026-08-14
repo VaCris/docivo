@@ -1,22 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
 import { LanguageProvider } from "@/hooks/useLanguage";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import Script from "next/script";
 import "./globals.css";
-
-const interDisplay = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-sans",
-});
-
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-serif",
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   title: "Docivo — Herramientas PDF simplificadas",
@@ -30,7 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
-        <body suppressHydrationWarning className={`${interDisplay.className} ${instrumentSerif.className} antialiased`}>
+        <head>
+          <Script
+            src="/init-theme.js"
+            strategy="beforeInteractive"
+          />
+        </head>
+        <body suppressHydrationWarning className="antialiased">
         <LanguageProvider>
           <ThemeProvider>
             <a

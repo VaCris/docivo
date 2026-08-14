@@ -42,17 +42,21 @@ export const syncThemeClass = (theme: Theme) => {
 };
 
 export const useTheme = () => {
-    const [theme, setThemeState] = useState<Theme>("system");
-    const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
+    const [theme, setThemeState] = useState<Theme>(() => {
+        if (typeof window === "undefined") return "system";
 
-    useEffect(() => {
-        const initialTheme = getStoredTheme();
-        const initialSystemTheme = getSystemTheme();
+        const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
 
-        setThemeState(initialTheme);
-        setSystemTheme(initialSystemTheme);
-        syncThemeClass(initialTheme);
-    }, []);
+        return isTheme(storedTheme) ? storedTheme : "system";
+    });
+
+    const [systemTheme, setSystemTheme] = useState<"light" | "dark">(() => {
+        if (typeof window === "undefined") return "light";
+
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+    });
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -74,9 +78,17 @@ export const useTheme = () => {
     }, [theme]);
 
     const setTheme = useCallback((nextTheme: Theme) => {
-        setThemeState(nextTheme);
-        window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-        syncThemeClass(nextTheme);
+        const apply = () => {
+            setThemeState(nextTheme);
+            window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+            syncThemeClass(nextTheme);
+        };
+
+        if (typeof document !== "undefined" && "startViewTransition" in document) {
+            (document as Document).startViewTransition(apply);
+        } else {
+            apply();
+        }
     }, []);
 
     const resolvedTheme = useMemo(

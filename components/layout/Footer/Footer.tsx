@@ -9,7 +9,7 @@ export const Footer = () => {
         <footer className={styles.footer}>
             <div className={styles.curve} aria-hidden="true">
                 <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                    <path d="M0,120 L0,60 C360,140 1080,140 1440,60 L1440,120 Z" fill="#0F172A" />
+                    <path d="M0,120 L0,60 C360,140 1080,140 1440,60 L1440,120 Z" fill="var(--color-surface-50)" />
                 </svg>
             </div>
 
@@ -17,7 +17,7 @@ export const Footer = () => {
                 <div className="mx-auto max-w-7xl">
                     <div className={styles.topRow}>
                         <Link href="/" className={styles.logo}>
-                            <img src="/images/Logo.png" alt="Docivo" className="h-6 w-auto brightness-0 invert" />
+                            <img src="/images/Logo.png" alt="Docivo" className="h-6 w-auto" />
                             <span className={styles.logoText}>Docivo</span>
                         </Link>
 

@@ -1,0 +1,1 @@
+(function(){try{var t=localStorage.getItem("docivo-theme");var d=t==="dark"||((!t||t==="system")&&matchMedia("(prefers-color-scheme:dark)").matches);if(d)document.documentElement.classList.add("dark");document.documentElement.dataset.theme=t||"system";document.documentElement.dataset.resolvedTheme=d?"dark":"light"}catch(e){}})();
