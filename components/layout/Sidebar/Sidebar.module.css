@@ -13,9 +13,7 @@
     z-index: 40;
 }
 
-    background-color: var(--color-surface-950);
-    border-right-color: var(--color-surface-300);
-}
+
 
 .brand {
     display: flex;
@@ -37,17 +35,14 @@
     transition: all 0.2s ease;
 }
 
-    color: var(--color-surface-400);
-}
+
 
 .navLink:hover {
     background-color: var(--color-surface-50);
     color: var(--color-surface-900);
 }
 
-    background-color: var(--color-surface-800);
-    color: var(--color-surface-0);
-}
+
 
 .navLinkActive {
     background-color: var(--color-brand-50);
@@ -55,6 +50,3 @@
     font-weight: 600;
 }
 
-    background-color: var(--color-surface-800);
-    color: var(--color-brand-400);
-}
