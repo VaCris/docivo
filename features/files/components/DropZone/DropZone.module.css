@@ -5,14 +5,44 @@
 }
 
 .dropzoneActive {
-    border-color: var(--color-brand-500) !important;
-    background-color: var(--color-brand-50) !important;
-    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1) !important;
+    border-color: transparent !important;
+    background: rgba(0, 0, 238, 0.03) !important;
+    box-shadow:
+        0 0 0 2px rgba(0, 0, 238, 0.3),
+        0 0 24px -4px rgba(0, 0, 238, 0.2),
+        inset 0 0 20px rgba(0, 0, 238, 0.05) !important;
+    backdrop-filter: blur(12px);
+}
+
+.dropzoneActive::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, #0000EE, #6366F1, #0000EE);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: border-glow 2s ease-in-out infinite;
+}
+
+@keyframes border-glow {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 .dropIconActive {
     transform: scale(1.1);
-    color: var(--color-brand-600);
+    color: #0000EE;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 238, 0.4));
 }
 
 @keyframes fade-up {

@@ -1,0 +1,99 @@
+@reference "../../../../app/globals.css";
+
+.section {
+    padding: 5rem 1.5rem;
+    background: #F8FAFC;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: 7rem 1.5rem;
+    }
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    color: #0F172A;
+    letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.item {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.itemOpen {
+    border-color: #0000EE;
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #0F172A;
+    text-align: left;
+    gap: 1rem;
+}
+
+.question:hover {
+    color: #0000EE;
+}
+
+.arrow {
+    flex-shrink: 0;
+    color: #94A3B8;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.arrowOpen {
+    transform: rotate(180deg);
+    color: #0000EE;
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.answerOpen {
+    max-height: 200px;
+}
+
+.answer p {
+    padding: 0 1.5rem 1.25rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #64748B;
+}
+
+.scroll-reveal.reveal-delay-0 { transition-delay: 0ms; }
+.scroll-reveal.reveal-delay-1 { transition-delay: 80ms; }
+.scroll-reveal.reveal-delay-2 { transition-delay: 160ms; }
+.scroll-reveal.reveal-delay-3 { transition-delay: 240ms; }
