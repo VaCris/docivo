@@ -1,111 +1,236 @@
 @reference "../../../../app/globals.css";
 
 .section {
-    position: relative;
-    padding: 5rem 1.5rem;
-    background:
-        linear-gradient(to bottom, var(--color-surface-50), var(--color-surface-0));
+  position: relative;
+  padding: 5rem 1.5rem;
+  background: #FFFFFF;
+}
+
+:global(html.dark) .section {
+  background: #020617;
 }
 
 @media (min-width: 768px) {
-    .section {
-        padding: 7rem 1.5rem;
-    }
+  .section { padding: 7rem 1.5rem; }
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0F172A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: #0F172A;
+  max-width: 40rem;
+  letter-spacing: -0.01em;
+}
+
+:global(html.dark) .sectionTitle { color: #F1F5F9; }
+
+@media (min-width: 768px) {
+  .sectionTitle { font-size: 3.5rem; }
+}
+
+.sectionSubtitle {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #64748B;
+  max-width: 36rem;
+}
+
+/* Constellation */
+.constellation {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .constellation {
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 400px;
+    padding: 4rem 0;
+  }
+}
+
+.connections {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .connections {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}
+
+/* Tool node */
+.toolNode {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toolNode:hover {
+  transform: translateY(-4px);
 }
 
 .toolCard {
-    position: relative;
-    display: block;
-    background-color: color-mix(in srgb, var(--color-surface-0) 92%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-surface-200) 88%, transparent);
-    border-radius: 1.25rem;
-    padding: 1.5rem;
-    cursor: pointer;
-    overflow: hidden;
-    transition:
-        transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.3s ease,
-        background-color 0.3s ease;
-    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  width: 100%;
+  max-width: 160px;
+  padding: 1.5rem 1rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
 }
 
-.toolCard::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top right,
-            rgba(37, 99, 235, 0.08),
-            transparent 35%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
+@media (min-width: 768px) {
+  .toolCard {
+    max-width: 180px;
+    padding: 2rem 1.25rem !important;
+  }
 }
 
-.toolCard:hover {
-    transform: translateY(-4px);
-    border-color: rgba(37, 99, 235, 0.2);
-    box-shadow: 0 18px 50px -20px rgba(15, 23, 42, 0.18);
+.toolIconWrap {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1E3A8A;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-:global(html.dark) .toolCard:hover {
-    box-shadow: 0 18px 50px -20px rgba(2, 6, 23, 0.75);
+.toolNode:hover .toolIconWrap {
+  background: #EEEEFF;
+  border-color: #1E3A8A;
+  box-shadow: 0 8px 24px rgba(30, 58, 138, 0.15);
+  transform: scale(1.1);
 }
 
-.toolCard:hover::before {
-    opacity: 1;
+:global(html.dark) .toolIconWrap {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(51, 65, 85, 0.5);
+  color: #60A5FA;
 }
 
-.iconWrap {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 0.9rem;
-    background-color: var(--color-brand-50);
-    color: var(--color-brand-600);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-    transition:
-        transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-        background-color 0.3s ease,
-        color 0.3s ease;
+.toolLabel {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #0F172A;
+  text-align: center;
 }
 
-:global(html.dark) .iconWrap {
-    background-color: rgba(37, 99, 235, 0.16);
-    color: var(--color-brand-300);
+:global(html.dark) .toolLabel { color: #E2E8F0; }
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  width: 220px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
 }
 
-.toolCard:hover .iconWrap {
-    background-color: var(--color-brand-600);
-    color: white;
-    transform: scale(1.05);
+:global(html.dark) .tooltip {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(51, 65, 85, 0.5);
 }
 
-.toolCardMuted {
-    position: relative;
-    display: block;
-    background-color: color-mix(in srgb, var(--color-surface-50) 82%, transparent);
-    border: 1px dashed color-mix(in srgb, var(--color-surface-300) 80%, transparent);
-    border-radius: 1.25rem;
-    padding: 1.5rem;
-    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+.toolNode:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
-.iconMuted {
-    background-color: var(--color-surface-100);
-    color: var(--color-surface-400);
+.tooltipTitle { font-weight: 700; font-size: 0.875rem; color: #0F172A; margin-bottom: 0.25rem; }
+.tooltipDesc { font-size: 0.75rem; color: #64748B; line-height: 1.5; margin-bottom: 0.5rem; }
+.tooltipBadge {
+  display: inline-flex;
+  border-radius: 9999px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badgeLocal { background: #ECFDF5; color: #047857; }
+.badgeCloud { background: #EFF6FF; color: #1D4ED8; }
+
+/* Coming soon */
+.comingSoonNode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-@keyframes fade-up {
-    from {
-        opacity: 0;
-        transform: translateY(24px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.comingSoonIcon {
+  background: rgba(148, 163, 184, 0.1) !important;
+  color: #94A3B8 !important;
+  border-style: dashed !important;
+  animation: pulse 2s ease-in-out infinite;
 }
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Reveal delay stagger */
+.scroll-reveal.reveal-delay-0 { transition-delay: 0ms; }
+.scroll-reveal.reveal-delay-1 { transition-delay: 80ms; }
+.scroll-reveal.reveal-delay-2 { transition-delay: 160ms; }
+.scroll-reveal.reveal-delay-3 { transition-delay: 240ms; }
+.scroll-reveal.reveal-delay-4 { transition-delay: 320ms; }
+.scroll-reveal.reveal-delay-5 { transition-delay: 400ms; }
