@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Inter Display", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
 
-  --color-brand-50: #EFF6FF;
-  --color-brand-100: #DBEAFE;
-  --color-brand-200: #BFDBFE;
-  --color-brand-300: #93C5FD;
-  --color-brand-400: #60A5FA;
-  --color-brand-500: #3B82F6;
-  --color-brand-600: #2563EB;
-  --color-brand-700: #1D4ED8;
-  --color-brand-800: #1E3A8A;
-  --color-brand-900: #172554;
+  --color-brand-50: #EEEEFF;
+  --color-brand-100: #DDDDFF;
+  --color-brand-200: #BBBBFF;
+  --color-brand-300: #8888FF;
+  --color-brand-400: #4444FF;
+  --color-brand-500: #0000EE;
+  --color-brand-600: #0000CC;
+  --color-brand-700: #0000AA;
+  --color-brand-800: #000088;
+  --color-brand-900: #000066;
+
+  --color-accent: #0080FF;
 
   --color-surface-0: #FFFFFF;
   --color-surface-50: #F8FAFC;
@@ -25,10 +28,13 @@
   --color-surface-700: #334155;
   --color-surface-800: #1E293B;
   --color-surface-900: #0F172A;
+  --color-surface-950: #020617;
 
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-slide-in-right: slide-in-right 0.3s ease both;
   --animate-float: float 4s ease-in-out infinite;
+  --animate-float-slow: float 5s ease-in-out infinite;
+  --animate-float-fast: float 3s ease-in-out infinite;
 
   @keyframes fade-up {
     from {
@@ -228,5 +234,34 @@
 
   .anim-delay-5 {
     animation-delay: 0.5s;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .glass-hover {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 }
