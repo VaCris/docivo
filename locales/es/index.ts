@@ -1,6 +1,6 @@
-import architecture from './architecture.json';
 import cta from './cta.json';
 import dropzone from './dropzone.json';
+import faq from './faq.json';
 import footer from './footer.json';
 import hero from './hero.json';
 import howItWorks from './howItWorks.json';
@@ -13,15 +13,14 @@ import recentFiles from './recentFiles.json';
 import settings from './settings.json';
 import sidebar from './sidebar.json';
 import split from './split.json';
-import steps from './steps.json';
 import toolGrid from './toolGrid.json';
 import privacy from './privacy.json';
 import terms from './terms.json';
 
 export const es = {
-  architecture,
   cta,
   dropzone,
+  faq,
   footer,
   hero,
   howItWorks,
@@ -34,7 +33,6 @@ export const es = {
   settings,
   sidebar,
   split,
-  steps,
   toolGrid,
   privacy,
   terms

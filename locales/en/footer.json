@@ -12,12 +12,15 @@
         "ocr": "OCR PDF",
         "pdfToWord": "PDF to Word",
         "imageToPdf": "Image to PDF",
-        "architecture": "Architecture",
         "howItWorks": "How it works",
         "roadmap": "Roadmap",
         "contact": "Contact",
         "privacy": "Privacy Policy",
         "terms": "Terms of Service"
+    },
+    "notFound": {
+        "message": "This page doesn't exist or was moved.",
+        "back": "Go back home"
     },
     "copyright": "© 2026 Docivo. All rights reserved."
 }

@@ -1,0 +1,33 @@
+{
+  "title": "Preguntas frecuentes",
+  "items": [
+    {
+      "q": "¿Qué es Docivo?",
+      "a": "Docivo es un conjunto de herramientas PDF gratuitas que funcionan en tu navegador. Une, divide, convierte y aplica OCR a documentos sin instalar nada. Las herramientas locales procesan archivos completamente en tu dispositivo — nada se sube."
+    },
+    {
+      "q": "¿Mis archivos se suben a un servidor?",
+      "a": "Para herramientas locales (Unir, Dividir, Imagen a PDF): absolutamente no. Todo ocurre en tu navegador usando pdf-lib. Para herramientas en la nube (OCR, PDF a Word): los archivos se suben temporalmente, se procesan y se eliminan inmediatamente después de la entrega."
+    },
+    {
+      "q": "¿Qué formatos admite Docivo?",
+      "a": "Entrada PDF para todas las herramientas. Entrada de imagen (JPG, PNG, WebP) para Imagen a PDF. Formatos de salida: PDF, .docx (PDF a Word). OCR agrega una capa de texto buscable a PDFs existentes."
+    },
+    {
+      "q": "¿Hay límite de tamaño de archivo?",
+      "a": "Las herramientas locales no tienen límite estricto — procesan lo que tu navegador pueda manejar. Las herramientas en la nube admiten archivos de hasta 50MB por subida. Estamos trabajando en aumentar este límite."
+    },
+    {
+      "q": "¿Necesito crear una cuenta?",
+      "a": "No. Todas las herramientas funcionan instantáneamente sin cuenta. Solo sube tu archivo y úsalo."
+    },
+    {
+      "q": "¿Qué pasa con la privacidad?",
+      "a": "Las herramientas locales son 100% privadas — tus archivos nunca salen de tu dispositivo. Las herramientas en la nube usan conexiones encriptadas, procesan tu archivo y lo eliminan inmediatamente. Nunca almacenamos, leemos ni compartemos tus documentos."
+    },
+    {
+      "q": "¿Puedo usar Docivo en móvil?",
+      "a": "Docivo funciona en cualquier navegador moderno, incluyendo Safari y Chrome móvil. La interfaz es totalmente responsive. Algunas funciones avanzadas funcionan mejor en escritorio."
+    }
+  ]
+}

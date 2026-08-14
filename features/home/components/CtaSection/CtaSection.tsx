@@ -3,59 +3,43 @@
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { useLanguage } from "@/hooks/useLanguage";
-import { CTA_CONFIG } from "./CtaSection.config";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import styles from "./CtaSection.module.css";
 
 export const CtaSection = () => {
     const { t } = useLanguage();
     const strings = t.cta;
+    const [cardRef, cardRevealed] = useScrollReveal<HTMLDivElement>();
 
     return (
-        <section className={styles.section}>
+        <section className={`${styles.section} dark:bg-surface-900 dark:border-surface-300`} aria-labelledby="cta-title">
             <div className="mx-auto max-w-7xl">
-                <div className={`${styles.ctaCard} ${styles.animFadeUp}`}>
-                    <div className={styles.glow} />
+                <div
+                    ref={cardRef}
+                    className={`${styles.ctaCard} ${cardRevealed ? styles.revealed : ""} dark:bg-surface-900 dark:border-surface-300`}
+                >
+                    {/* Decorative orbs */}
+                    <div className={`${styles.orb} ${styles.orb1}`} aria-hidden="true" />
+                    <div className={`${styles.orb} ${styles.orb2}`} aria-hidden="true" />
 
-                    <div className="z-10 relative mx-auto max-w-2xl text-center">
-                        <div className="inline-flex items-center gap-2 bg-white/10 mb-6 px-3 py-1 border border-white/10 rounded-full">
-                            <span className="font-semibold text-white/70 text-xs tracking-wide">
-                                Docivo
-                            </span>
-                        </div>
+                    <h2 className={`${styles.title} dark:text-surface-100`} id="cta-title">
+                        <span className={`${styles.gradientText} dark:bg-gradient-to-r dark:from-brand-200 dark:to-accent`}>{strings.title}</span>
+                    </h2>
 
-                        <h2 className="font-extrabold text-white text-5xl md:text-7xl tracking-tighter">
-                            {strings.title}
-                        </h2>
+                    <p className={`${styles.subtitle} dark:text-surface-300`}>
+                        {strings.subtitle}
+                    </p>
 
-                        <p className="mx-auto mt-4 max-w-md text-surface-300 text-base leading-relaxed">
-                            {strings.subtitle}
-                        </p>
+                    <div className={styles.actions}>
+                        <Link href="/dashboard" className={`${styles.primaryBtn} dark:bg-surface-0 dark:text-surface-900 dark:shadow-white/15`} aria-label="Start using Docivo tools">
+                            {strings.buttons.primary}
+                            <Icon icon="solar:arrow-right-linear" width="16" />
+                        </Link>
 
-                        <div className="flex sm:flex-row flex-col justify-center items-center gap-4 mt-10">
-                            <Link
-                                href={CTA_CONFIG.links.primary}
-                                className={`${styles.primaryBtn} group`}
-                            >
-                                {strings.buttons.primary}
-                                <Icon
-                                    icon={CTA_CONFIG.icons.arrowRight}
-                                    width="16"
-                                    className="transition-transform duration-300 group-hover:translate-x-1"
-                                />
-                            </Link>
-
-                            <Link
-                                href={CTA_CONFIG.links.secondary}
-                                className={`${styles.secondaryBtn} group`}
-                            >
-                                {strings.buttons.secondary}
-                                <Icon
-                                    icon={CTA_CONFIG.icons.arrowRight}
-                                    width="15"
-                                    className="transition-transform duration-300 group-hover:translate-x-1"
-                                />
-                            </Link>
-                        </div>
+                        <Link href="/dashboard" className={`${styles.secondaryBtn} dark:text-surface-200 dark:hover:text-surface-900 dark:hover:border-surface-100 dark:hover:bg-surface-100`} aria-label="Learn more about Docivo">
+                            {strings.buttons.secondary}
+                            <Icon icon="solar:arrow-right-linear" width="15" />
+                        </Link>
                     </div>
                 </div>
             </div>

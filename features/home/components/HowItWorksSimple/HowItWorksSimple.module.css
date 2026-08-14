@@ -1,0 +1,264 @@
+.section {
+    padding: 5rem 1.5rem;
+    background: var(--color-surface-100);
+    overflow: hidden;
+    border-top: 1px solid var(--color-surface-200);
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: 7rem 1.5rem;
+    }
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    color: var(--color-surface-900);
+    letter-spacing: -0.01em;
+}
+
+.titleGradient {
+    background: linear-gradient(135deg, var(--color-brand-400) 0%, var(--color-brand-700) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+    }
+}
+
+.subtitle {
+    margin-top: 1rem;
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-surface-500);
+    max-width: 32rem;
+}
+
+/* ── Logo strip ───────────────────────────────── */
+
+.logoStrip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    padding: 1rem 1.5rem;
+    background: color-mix(in srgb, var(--color-surface-0) 60%, transparent);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-surface-200);
+    border-radius: 9999px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logoStrip img {
+    height: 1.5rem;
+    width: auto;
+}
+
+.logoStripText {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--color-surface-900);
+    letter-spacing: -0.035em;
+}
+
+/* ── Timeline ────────────────────────────────── */
+
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem 0;
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .timeline {
+        gap: 4rem;
+        padding: 2rem 0;
+    }
+}
+
+/* Gradient vertical line */
+.line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2rem;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--color-surface-200) 12%,
+        var(--color-brand-300) 50%,
+        var(--color-surface-200) 88%,
+        transparent 100%
+    );
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.line.revealed {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+@media (min-width: 768px) {
+    .line {
+        left: 50%;
+        transform: translateX(-50%) scaleY(0);
+    }
+
+    .line.revealed {
+        transform: translateX(-50%) scaleY(1);
+    }
+}
+
+/* ── Step ────────────────────────────────────── */
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .step {
+        gap: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .step:nth-child(odd) {
+        flex-direction: row;
+        padding-right: calc(50% + 2rem);
+    }
+
+    .step:nth-child(even) {
+        flex-direction: row-reverse;
+        padding-left: calc(50% + 2rem);
+    }
+}
+
+/* ── Dot / connector ─────────────────────────── */
+
+.dotWrap {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.dot {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-brand-50), var(--color-brand-100));
+    border: 2px solid var(--color-brand-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-brand-500);
+    box-shadow: 0 0 0 4px var(--color-surface-50), 0 4px 16px rgba(0, 0, 238, 0.12);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.step:hover .dot {
+    border-color: var(--color-brand-500);
+    box-shadow: 0 0 0 4px var(--color-surface-50), 0 4px 20px rgba(0, 0, 238, 0.2);
+}
+
+/* ── Card ────────────────────────────────────── */
+
+.card {
+    flex: 1;
+    padding: 1.5rem;
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: card-float 6s ease-in-out infinite;
+}
+
+.card:nth-child(1) { animation-delay: 0s; }
+.card:nth-child(2) { animation-delay: 2s; }
+.card:nth-child(3) { animation-delay: 4s; }
+
+@keyframes card-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@media (min-width: 768px) {
+    .card {
+        padding: 2rem;
+        max-width: 24rem;
+    }
+}
+
+.step:hover .card {
+    border-color: var(--color-brand-300);
+    box-shadow: 0 12px 40px -12px rgba(0, 0, 238, 0.1);
+    transform: translateY(-4px);
+}
+
+.step:hover .card {
+    animation-play-state: paused;
+}
+
+.cardNumber {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--color-surface-200);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+}
+
+.cardTitle {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-surface-900);
+    margin-bottom: 0.5rem;
+}
+
+.cardDesc {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-surface-500);
+}
+
+/* ── Stagger reveal delays ───────────────────── */
+
+.reveal-delay-0 {
+    transition-delay: 0ms;
+}
+
+.reveal-delay-1 {
+    transition-delay: 120ms;
+}
+
+.reveal-delay-2 {
+    transition-delay: 240ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        animation: none;
+    }
+}

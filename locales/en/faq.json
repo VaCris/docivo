@@ -1,0 +1,33 @@
+{
+  "title": "Frequently Asked Questions",
+  "items": [
+    {
+      "q": "What is Docivo?",
+      "a": "Docivo is a free suite of PDF tools that run in your browser. Merge, split, convert, and OCR documents without installing anything. Local tools process files entirely on your device — nothing is uploaded."
+    },
+    {
+      "q": "Are my files uploaded to a server?",
+      "a": "For local tools (Merge, Split, Image to PDF): absolutely not. Everything happens in your browser using pdf-lib. For cloud tools (OCR, PDF to Word): files are uploaded temporarily, processed, and deleted immediately after delivery."
+    },
+    {
+      "q": "What formats does Docivo support?",
+      "a": "PDF input for all tools. Image input (JPG, PNG, WebP) for Image to PDF. Output formats: PDF, .docx (PDF to Word). OCR adds a searchable text layer to existing PDFs."
+    },
+    {
+      "q": "Is there a file size limit?",
+      "a": "Local tools have no strict limit — they process whatever your browser can handle. Cloud tools support files up to 50MB per upload. We're working on increasing this limit."
+    },
+    {
+      "q": "Do I need to create an account?",
+      "a": "No. All tools work instantly with no account. Just upload your file and use it."
+    },
+    {
+      "q": "What about privacy?",
+      "a": "Local tools are 100% private — files never leave your device. Cloud tools use encrypted connections, process your file, and delete it immediately. We never store, read, or share your documents."
+    },
+    {
+      "q": "Can I use Docivo on mobile?",
+      "a": "Docivo works on any modern browser, including mobile Safari and Chrome. The interface is fully responsive. Some advanced features work best on desktop."
+    }
+  ]
+}

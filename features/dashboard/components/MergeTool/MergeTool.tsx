@@ -86,7 +86,7 @@ export const MergeTool = () => {
                 </p>
             </div>
 
-            <div className="relative flex flex-col flex-1 bg-white shadow-sm p-6 border border-surface-200 rounded-2xl overflow-hidden">
+            <div className="relative flex flex-col flex-1 bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl overflow-hidden">
                 <div className="flex justify-between items-center mb-6">
                     <button
                         onClick={handleClear}
@@ -112,7 +112,7 @@ export const MergeTool = () => {
 
                             <button
                                 onClick={() => handleRemove(item.id)}
-                                className="-top-2 -right-2 z-10 absolute flex justify-center items-center bg-white opacity-0 group-hover:opacity-100 shadow-sm border border-surface-200 rounded-full w-6 h-6 text-surface-400 hover:text-red-600 transition-opacity"
+                                className="-top-2 -right-2 z-10 absolute flex justify-center items-center bg-surface-0 opacity-0 group-hover:opacity-100 shadow-sm border border-surface-200 rounded-full w-6 h-6 text-surface-400 hover:text-red-600 transition-opacity"
                             >
                                 <Icon icon="solar:close-circle-bold" width="16" />
                             </button>
@@ -164,7 +164,7 @@ export const MergeTool = () => {
                     <button
                         onClick={handleMerge}
                         disabled={isLoading}
-                        className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 shadow-brand-500/20 shadow-lg px-8 py-3 rounded-xl font-bold text-white text-sm active:scale-95 transition-all"
+                        className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 shadow-brand-500/20 shadow-lg px-8 py-3 rounded-xl font-sans font-bold text-white text-sm active:scale-95 transition-all"
                     >
                         <Icon icon="solar:layers-minimalistic-bold" width="18" />
                         {strings.actions.mergeButton}

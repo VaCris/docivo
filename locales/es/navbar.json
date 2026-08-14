@@ -3,9 +3,10 @@
     "links": {
         "tools": "Herramientas",
         "howItWorks": "Cómo funciona",
-        "architecture": "Arquitectura",
         "upload": "Subir",
-        "dashboard": "Panel"
+        "dashboard": "Panel",
+        "privacy": "Privacidad",
+        "terms": "Términos"
     },
     "actions": {
         "tryNow": "Pruébalo ahora",

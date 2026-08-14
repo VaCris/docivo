@@ -19,5 +19,15 @@
         "fileName2": "datos.pdf",
         "addMore": "Añadir más",
         "actionBtn": "Combinar 2 PDFs"
+    },
+    "panels": {
+        "engineTitle": "Estado del motor",
+        "engineSubtitle": "Nodos de procesamiento activos",
+        "localTools": "Herramientas locales",
+        "cloudTools": "Herramientas en la nube",
+        "workflowTitle": "Flujo de documentos",
+        "workflowSubtitle": "Elige una herramienta y procesa archivos de forma segura",
+        "encryptedTitle": "Cifrado de extremo a extremo",
+        "encryptedSubtitle": "Los archivos nunca salen de tu dispositivo"
     }
 }

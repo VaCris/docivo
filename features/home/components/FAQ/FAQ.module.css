@@ -1,0 +1,119 @@
+.section {
+    padding: 5rem 1.5rem;
+    background: var(--color-surface-0);
+    border-top: 1px solid var(--color-surface-200);
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: 7rem 1.5rem;
+    }
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    color: var(--color-surface-900);
+    letter-spacing: -0.01em;
+}
+
+.titleGradient {
+    background: linear-gradient(135deg, var(--color-brand-500) 0%, var(--color-brand-600) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.item {
+    background: var(--color-surface-0);
+    border: 1px solid var(--color-surface-200);
+    border-left: 3px solid transparent;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+.itemOpen {
+    border-color: var(--color-brand-500);
+    border-left-color: var(--color-brand-500);
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-surface-900);
+    text-align: left;
+    gap: 1rem;
+}
+
+.question:hover {
+    color: var(--color-brand-500);
+}
+
+.arrow {
+    flex-shrink: 0;
+    color: var(--color-surface-400);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.arrowOpen {
+    transform: rotate(180deg);
+    color: var(--color-brand-500);
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.answerOpen {
+    max-height: 200px;
+}
+
+.answer p {
+    padding: 0 1.5rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-surface-500);
+}
+
+.scroll-reveal.reveal-delay-0 {
+    transition-delay: 0ms;
+}
+
+.scroll-reveal.reveal-delay-1 {
+    transition-delay: 80ms;
+}
+
+.scroll-reveal.reveal-delay-2 {
+    transition-delay: 160ms;
+}
+
+.scroll-reveal.reveal-delay-3 {
+    transition-delay: 240ms;
+}

@@ -1,0 +1,111 @@
+.section {
+  position: relative;
+  padding: 5rem 1.5rem;
+  background: var(--color-surface-0);
+  border-top: 1px solid var(--color-surface-200);
+}
+
+@media (min-width: 768px) {
+  .section { padding: 7rem 1.5rem; }
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: var(--color-surface-900);
+}
+
+.titleGradient {
+  background: linear-gradient(135deg, var(--color-surface-600) 0%, var(--color-surface-900) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 768px) {
+  .title { font-size: 3.5rem; }
+}
+
+.subtitle {
+  margin-top: 1rem;
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-surface-500);
+  max-width: 36rem;
+}
+
+/* Chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: color-mix(in srgb, var(--color-surface-0) 70%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-surface-200);
+  border-radius: 20px;
+  padding: 1.25rem 1.5rem;
+  max-width: 340px;
+  flex: 1 1 280px;
+  animation: float var(--duration, 4s) ease-in-out infinite;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chip:hover {
+  border-color: var(--color-brand-300);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 238, 0.08);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.chipIcon {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 12px;
+  background: var(--color-surface-100);
+  color: var(--color-brand-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chipContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.chipTitle {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-surface-900);
+  margin-bottom: 0.25rem;
+}
+
+.chipDesc {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-surface-500);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip {
+    animation: none;
+  }
+}

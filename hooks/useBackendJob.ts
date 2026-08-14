@@ -106,7 +106,6 @@ export function useBackendJob() {
 
         setStatus("success");
       } catch (error) {
-        console.error("[Docivo Backend Job Error]:", error);
         setStatus("error");
       }
     },

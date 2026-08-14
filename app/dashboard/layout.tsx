@@ -6,7 +6,7 @@ import { Toaster } from "sileo";
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
         <LanguageProvider>
-            <div suppressHydrationWarning className="flex bg-surface-50 min-h-screen">
+            <div className="flex bg-surface-50 min-h-screen">
                 <Sidebar />
 
                 <main className="flex-1 ml-64 p-8 md:p-10">

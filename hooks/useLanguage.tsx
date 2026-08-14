@@ -37,15 +37,13 @@ export const LanguageProvider = ({
 }: {
     children: React.ReactNode;
 }) => {
-    const [currentLang, setCurrentLang] = useState<Language>("en");
+    const [currentLang, setCurrentLang] = useState<Language>(() => {
+        if (typeof window === "undefined") return "en";
 
-    useEffect(() => {
         const savedLang = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
 
-        if (isValidLanguage(savedLang)) {
-            setCurrentLang(savedLang);
-        }
-    }, []);
+        return isValidLanguage(savedLang) ? savedLang : "en";
+    });
 
     useEffect(() => {
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);

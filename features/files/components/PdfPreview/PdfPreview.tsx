@@ -73,16 +73,6 @@ export const PdfPreview = ({ file, page = 1, scale = 0.3 }: Props) => {
             } catch (err) {
                 if (!cancelled) {
                     setError(true);
-
-                    if (err instanceof Error) {
-                        console.error("[Docivo Preview Error]:", {
-                            message: err.message,
-                            name: err.name,
-                            stack: err.stack,
-                        });
-                    } else {
-                        console.error("[Docivo Preview Error]:", err);
-                    }
                 }
             }
         };

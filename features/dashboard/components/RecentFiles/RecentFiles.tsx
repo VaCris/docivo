@@ -24,7 +24,7 @@ export const RecentFiles = () => {
         .slice(0, 10);
 
     return (
-        <div className="bg-white shadow-sm border border-surface-200 rounded-2xl overflow-hidden">
+        <div className="bg-surface-0 shadow-sm border border-surface-200 rounded-2xl overflow-hidden">
             <div className="flex justify-between items-center bg-surface-0 px-6 py-5 border-surface-100 border-b">
                 <div>
                     <h2 className="font-bold text-surface-900 text-lg">{t.recentFiles.title}</h2>

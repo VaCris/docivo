@@ -2,8 +2,11 @@ export const NAVBAR_CONFIG = {
     navItems: [
         { id: 'tools', type: 'anchor', href: '#tools' },
         { id: 'howItWorks', type: 'anchor', href: '#details' },
-        { id: 'architecture', type: 'anchor', href: '#architecture' },
         { id: 'upload', type: 'route', href: '/dashboard' },
+    ],
+    footerItems: [
+        { id: 'privacy', type: 'route', href: '/privacy' },
+        { id: 'terms', type: 'route', href: '/terms' },
     ],
     icons: {
         arrowRight: 'solar:arrow-right-linear',

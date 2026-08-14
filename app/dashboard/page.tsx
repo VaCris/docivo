@@ -1,6 +1,12 @@
 import React from "react";
+import type { Metadata } from "next";
 
 import { RecentFiles } from "@/features/dashboard/components/RecentFiles/RecentFiles";
+
+export const metadata: Metadata = {
+  title: "Dashboard — Docivo",
+  description: "Gestiona tus archivos PDF recientes y accede a las herramientas de Docivo.",
+};
 
 export default function DashboardOverviewPage() {
     return (
