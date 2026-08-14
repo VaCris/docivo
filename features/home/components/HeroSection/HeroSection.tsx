@@ -86,11 +86,11 @@ export const HeroSection = () => {
                         ref={actionsRef}
                         className={`${styles.heroActions} ${actionsRevealed ? styles.revealed : ""}`}
                     >
-                        <Link href="/dashboard" className={styles.ctaPrimary}>
+                        <Link href="/dashboard" className={styles.ctaPrimary} aria-label="Start using Docivo tools">
                             {strings.buttons.primary}
                             <Icon icon="solar:arrow-right-linear" width="18" />
                         </Link>
-                        <Link href="#tools" className={styles.ctaSecondary}>
+                        <Link href="#tools" className={styles.ctaSecondary} aria-label="View available tools">
                             {strings.buttons.secondary}
                             <Icon icon="solar:arrow-down-linear" width="18" />
                         </Link>

@@ -68,6 +68,15 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
                         onDragOver={handleDragOver}
                         onDragLeave={handleDragLeave}
                         onDrop={handleDrop}
+                        role="button"
+                        tabIndex={0}
+                        aria-label="Upload files by clicking or dragging"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                handleClick();
+                            }
+                        }}
                         className={`relative flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-10 md:p-16 text-center cursor-pointer transition-all duration-300 ${isDragging
                                 ? styles.dropzoneActive
                                 : "border-surface-300 bg-white hover:border-surface-400 hover:bg-surface-50/50"

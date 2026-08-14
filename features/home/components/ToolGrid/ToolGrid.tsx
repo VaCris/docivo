@@ -59,6 +59,7 @@ export const ToolGrid = () => {
                 key={tool.id}
                 href={meta?.href ?? "/dashboard"}
                 className={`${styles.toolNode} scroll-reveal ${sectionRevealed ? "revealed" : ""} ${delayClass}`}
+                aria-label={`${toolContent.title} - ${toolContent.desc}`}
               >
                 <GlassPanel variant="subtle" className={styles.toolCard}>
                   <div className={styles.toolIconWrap}>

@@ -58,8 +58,11 @@ const FAQItem = ({ item, isOpen, onToggle, delayClass }: FAQItemProps) => {
             className={`${styles.item} ${isOpen ? styles.itemOpen : ""} scroll-reveal ${itemRevealed ? "revealed" : ""} ${delayClass}`}
         >
             <button
+                id={`faq-question-${item.q}`}
                 className={styles.question}
                 onClick={onToggle}
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${item.q}`}
             >
                 <span>{item.q}</span>
                 <Icon
@@ -69,7 +72,12 @@ const FAQItem = ({ item, isOpen, onToggle, delayClass }: FAQItemProps) => {
                 />
             </button>
 
-            <div className={`${styles.answer} ${isOpen ? styles.answerOpen : ""}`}>
+            <div
+                id={`faq-answer-${item.q}`}
+                className={`${styles.answer} ${isOpen ? styles.answerOpen : ""}`}
+                role="region"
+                aria-labelledby={`faq-question-${item.q}`}
+            >
                 <p>{item.a}</p>
             </div>
         </div>

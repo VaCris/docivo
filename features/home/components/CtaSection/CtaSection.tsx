@@ -31,12 +31,12 @@ export const CtaSection = () => {
                     </p>
 
                     <div className={styles.actions}>
-                        <Link href="/dashboard" className={styles.primaryBtn}>
+                        <Link href="/dashboard" className={styles.primaryBtn} aria-label="Start using Docivo tools">
                             {strings.buttons.primary}
                             <Icon icon="solar:arrow-right-linear" width="16" />
                         </Link>
 
-                        <Link href="/dashboard" className={styles.secondaryBtn}>
+                        <Link href="/dashboard" className={styles.secondaryBtn} aria-label="Learn more about Docivo">
                             {strings.buttons.secondary}
                             <Icon icon="solar:arrow-right-linear" width="15" />
                         </Link>

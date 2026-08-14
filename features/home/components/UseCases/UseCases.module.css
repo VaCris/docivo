@@ -107,3 +107,9 @@
   line-height: 1.5;
   color: #64748B;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .chip {
+    animation: none;
+  }
+}

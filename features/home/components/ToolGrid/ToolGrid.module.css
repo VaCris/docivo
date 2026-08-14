@@ -234,3 +234,9 @@
 .scroll-reveal.reveal-delay-3 { transition-delay: 240ms; }
 .scroll-reveal.reveal-delay-4 { transition-delay: 320ms; }
 .scroll-reveal.reveal-delay-5 { transition-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .comingSoonIcon {
+    animation: none;
+  }
+}
