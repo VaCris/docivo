@@ -1,4 +1,25 @@
 {
+    "simple": {
+        "title": "Cómo funciona",
+        "subtitle": "Tres pasos. Sin cuenta. Los archivos nunca salen de tu navegador en herramientas locales.",
+        "steps": [
+            {
+                "number": "01",
+                "title": "Sube tu archivo",
+                "desc": "Arrastra y suelta o haz clic para seleccionar. PDFs, imágenes, escaneos — los manejamos todos."
+            },
+            {
+                "number": "02",
+                "title": "Elige tu herramienta",
+                "desc": "Unir, dividir, convertir, OCR. Elige lo que necesites, ajusta configuración si quieres."
+            },
+            {
+                "number": "03",
+                "title": "Descarga el resultado",
+                "desc": "Tu archivo procesado está listo en segundos. Descárgalo al instante, sin esperas."
+            }
+        ]
+    },
     "title": "Cómo funciona cada herramienta",
     "subtitle": "Una mirada más detallada de lo que sucede detrás de escena cuando procesas un archivo.",
     "labels": {

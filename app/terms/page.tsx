@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { Navbar } from "@/components/layout/Navbar/Navbar";
@@ -11,12 +12,17 @@ export default function TermsPage() {
   const strings = t.terms;
 
   return (
-    <main className="relative flex flex-col bg-white min-h-screen">
+    <main className="relative flex flex-col bg-surface-0 min-h-screen">
+      <Head>
+        <title>Términos de Servicio — Docivo</title>
+        <meta name="description" content="Términos y condiciones de uso del servicio Docivo." />
+      </Head>
+
       <Navbar />
 
       <section className="relative flex-grow overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.08),transparent_32rem)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#ffffff,#f8fafc)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,var(--color-surface-0),var(--color-surface-50))] pointer-events-none" />
 
         <div className="relative mx-auto px-6 pt-32 md:pt-40 pb-20 max-w-4xl">
           <Link
@@ -28,17 +34,6 @@ export default function TermsPage() {
           </Link>
 
           <div className="mb-10">
-            <div className="inline-flex items-center gap-2 bg-white shadow-sm mb-5 px-3 py-1 border border-surface-200 rounded-full">
-              <Icon
-                icon="solar:document-text-linear"
-                width="14"
-                className="text-brand-600"
-              />
-              <span className="font-semibold text-surface-600 text-xs uppercase tracking-wide">
-                {strings.badge}
-              </span>
-            </div>
-
             <h1 className="font-extrabold text-surface-900 text-4xl md:text-5xl tracking-tight">
               {strings.title}
             </h1>
@@ -48,20 +43,18 @@ export default function TermsPage() {
             </p>
           </div>
 
-          <div className="bg-white/90 shadow-surface-200/40 shadow-xl backdrop-blur p-6 md:p-10 border border-surface-200 rounded-3xl">
-            <div className="space-y-8">
-              {strings.sections.map((section) => (
-                <section key={section.title}>
-                  <h2 className="mb-3 font-bold text-surface-900 text-xl">
-                    {section.title}
-                  </h2>
+          <div className="space-y-8">
+            {strings.sections.map((section) => (
+              <section key={section.title}>
+                <h2 className="mb-3 font-bold text-surface-900 text-xl">
+                  {section.title}
+                </h2>
 
-                  <p className="text-surface-600 text-sm md:text-base leading-relaxed">
-                    {section.body}
-                  </p>
-                </section>
-              ))}
-            </div>
+                <p className="text-surface-600 text-sm md:text-base leading-relaxed">
+                  {section.body}
+                </p>
+              </section>
+            ))}
           </div>
         </div>
       </section>

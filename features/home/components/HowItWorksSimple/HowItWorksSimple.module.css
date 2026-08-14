@@ -1,9 +1,8 @@
-@reference "../../../../app/globals.css";
-
 .section {
     padding: 5rem 1.5rem;
-    background: var(--color-surface-50);
+    background: var(--color-surface-100);
     overflow: hidden;
+    border-top: 1px solid var(--color-surface-200);
 }
 
 @media (min-width: 768px) {
@@ -14,12 +13,18 @@
 
 .title {
     font-family: var(--font-serif);
-    font-style: italic;
     font-weight: 400;
     font-size: 2.5rem;
     line-height: 1.1;
     color: var(--color-surface-900);
     letter-spacing: -0.01em;
+}
+
+.titleGradient {
+    background: linear-gradient(135deg, var(--color-brand-400) 0%, var(--color-brand-700) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 @media (min-width: 768px) {
@@ -30,10 +35,42 @@
 
 .subtitle {
     margin-top: 1rem;
+    font-family: var(--font-sans);
     font-size: 1.125rem;
     line-height: 1.7;
     color: var(--color-surface-500);
     max-width: 32rem;
+}
+
+/* ── Logo strip ───────────────────────────────── */
+
+.logoStrip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    padding: 1rem 1.5rem;
+    background: color-mix(in srgb, var(--color-surface-0) 60%, transparent);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-surface-200);
+    border-radius: 9999px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logoStrip img {
+    height: 1.5rem;
+    width: auto;
+}
+
+.logoStripText {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--color-surface-900);
+    letter-spacing: -0.035em;
 }
 
 /* ── Timeline ────────────────────────────────── */
@@ -99,7 +136,6 @@
     align-items: flex-start;
     gap: 1.25rem;
     position: relative;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 768px) {
@@ -117,33 +153,6 @@
     .step:nth-child(even) {
         flex-direction: row-reverse;
         padding-left: calc(50% + 2rem);
-    }
-}
-
-/* Float offsets for stagger */
-.float-offset-a {
-    transform: translateY(0);
-}
-
-.float-offset-b {
-    transform: translateY(0);
-}
-
-.scroll-reveal.float-offset-a.revealed {
-    transform: translateY(0);
-}
-
-.scroll-reveal.float-offset-b.revealed {
-    transform: translateY(0);
-}
-
-@media (min-width: 768px) {
-    .float-offset-a.revealed {
-        transform: translateY(0);
-    }
-
-    .float-offset-b.revealed {
-        transform: translateY(12px);
     }
 }
 
@@ -180,6 +189,17 @@
     flex: 1;
     padding: 1.5rem;
     position: relative;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: card-float 6s ease-in-out infinite;
+}
+
+.card:nth-child(1) { animation-delay: 0s; }
+.card:nth-child(2) { animation-delay: 2s; }
+.card:nth-child(3) { animation-delay: 4s; }
+
+@keyframes card-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
 
 @media (min-width: 768px) {
@@ -192,11 +212,15 @@
 .step:hover .card {
     border-color: var(--color-brand-300);
     box-shadow: 0 12px 40px -12px rgba(0, 0, 238, 0.1);
+    transform: translateY(-4px);
+}
+
+.step:hover .card {
+    animation-play-state: paused;
 }
 
 .cardNumber {
     font-family: var(--font-serif);
-    font-style: italic;
     font-size: 3.5rem;
     font-weight: 400;
     color: var(--color-surface-200);
@@ -205,6 +229,7 @@
 }
 
 .cardTitle {
+    font-family: var(--font-sans);
     font-weight: 700;
     font-size: 1.25rem;
     color: var(--color-surface-900);
@@ -212,6 +237,7 @@
 }
 
 .cardDesc {
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
     line-height: 1.7;
     color: var(--color-surface-500);
@@ -229,4 +255,10 @@
 
 .reveal-delay-2 {
     transition-delay: 240ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        animation: none;
+    }
 }

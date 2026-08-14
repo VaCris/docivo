@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { Navbar } from "@/components/layout/Navbar/Navbar";
@@ -12,6 +13,11 @@ export default function PrivacyPage() {
 
   return (
     <main className="relative flex flex-col bg-white min-h-screen">
+      <Head>
+        <title>Política de Privacidad — Docivo</title>
+        <meta name="description" content="Conoce cómo Docivo protege tu privacidad y maneja tus documentos PDF." />
+      </Head>
+
       <Navbar />
 
       <section className="relative flex-grow overflow-hidden">
@@ -28,17 +34,6 @@ export default function PrivacyPage() {
           </Link>
 
           <div className="mb-10">
-            <div className="inline-flex items-center gap-2 bg-white shadow-sm mb-5 px-3 py-1 border border-surface-200 rounded-full">
-              <Icon
-                icon="solar:shield-check-linear"
-                width="14"
-                className="text-brand-600"
-              />
-              <span className="font-semibold text-surface-600 text-xs uppercase tracking-wide">
-                {strings.badge}
-              </span>
-            </div>
-
             <h1 className="font-extrabold text-surface-900 text-4xl md:text-5xl tracking-tight">
               {strings.title}
             </h1>
@@ -48,20 +43,18 @@ export default function PrivacyPage() {
             </p>
           </div>
 
-          <div className="bg-white/90 shadow-surface-200/40 shadow-xl backdrop-blur p-6 md:p-10 border border-surface-200 rounded-3xl">
-            <div className="space-y-8">
-              {strings.sections.map((section) => (
-                <section key={section.title}>
-                  <h2 className="mb-3 font-bold text-surface-900 text-xl">
-                    {section.title}
-                  </h2>
+          <div className="space-y-8">
+            {strings.sections.map((section) => (
+              <section key={section.title}>
+                <h2 className="mb-3 font-bold text-surface-900 text-xl">
+                  {section.title}
+                </h2>
 
-                  <p className="text-surface-600 text-sm md:text-base leading-relaxed">
-                    {section.body}
-                  </p>
-                </section>
-              ))}
-            </div>
+                <p className="text-surface-600 text-sm md:text-base leading-relaxed">
+                  {section.body}
+                </p>
+              </section>
+            ))}
           </div>
         </div>
       </section>

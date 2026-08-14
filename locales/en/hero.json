@@ -19,5 +19,15 @@
         "fileName2": "data.pdf",
         "addMore": "Add more",
         "actionBtn": "Merge 2 PDFs"
+    },
+    "panels": {
+        "engineTitle": "Engine Status",
+        "engineSubtitle": "Active processing nodes",
+        "localTools": "Local tools",
+        "cloudTools": "Cloud tools",
+        "workflowTitle": "Document workflow",
+        "workflowSubtitle": "Choose a tool and process files securely",
+        "encryptedTitle": "End-to-end encrypted",
+        "encryptedSubtitle": "Files never leave your device"
     }
 }

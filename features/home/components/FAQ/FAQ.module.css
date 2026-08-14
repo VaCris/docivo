@@ -1,8 +1,7 @@
-@reference "../../../../app/globals.css";
-
 .section {
     padding: 5rem 1.5rem;
-    background: #F8FAFC;
+    background: var(--color-surface-0);
+    border-top: 1px solid var(--color-surface-200);
 }
 
 @media (min-width: 768px) {
@@ -13,12 +12,18 @@
 
 .title {
     font-family: var(--font-serif);
-    font-style: italic;
     font-weight: 400;
     font-size: 2.5rem;
     line-height: 1.1;
-    color: #0F172A;
+    color: var(--color-surface-900);
     letter-spacing: -0.01em;
+}
+
+.titleGradient {
+    background: linear-gradient(135deg, var(--color-brand-500) 0%, var(--color-brand-600) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 @media (min-width: 768px) {
@@ -34,15 +39,17 @@
 }
 
 .item {
-    background: #FFFFFF;
-    border: 1px solid #E2E8F0;
+    background: var(--color-surface-0);
+    border: 1px solid var(--color-surface-200);
+    border-left: 3px solid transparent;
     border-radius: 16px;
     overflow: hidden;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, border-left-color 0.3s ease;
 }
 
 .itemOpen {
-    border-color: #0000EE;
+    border-color: var(--color-brand-500);
+    border-left-color: var(--color-brand-500);
 }
 
 .question {
@@ -54,26 +61,27 @@
     background: none;
     border: none;
     cursor: pointer;
+    font-family: var(--font-sans);
     font-weight: 700;
     font-size: 1rem;
-    color: #0F172A;
+    color: var(--color-surface-900);
     text-align: left;
     gap: 1rem;
 }
 
 .question:hover {
-    color: #0000EE;
+    color: var(--color-brand-500);
 }
 
 .arrow {
     flex-shrink: 0;
-    color: #94A3B8;
+    color: var(--color-surface-400);
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .arrowOpen {
     transform: rotate(180deg);
-    color: #0000EE;
+    color: var(--color-brand-500);
 }
 
 .answer {
@@ -88,12 +96,24 @@
 
 .answer p {
     padding: 0 1.5rem 1.25rem;
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
     line-height: 1.7;
-    color: #64748B;
+    color: var(--color-surface-500);
 }
 
-.scroll-reveal.reveal-delay-0 { transition-delay: 0ms; }
-.scroll-reveal.reveal-delay-1 { transition-delay: 80ms; }
-.scroll-reveal.reveal-delay-2 { transition-delay: 160ms; }
-.scroll-reveal.reveal-delay-3 { transition-delay: 240ms; }
+.scroll-reveal.reveal-delay-0 {
+    transition-delay: 0ms;
+}
+
+.scroll-reveal.reveal-delay-1 {
+    transition-delay: 80ms;
+}
+
+.scroll-reveal.reveal-delay-2 {
+    transition-delay: 160ms;
+}
+
+.scroll-reveal.reveal-delay-3 {
+    transition-delay: 240ms;
+}

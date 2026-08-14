@@ -1,4 +1,25 @@
 {
+    "simple": {
+        "title": "How it works",
+        "subtitle": "Three steps. No account needed. Files never leave your browser for local tools.",
+        "steps": [
+            {
+                "number": "01",
+                "title": "Upload your file",
+                "desc": "Drag and drop or click to select. PDFs, images, scans — we handle them all."
+            },
+            {
+                "number": "02",
+                "title": "Choose your tool",
+                "desc": "Merge, split, convert, OCR. Pick what you need, adjust settings if you want."
+            },
+            {
+                "number": "03",
+                "title": "Download result",
+                "desc": "Your processed file is ready in seconds. Download it instantly, no waiting."
+            }
+        ]
+    },
     "title": "How each tool works",
     "subtitle": "A detailed look at what happens behind the scenes when you process a file.",
     "labels": {

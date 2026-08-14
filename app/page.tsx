@@ -7,7 +7,6 @@ import { HeroSection } from "@/features/home/components/HeroSection/HeroSection"
 import { ToolGrid } from "@/features/home/components/ToolGrid/ToolGrid";
 import { HowItWorksSimple } from "@/features/home/components/HowItWorksSimple/HowItWorksSimple";
 import { UseCases } from "@/features/home/components/UseCases/UseCases";
-import { Testimonials } from "@/features/home/components/Testimonials/Testimonials";
 import { FAQ } from "@/features/home/components/FAQ/FAQ";
 import { CtaSection } from "@/features/home/components/CtaSection/CtaSection";
 
@@ -24,7 +23,6 @@ export default function HomePage() {
         <HowItWorksSimple />
         <UseCases />
         <DropZone />
-        <Testimonials />
         <FAQ />
         <CtaSection />
       </div>

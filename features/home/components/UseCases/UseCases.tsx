@@ -17,14 +17,16 @@ export const UseCases = () => {
   const [titleRef, titleRevealed] = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} dark:bg-surface-950 dark:border-surface-300`}>
       <div className="mx-auto max-w-7xl">
         <div
           ref={titleRef}
           className={`mb-16 flex flex-col items-center text-center scroll-reveal ${titleRevealed ? "revealed" : ""}`}
         >
-          <h2 className={styles.title}>Built for everything you process</h2>
-          <p className={styles.subtitle}>
+          <h2 className={`${styles.title} dark:text-surface-100`}>
+            <span className={styles.titleGradient}>Built for everything you process</span>
+          </h2>
+          <p className={`${styles.subtitle} dark:text-surface-400`}>
             From design assets to legal docs, Docivo keeps every workflow simple.
           </p>
         </div>
@@ -42,22 +44,22 @@ export const UseCases = () => {
 const Chip = ({ useCase, index }: { useCase: typeof USE_CASES[number]; index: number }) => {
   const [ref, revealed] = useScrollReveal<HTMLDivElement>();
 
-  return (
-    <div
-      ref={ref}
-      className={`${styles.chip} glass-hover scroll-reveal ${revealed ? "revealed" : ""}`}
-      style={{
-        animationDelay: `${index * 0.08}s`,
-        animationDuration: `${3 + (index % 3)}s`,
-      }}
-    >
-      <div className={styles.chipIcon}>
-        <Icon icon={useCase.icon} width="24" />
-      </div>
-      <div className={styles.chipContent}>
-        <h3 className={styles.chipTitle}>{useCase.title}</h3>
-        <p className={styles.chipDesc}>{useCase.desc}</p>
-      </div>
-    </div>
-  );
+    return (
+        <div
+          ref={ref}
+          className={`${styles.chip} glass-hover scroll-reveal ${revealed ? "revealed" : ""} dark:bg-surface-800/60 dark:border-surface-300`}
+          style={{
+            animationDelay: `${index * 0.08}s`,
+            animationDuration: `${3 + (index % 3)}s`,
+          }}
+        >
+          <div className={`${styles.chipIcon} dark:bg-surface-700/50`}>
+            <Icon icon={useCase.icon} width="24" />
+          </div>
+          <div className={styles.chipContent}>
+            <h3 className={`${styles.chipTitle} dark:text-surface-100`}>{useCase.title}</h3>
+            <p className={`${styles.chipDesc} dark:text-surface-400`}>{useCase.desc}</p>
+          </div>
+        </div>
+    );
 };

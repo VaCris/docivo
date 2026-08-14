@@ -26,17 +26,19 @@ export const ToolGrid = () => {
   const [sectionRef, sectionRevealed] = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section id="tools" className={styles.section}>
+    <section id="tools" className={`${styles.section} dark:bg-surface-900 dark:border-surface-300`}>
       <div className="mx-auto max-w-7xl">
         <div
           ref={sectionRef}
           className={`mb-16 flex flex-col items-center text-center scroll-reveal ${sectionRevealed ? "revealed" : ""}`}
         >
           <div className={styles.sectionBadge}>
-            <Icon icon="solar:widget-4-linear" width="14" className="text-[#1E3A8A]" />
+            <Icon icon="solar:widget-4-linear" width="14" className="text-brand-600" />
             {strings.badge}
           </div>
-          <h2 className={styles.sectionTitle}>{strings.title}</h2>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionTitleGradient}>{strings.title}</span>
+          </h2>
           <p className={styles.sectionSubtitle}>{strings.subtitle}</p>
         </div>
 
@@ -61,19 +63,19 @@ export const ToolGrid = () => {
                 className={`${styles.toolNode} scroll-reveal ${sectionRevealed ? "revealed" : ""} ${delayClass}`}
                 aria-label={`${toolContent.title} - ${toolContent.desc}`}
               >
-                <GlassPanel variant="subtle" className={styles.toolCard}>
-                  <div className={styles.toolIconWrap}>
+                <GlassPanel variant="subtle" className={`${styles.toolCard} dark:bg-surface-800/60`}>
+                  <div className={`${styles.toolIconWrap} dark:bg-surface-700/50 dark:border-surface-300`}>
                     <Icon icon={tool.icon} width="24" />
                   </div>
-                  <span className={styles.toolLabel}>{toolContent.title}</span>
+                  <span className={`${styles.toolLabel} dark:text-surface-100`}>{toolContent.title}</span>
                 </GlassPanel>
 
                 {/* Tooltip */}
-                <div className={styles.tooltip}>
-                  <p className={styles.tooltipTitle}>{toolContent.title}</p>
-                  <p className={styles.tooltipDesc}>{toolContent.desc}</p>
+                <div className={`${styles.tooltip} dark:bg-surface-800 dark:border-surface-300 dark:shadow-black/40`}>
+                  <p className={`${styles.tooltipTitle} dark:text-surface-100`}>{toolContent.title}</p>
+                  <p className={`${styles.tooltipDesc} dark:text-surface-400`}>{toolContent.desc}</p>
                   {meta && (
-                    <span className={`${styles.tooltipBadge} ${meta.badge === "local" ? styles.badgeLocal : styles.badgeCloud}`}>
+                    <span className={`${styles.tooltipBadge} ${meta.badge === "local" ? styles.badgeLocal : styles.badgeCloud} dark:bg-surface-700 ${meta.badge === "local" ? "dark:text-brand-400" : "dark:text-brand-300"}`}>
                       {strings.meta[meta.badge]}
                     </span>
                   )}

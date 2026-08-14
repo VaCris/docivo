@@ -1,13 +1,8 @@
-@reference "../../../../app/globals.css";
-
 .section {
   position: relative;
   padding: 5rem 1.5rem;
-  background: #FFFFFF;
-}
-
-:global(html.dark) .section {
-  background: #020617;
+  background: var(--color-surface-0);
+  border-top: 1px solid var(--color-surface-200);
 }
 
 @media (min-width: 768px) {
@@ -16,14 +11,18 @@
 
 .title {
   font-family: var(--font-serif);
-  font-style: italic;
   font-weight: 400;
   font-size: 2.5rem;
   line-height: 1.1;
-  color: #0F172A;
+  color: var(--color-surface-900);
 }
 
-:global(html.dark) .title { color: #F1F5F9; }
+.titleGradient {
+  background: linear-gradient(135deg, var(--color-surface-600) 0%, var(--color-surface-900) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 @media (min-width: 768px) {
   .title { font-size: 3.5rem; }
@@ -31,9 +30,10 @@
 
 .subtitle {
   margin-top: 1rem;
+  font-family: var(--font-sans);
   font-size: 1.125rem;
   line-height: 1.7;
-  color: #64748B;
+  color: var(--color-surface-500);
   max-width: 36rem;
 }
 
@@ -51,19 +51,20 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  background: rgba(255, 255, 255, 0.7);
+  background: color-mix(in srgb, var(--color-surface-0) 70%, transparent);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.6);
+  border: 1px solid var(--color-surface-200);
   border-radius: 20px;
   padding: 1.25rem 1.5rem;
   max-width: 340px;
   flex: 1 1 280px;
   animation: float var(--duration, 4s) ease-in-out infinite;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-:global(html.dark) .chip {
-  background: rgba(30, 41, 59, 0.7);
-  border-color: rgba(51, 65, 85, 0.5);
+.chip:hover {
+  border-color: var(--color-brand-300);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 238, 0.08);
 }
 
 @keyframes float {
@@ -76,16 +77,11 @@
   width: 3rem;
   height: 3rem;
   border-radius: 12px;
-  background: #F1F5F9;
-  color: #1E3A8A;
+  background: var(--color-surface-100);
+  color: var(--color-brand-800);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-:global(html.dark) .chipIcon {
-  background: rgba(30, 58, 138, 0.2);
-  color: #60A5FA;
 }
 
 .chipContent {
@@ -94,18 +90,18 @@
 }
 
 .chipTitle {
+  font-family: var(--font-sans);
   font-weight: 700;
   font-size: 1rem;
-  color: #0F172A;
+  color: var(--color-surface-900);
   margin-bottom: 0.25rem;
 }
 
-:global(html.dark) .chipTitle { color: #F1F5F9; }
-
 .chipDesc {
+  font-family: var(--font-sans);
   font-size: 0.875rem;
   line-height: 1.5;
-  color: #64748B;
+  color: var(--color-surface-500);
 }
 
 @media (prefers-reduced-motion: reduce) {
