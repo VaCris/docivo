@@ -1,4 +1,4 @@
-const baseURL = process.env.NEXT_PUBLIC_API_URL || "https://docivo-api.studios-tkoh.online/api/v1";
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 if (!baseURL) {
     throw new Error("NEXT_PUBLIC_API_URL is not defined");
