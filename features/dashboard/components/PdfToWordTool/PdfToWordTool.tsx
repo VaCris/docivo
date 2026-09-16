@@ -29,7 +29,7 @@ export const PdfToWordTool = () => {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100vh-8rem)]">
+        <div className="tool-accent-word flex flex-col h-[calc(100vh-8rem)]">
             <div className="mb-8">
                 <h1 className="font-extrabold text-surface-900 text-2xl md:text-3xl tracking-tight">
                     {strings.header.title}
@@ -57,11 +57,9 @@ export const PdfToWordTool = () => {
                         <>
                             <div className="top-6 right-6 left-6 z-10 absolute flex justify-between items-center bg-surface-0 shadow-sm p-4 border border-surface-200 rounded-xl">
                                 <div className="flex items-center gap-3 overflow-hidden">
-                                    <Icon
-                                        icon="solar:file-bold-duotone"
-                                        width="24"
-                                        className="text-brand-600 shrink-0"
-                                    />
+                                    <div className="dashboard-tool-accent-surface flex justify-center items-center border rounded-lg w-9 h-9 shrink-0">
+                                        <Icon icon="solar:file-bold-duotone" width="22" />
+                                    </div>
                                     <div className="truncate">
                                         <p className="font-medium text-surface-500 text-xs">
                                             {strings.workspace.fileLoaded}
@@ -74,7 +72,7 @@ export const PdfToWordTool = () => {
 
                                 <button
                                     onClick={() => setFile(null)}
-                                    className="bg-surface-50 px-3 py-1.5 rounded-lg font-sans font-bold text-surface-500 hover:text-brand-600 text-xs transition-colors shrink-0"
+                                    className="dashboard-tool-accent-text bg-surface-50 px-3 py-1.5 rounded-lg font-sans font-bold text-xs transition-colors shrink-0"
                                 >
                                     {strings.workspace.changeFile}
                                 </button>
@@ -89,8 +87,8 @@ export const PdfToWordTool = () => {
                                     className="text-surface-300"
                                 />
 
-                                <div className="relative flex flex-col justify-center items-center bg-surface-0 shadow-md border border-brand-200 rounded-xl w-24 h-32 text-blue-600">
-                                    <span className="top-2 right-2 absolute bg-blue-100 px-1.5 py-0.5 rounded font-bold text-[10px] text-blue-700">
+                                <div className="dashboard-tool-accent-surface relative flex flex-col justify-center items-center shadow-md border rounded-xl w-24 h-32">
+                                    <span className="top-2 right-2 absolute bg-surface-0/80 px-1.5 py-0.5 border border-surface-200 rounded font-bold text-[10px]">
                                         DOCX
                                     </span>
                                     <Icon icon="solar:document-bold" width="48" />
@@ -100,9 +98,9 @@ export const PdfToWordTool = () => {
                     )}
                 </div>
 
-                <div className="flex flex-col bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80 shrink-0">
+                <div className="dashboard-panel flex flex-col shadow-sm p-6 border rounded-2xl w-full lg:w-80 shrink-0">
                     <h3 className="flex items-center gap-2 mb-6 font-bold text-surface-800 text-base">
-                        <Icon icon="solar:settings-bold-duotone" width="20" className="text-surface-400" />
+                        <Icon icon="solar:settings-bold-duotone" width="20" className="dashboard-tool-accent-text" />
                         {strings.settings.title}
                     </h3>
 
@@ -116,11 +114,7 @@ export const PdfToWordTool = () => {
                                 {(["exact", "flowing"] as const).map((mode) => (
                                     <label
                                         key={mode}
-                                        className={`flex flex-col gap-1 p-4 rounded-xl border cursor-pointer transition-colors ${
-                                            layoutMode === mode
-                                                ? "border-brand-500 bg-brand-50 shadow-sm"
-                                                : "border-surface-200 hover:bg-surface-50"
-                                        }`}
+                                        className={`flex flex-col gap-1 p-4 rounded-xl border cursor-pointer transition-colors ${layoutMode === mode ? "dashboard-tool-choice-selected shadow-sm" : "border-surface-200 hover:bg-surface-50"}`}
                                     >
                                         <div className="flex items-center gap-2">
                                             <input
@@ -131,13 +125,7 @@ export const PdfToWordTool = () => {
                                                 onChange={() => setLayoutMode(mode)}
                                                 className="focus:ring-brand-500 text-brand-600"
                                             />
-                                            <span
-                                                className={`text-sm font-bold ${
-                                                    layoutMode === mode
-                                                        ? "text-brand-900"
-                                                        : "text-surface-800"
-                                                }`}
-                                            >
+                                            <span className={`text-sm font-bold ${layoutMode === mode ? "dashboard-tool-accent-text" : "text-surface-800"}`}>
                                                 {strings.settings.flowOptions[mode].title}
                                             </span>
                                         </div>
@@ -154,7 +142,7 @@ export const PdfToWordTool = () => {
                         <button
                             onClick={handleConvert}
                             disabled={!file || isLoading}
-                            className="inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 shadow-blue-600/20 shadow-lg px-6 py-3.5 rounded-xl w-full font-sans font-bold text-white text-sm active:scale-95 transition-all disabled:cursor-not-allowed"
+                            className="dashboard-primary-action px-6 py-3.5 rounded-xl w-full font-sans font-bold text-sm"
                         >
                             <Icon icon="solar:file-text-bold" width="18" />
                             {strings.actions.convertButton}
