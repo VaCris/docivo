@@ -60,11 +60,18 @@ export function useClientMerge() {
         const a = document.createElement("a");
         a.href = url;
         a.download = `docivo-${jobId}.pdf`;
-        a.click();
+
+        const triggerDownload = () => a.click();
+
+        if (progress?.onSuccess) {
+          await progress.onSuccess(triggerDownload);
+        } else {
+          triggerDownload();
+        }
+
         setTimeout(() => URL.revokeObjectURL(url), 1000);
 
         setStatus("success");
-        progress?.onSuccess?.();
         return true;
       } catch {
         setStatus("error");
