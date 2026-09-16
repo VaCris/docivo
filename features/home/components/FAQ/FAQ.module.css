@@ -20,7 +20,7 @@
 }
 
 .titleGradient {
-    background: linear-gradient(135deg, var(--color-brand-500) 0%, var(--color-brand-600) 100%);
+    background: linear-gradient(135deg, var(--color-brand-display) 0%, var(--color-accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -44,12 +44,16 @@
     border-left: 3px solid transparent;
     border-radius: 16px;
     overflow: hidden;
-    transition: border-color 0.3s ease, border-left-color 0.3s ease;
+    transition: border-color 0.3s ease, border-left-color 0.3s ease, background-color 0.3s ease;
+}
+
+.item:hover {
+    background: var(--color-surface-50);
 }
 
 .itemOpen {
-    border-color: var(--color-brand-500);
-    border-left-color: var(--color-brand-500);
+    border-color: var(--color-brand-display);
+    border-left-color: var(--color-brand-display);
 }
 
 .question {
@@ -70,7 +74,7 @@
 }
 
 .question:hover {
-    color: var(--color-brand-500);
+    color: var(--color-brand-display);
 }
 
 .arrow {
@@ -81,7 +85,7 @@
 
 .arrowOpen {
     transform: rotate(180deg);
-    color: var(--color-brand-500);
+    color: var(--color-brand-display);
 }
 
 .answer {

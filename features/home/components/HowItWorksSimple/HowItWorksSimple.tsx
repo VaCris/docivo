@@ -25,20 +25,20 @@ export const HowItWorksSimple = () => {
     const [timelineRef, timelineRevealed] = useScrollReveal<HTMLDivElement>();
 
     return (
-        <section className={`${styles.section} dark:bg-surface-800 dark:border-surface-300`}>
+        <section className={styles.section}>
             <div className="mx-auto max-w-7xl">
                 <div
                     ref={headerRef}
                     className={`mb-8 flex flex-col items-center text-center scroll-reveal ${headerRevealed ? "revealed" : ""}`}
                 >
-                    <div className={`${styles.logoStrip}`}>
+                    <div className={styles.logoStrip}>
                         <img src="/images/Logo.png" alt="Docivo" className="h-6 w-auto" />
-                        <span className={`${styles.logoStripText} dark:text-surface-100`}>Docivo</span>
+                        <span className={styles.logoStripText}>Docivo</span>
                     </div>
-                    <h2 className={`${styles.title} dark:text-surface-100`}>
+                    <h2 className={styles.title}>
                         <span className={styles.titleGradient}>{strings.title}</span>
                     </h2>
-                    <p className={`${styles.subtitle} dark:text-surface-400`}>
+                    <p className={styles.subtitle}>
                         {strings.subtitle}
                     </p>
                 </div>
@@ -58,15 +58,15 @@ export const HowItWorksSimple = () => {
                             className={`${styles.step} scroll-reveal ${timelineRevealed ? "revealed" : ""} ${REVEAL_DELAYS[index] ?? ""}`}
                         >
                             <div className={styles.dotWrap}>
-                                <div className={`${styles.dot} dark:bg-gradient-to-br dark:from-brand-900 dark:to-brand-800 dark:border-brand-500 dark:text-brand-200 dark:shadow-brand-500/25`}>
+                                <div className={styles.dot}>
                                     <Icon icon={STEP_ICONS[index] ?? STEP_ICONS[0]} width="20" />
                                 </div>
                             </div>
 
-                            <GlassPanel variant="light" className={`${styles.card} dark:bg-surface-800/60`}>
-                                <span className={`${styles.cardNumber} dark:text-surface-400`}>{step.number}</span>
-                                <h3 className={`${styles.cardTitle} dark:text-surface-100`}>{step.title}</h3>
-                                <p className={`${styles.cardDesc} dark:text-surface-400`}>{step.desc}</p>
+                            <GlassPanel variant="light" className={styles.card}>
+                                <span className={styles.cardNumber}>{step.number}</span>
+                                <h3 className={styles.cardTitle}>{step.title}</h3>
+                                <p className={styles.cardDesc}>{step.desc}</p>
                             </GlassPanel>
                         </div>
                     ))}

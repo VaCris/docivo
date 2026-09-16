@@ -30,7 +30,6 @@
     }
 }
 
-/* Decorative orbs */
 .orb {
     position: absolute;
     border-radius: 50%;
@@ -52,7 +51,7 @@
 .orb2 {
     width: 250px;
     height: 250px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.3) 0%, transparent 70%);
     bottom: -60px;
     left: -40px;
     animation-delay: 2s;
@@ -87,7 +86,7 @@
 }
 
 .gradientText {
-    background: linear-gradient(135deg, var(--color-brand-600) 0%, var(--color-accent) 100%);
+    background: linear-gradient(135deg, var(--color-brand-display) 0%, var(--color-accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -133,12 +132,12 @@
     cursor: pointer;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 0 20px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 0 20px rgba(15, 23, 42, 0.2);
 }
 
 .primaryBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.35);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.3);
 }
 
 .secondaryBtn {
@@ -162,6 +161,7 @@
 .secondaryBtn:hover {
     border-color: var(--color-surface-500);
     color: var(--color-surface-900);
+    background: var(--color-surface-100);
     transform: translateY(-2px);
 }
 
