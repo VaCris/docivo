@@ -83,8 +83,7 @@ export function useToolProcessFeedback(messages: ToolFeedbackMessages) {
 
     const fail = useCallback(() => {
         clearDismissTimer();
-        setState({ stage: "error", message: "" });
-        queueMicrotask(() => setState(IDLE_STATE));
+        setState(IDLE_STATE);
     }, [clearDismissTimer]);
 
     const reset = useCallback(() => {
