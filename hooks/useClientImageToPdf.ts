@@ -9,35 +9,31 @@ import {
 } from "@/services/pdf/image-to-pdf.client";
 import { useLanguage } from "@/hooks/useLanguage";
 import { jobStorage } from "@/utils/jobStorage";
+import type { ToolProgressCallbacks } from "@/hooks/useToolProcessFeedback";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const SILEO_STYLE = {
-    fill: "#FFFFFF",
-    roundness: 16,
-    styles: {
-        title: "text-slate-900! font-semibold",
-        description: "text-slate-500!",
-        badge: "bg-slate-100! text-slate-600! border border-slate-200/50!",
-        button: "bg-[#1E3A8A]! text-white! hover:bg-[#1E3A8A]/90!",
-    },
-} as const;
+const sleep = (ms: number) =>
+    new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 export function useClientImageToPdf() {
     const [status, setStatus] = useState<Status>("idle");
     const { t } = useLanguage();
 
     const run = useCallback(
-        async (files: File[], options: ImageToPdfOptions) => {
+        async (
+            files: File[],
+            options: ImageToPdfOptions,
+            progress?: ToolProgressCallbacks
+        ) => {
             const strings = t.imageToPdf.notifications;
 
             if (files.length === 0) {
                 sileo.error({
                     title: strings.validation_error,
                     description: strings.validation_desc,
-                    ...SILEO_STYLE,
                 });
-                return;
+                return false;
             }
 
             const jobId = crypto.randomUUID();
@@ -52,44 +48,43 @@ export function useClientImageToPdf() {
             });
 
             setStatus("loading");
+            progress?.onStarting?.();
 
             try {
+                await sleep(350);
+                progress?.onProcessing?.();
                 jobStorage.updateStatus(jobId, "started");
 
-                await sileo.promise(
-                    (async () => {
-                        const blob = await imagesToPdf(files, options);
+                const [blob] = await Promise.all([
+                    imagesToPdf(files, options),
+                    sleep(450),
+                ]);
 
-                        const url = URL.createObjectURL(blob);
-                        const a = document.createElement("a");
+                progress?.onGenerating?.();
+                await sleep(280);
 
-                        a.href = url;
-                        a.download = `docivo-${jobId}.pdf`;
-                        a.click();
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
 
-                        setTimeout(() => URL.revokeObjectURL(url), 1000);
-                    })(),
-                    {
-                        loading: {
-                            title: strings.loading,
-                            ...SILEO_STYLE,
-                        },
-                        success: {
-                            title: strings.success,
-                            ...SILEO_STYLE,
-                        },
-                        error: {
-                            title: strings.error,
-                            ...SILEO_STYLE,
-                        },
-                    }
-                );
+                a.href = url;
+                a.download = `docivo-${jobId}.pdf`;
+                a.click();
+
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
 
                 jobStorage.updateStatus(jobId, "success");
                 setStatus("success");
-            } catch (error) {
+                progress?.onSuccess?.();
+                return true;
+            } catch {
                 jobStorage.updateStatus(jobId, "failure");
                 setStatus("error");
+                progress?.onError?.();
+                sileo.error({
+                    title: strings.error,
+                    description: strings.validation_desc,
+                });
+                return false;
             }
         },
         [t]
