@@ -14,6 +14,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     {children}
 
                     <Toaster
+                        position="top-right"
+                        offset={{
+                            top: "clamp(16px, 2vw, 24px)",
+                            right: "clamp(16px, 2vw, 24px)",
+                        }}
                         options={{
                             fill: "var(--color-surface-0)",
                             roundness: 16,
