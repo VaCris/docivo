@@ -1,0 +1,218 @@
+.toastRegion {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 90;
+    width: min(22.5rem, calc(100vw - 2rem));
+    pointer-events: none;
+}
+
+.progressToast {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.95rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-surface-200);
+    background: color-mix(in srgb, var(--color-surface-0) 94%, transparent);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 18px 50px -20px rgba(2, 6, 23, 0.38);
+    animation: toast-in 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.spinner {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 3px solid color-mix(in srgb, var(--color-brand-display) 18%, var(--color-surface-100));
+    border-top-color: var(--color-brand-display);
+    animation: spin 0.85s linear infinite;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--tool-accent, var(--color-brand-display)) 8%, transparent);
+}
+
+.progressCopy {
+    min-width: 0;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.progressLabel,
+.successEyebrow {
+    font-size: 0.675rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tool-accent, var(--color-brand-display));
+}
+
+.progressMessage {
+    color: var(--color-surface-900);
+    font-size: 0.9rem;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.progressDots {
+    display: flex;
+    align-items: center;
+    gap: 0.22rem;
+    margin-left: 0.25rem;
+}
+
+.progressDots span {
+    width: 0.28rem;
+    height: 0.28rem;
+    border-radius: 50%;
+    background: var(--color-brand-display);
+    animation: dot-pulse 1.15s ease-in-out infinite;
+}
+
+.progressDots span:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.progressDots span:nth-child(3) {
+    animation-delay: 0.24s;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    pointer-events: none;
+    background: color-mix(in srgb, var(--color-surface-950) 16%, transparent);
+    backdrop-filter: blur(5px);
+    animation: overlay-in 0.25s ease both;
+}
+
+.successCard {
+    width: min(26rem, calc(100vw - 2rem));
+    padding: 2rem 1.75rem 1.8rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--color-surface-200);
+    background: color-mix(in srgb, var(--color-surface-0) 96%, transparent);
+    box-shadow: 0 28px 80px -30px rgba(2, 6, 23, 0.5);
+    text-align: center;
+    animation: success-pop 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.successIcon {
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 0 auto 1rem;
+    color: var(--tool-accent, var(--color-brand-display));
+}
+
+.checkSvg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.checkCircle {
+    fill: color-mix(in srgb, var(--tool-accent, var(--color-brand-display)) 12%, var(--color-surface-0));
+    stroke: color-mix(in srgb, var(--tool-accent, var(--color-brand-display)) 72%, var(--color-surface-200));
+    stroke-width: 2;
+    transform-origin: center;
+    animation: circle-pop 0.44s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.checkPath {
+    stroke: var(--tool-accent, var(--color-brand-display));
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 34;
+    stroke-dashoffset: 34;
+    animation: draw-check 0.42s 0.16s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.successEyebrow {
+    margin-bottom: 0.55rem;
+}
+
+.successMessage {
+    color: var(--color-surface-900);
+    font-size: 1.05rem;
+    line-height: 1.45;
+    font-weight: 800;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translate3d(28px, -8px, 0) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+@keyframes dot-pulse {
+    0%, 70%, 100% { opacity: 0.28; transform: translateY(0); }
+    35% { opacity: 1; transform: translateY(-2px); }
+}
+
+@keyframes overlay-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes success-pop {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes circle-pop {
+    from { transform: scale(0.65); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes draw-check {
+    to { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 767px) {
+    .toastRegion {
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        width: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progressToast,
+    .overlay,
+    .successCard,
+    .checkCircle,
+    .checkPath,
+    .spinner,
+    .progressDots span {
+        animation: none;
+    }
+
+    .checkPath {
+        stroke-dashoffset: 0;
+    }
+}
