@@ -4,7 +4,10 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useClientMerge } from "@/hooks/useClientMerge";
+import { useToolProcessFeedback } from "@/hooks/useToolProcessFeedback";
 import { PdfPreview } from "@/features/files/components/PdfPreview/PdfPreview";
+import { FileUploader } from "@/features/files/components/FileUploader/FileUploader";
+import { ToolProcessFeedback } from "@/components/feedback/ToolProcessFeedback/ToolProcessFeedback";
 
 type FileItem = {
     id: string;
@@ -17,21 +20,22 @@ export const MergeTool = () => {
     const { t } = useLanguage();
     const strings = t.merge;
     const { run, isLoading } = useClientMerge();
+    const feedback = useToolProcessFeedback(strings.feedback);
 
     const [files, setFiles] = useState<FileItem[]>([]);
     const [dragIndex, setDragIndex] = useState<number | null>(null);
 
     const handleAddFiles = (newFiles: File[]) => {
-        const valid = newFiles.filter(f => f.type === "application/pdf");
+        const valid = newFiles.filter((file) => file.type === "application/pdf");
 
-        setFiles(prev => {
-            const existing = new Set(prev.map(f => f.file.name));
+        setFiles((prev) => {
+            const existing = new Set(prev.map((item) => item.file.name));
 
             const unique = valid
-                .filter(f => !existing.has(f.name))
-                .map(f => ({
+                .filter((file) => !existing.has(file.name))
+                .map((file) => ({
                     id: crypto.randomUUID(),
-                    file: f
+                    file,
                 }));
 
             return [...prev, ...unique];
@@ -39,7 +43,7 @@ export const MergeTool = () => {
     };
 
     const handleRemove = (id: string) => {
-        setFiles(prev => prev.filter(f => f.id !== id));
+        setFiles((prev) => prev.filter((item) => item.id !== id));
     };
 
     const handleClear = () => {
@@ -48,9 +52,15 @@ export const MergeTool = () => {
     };
 
     const handleMerge = async () => {
-        await run(files.map(f => f.file));
-        setFiles([]);
-        previewCache.clear();
+        const succeeded = await run(
+            files.map((item) => item.file),
+            feedback.callbacks
+        );
+
+        if (succeeded) {
+            setFiles([]);
+            previewCache.clear();
+        }
     };
 
     const handleDragStart = (index: number) => {
@@ -60,7 +70,7 @@ export const MergeTool = () => {
     const handleDragEnter = (index: number) => {
         if (dragIndex === null || dragIndex === index) return;
 
-        setFiles(prev => {
+        setFiles((prev) => {
             const updated = [...prev];
             const [moved] = updated.splice(dragIndex, 1);
             updated.splice(index, 0, moved);
@@ -76,6 +86,8 @@ export const MergeTool = () => {
 
     return (
         <div className="tool-accent-merge flex flex-col h-[calc(100vh-8rem)]">
+            <ToolProcessFeedback stage={feedback.stage} message={feedback.message} />
+
             <div className="mb-8">
                 <h1 className="font-extrabold text-surface-900 text-2xl md:text-3xl tracking-tight">
                     {strings.header.title}
@@ -128,34 +140,14 @@ export const MergeTool = () => {
                         </div>
                     ))}
 
-                    <label className="dashboard-tool-accent-hover group flex flex-col justify-center items-center p-4 border-2 border-surface-300 border-dashed rounded-xl min-h-[140px] transition-all cursor-pointer">
-                        <input
-                            type="file"
-                            multiple
-                            accept="application/pdf"
-                            className="hidden"
-                            onChange={(e) => {
-                                if (!e.target.files) return;
-                                handleAddFiles(Array.from(e.target.files));
-                                e.target.value = "";
-                            }}
-                        />
-
-                        <div className="dashboard-tool-accent-surface flex justify-center items-center mb-2 border rounded-full w-10 h-10 transition-colors">
-                            <Icon
-                                icon="solar:add-circle-linear"
-                                width="24"
-                            />
-                        </div>
-
-                        <p className="dashboard-tool-accent-text font-bold text-xs">
-                            {strings.workspace.addMore}
-                        </p>
-
-                        <p className="mt-0.5 text-[10px] text-surface-400">
-                            {strings.workspace.dropHint}
-                        </p>
-                    </label>
+                    <FileUploader
+                        accept="application/pdf"
+                        multiple
+                        onFiles={handleAddFiles}
+                        title={strings.workspace.addMore}
+                        subtitle={strings.workspace.dropHint}
+                        className="min-h-[140px]"
+                    />
                 </div>
 
                 <div className="flex justify-end mt-auto pt-6 border-surface-100 border-t">
