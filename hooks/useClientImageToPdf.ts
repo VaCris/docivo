@@ -68,13 +68,20 @@ export function useClientImageToPdf() {
 
                 a.href = url;
                 a.download = `docivo-${jobId}.pdf`;
-                a.click();
+
+                const triggerDownload = () => a.click();
+
+                jobStorage.updateStatus(jobId, "success");
+
+                if (progress?.onSuccess) {
+                    await progress.onSuccess(triggerDownload);
+                } else {
+                    triggerDownload();
+                }
 
                 setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-                jobStorage.updateStatus(jobId, "success");
                 setStatus("success");
-                progress?.onSuccess?.();
                 return true;
             } catch {
                 jobStorage.updateStatus(jobId, "failure");
