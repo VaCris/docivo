@@ -3,10 +3,12 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useToolProcessFeedback } from "@/hooks/useToolProcessFeedback";
 import { FileUploader } from "@/features/files/components/FileUploader/FileUploader";
 import { PdfPreview } from "@/features/files/components/PdfPreview/PdfPreview";
 import { useBackendJob } from "@/hooks/useBackendJob";
 import { toolsService } from "@/services/tools/tools.service";
+import { ToolProcessFeedback } from "@/components/feedback/ToolProcessFeedback/ToolProcessFeedback";
 
 type OutputFormat = "searchablePdf" | "textPdf" | "word";
 
@@ -19,12 +21,11 @@ type JobConfig = {
 export const OcrTool = () => {
     const { t } = useLanguage();
     const strings = t.ocr;
-
     const { run, isLoading } = useBackendJob();
+    const feedback = useToolProcessFeedback(strings.feedback);
 
     const [outputFormat, setOutputFormat] =
         useState<OutputFormat>("searchablePdf");
-
     const [file, setFile] = useState<File | null>(null);
 
     const handleRun = async () => {
@@ -55,11 +56,14 @@ export const OcrTool = () => {
             strings: strings.notifications,
             start: selected.start,
             filename: selected.filename,
+            progress: feedback.callbacks,
         });
     };
 
     return (
         <div className="tool-accent-ocr flex flex-col h-[calc(100vh-8rem)]">
+            <ToolProcessFeedback stage={feedback.stage} message={feedback.message} />
+
             <div className="mb-8">
                 <h1 className="font-extrabold text-surface-900 text-2xl md:text-3xl tracking-tight">
                     {strings.header.title}
@@ -147,10 +151,8 @@ export const OcrTool = () => {
                                                 name="outputFormat"
                                                 value={format}
                                                 checked={outputFormat === format}
-                                                onChange={() =>
-                                                    setOutputFormat(format)
-                                                }
-                                                className="focus:ring-brand-500 text-brand-600"
+                                                onChange={() => setOutputFormat(format)}
+                                                className="dashboard-radio"
                                             />
 
                                             <div className="flex flex-col">
