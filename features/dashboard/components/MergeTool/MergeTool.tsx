@@ -53,7 +53,6 @@ export const MergeTool = () => {
         previewCache.clear();
     };
 
-    // DRAG & DROP
     const handleDragStart = (index: number) => {
         setDragIndex(index);
     };
@@ -76,7 +75,7 @@ export const MergeTool = () => {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100vh-8rem)]">
+        <div className="tool-accent-merge flex flex-col h-[calc(100vh-8rem)]">
             <div className="mb-8">
                 <h1 className="font-extrabold text-surface-900 text-2xl md:text-3xl tracking-tight">
                     {strings.header.title}
@@ -86,7 +85,7 @@ export const MergeTool = () => {
                 </p>
             </div>
 
-            <div className="relative flex flex-col flex-1 bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl overflow-hidden">
+            <div className="dashboard-panel relative flex flex-col flex-1 shadow-sm p-6 border rounded-2xl overflow-hidden">
                 <div className="flex justify-between items-center mb-6">
                     <button
                         onClick={handleClear}
@@ -104,9 +103,9 @@ export const MergeTool = () => {
                             onDragStart={() => handleDragStart(index)}
                             onDragEnter={() => handleDragEnter(index)}
                             onDragEnd={handleDragEnd}
-                            className="group relative flex flex-col justify-center items-center bg-surface-50 hover:shadow-md p-4 border border-surface-200 hover:border-brand-400 rounded-xl text-center transition-all cursor-move"
+                            className="dashboard-tool-accent-hover group relative flex flex-col justify-center items-center bg-surface-50 hover:shadow-md p-4 border border-surface-200 rounded-xl text-center transition-all cursor-move"
                         >
-                            <div className="-top-2 -left-2 z-10 absolute flex justify-center items-center bg-surface-800 rounded-full w-6 h-6 font-bold text-white text-xs">
+                            <div className="dashboard-tool-accent-surface -top-2 -left-2 z-10 absolute flex justify-center items-center border rounded-full w-6 h-6 font-bold text-xs">
                                 {index + 1}
                             </div>
 
@@ -129,7 +128,7 @@ export const MergeTool = () => {
                         </div>
                     ))}
 
-                    <label className="group flex flex-col justify-center items-center hover:bg-brand-50 p-4 border-2 border-surface-300 hover:border-brand-500 border-dashed rounded-xl min-h-[140px] transition-colors cursor-pointer">
+                    <label className="dashboard-tool-accent-hover group flex flex-col justify-center items-center p-4 border-2 border-surface-300 border-dashed rounded-xl min-h-[140px] transition-all cursor-pointer">
                         <input
                             type="file"
                             multiple
@@ -142,15 +141,14 @@ export const MergeTool = () => {
                             }}
                         />
 
-                        <div className="flex justify-center items-center bg-surface-100 group-hover:bg-brand-100 mb-2 rounded-full w-10 h-10 transition-colors">
+                        <div className="dashboard-tool-accent-surface flex justify-center items-center mb-2 border rounded-full w-10 h-10 transition-colors">
                             <Icon
                                 icon="solar:add-circle-linear"
                                 width="24"
-                                className="text-surface-500 group-hover:text-brand-600"
                             />
                         </div>
 
-                        <p className="font-bold text-surface-600 group-hover:text-brand-700 text-xs">
+                        <p className="dashboard-tool-accent-text font-bold text-xs">
                             {strings.workspace.addMore}
                         </p>
 
@@ -164,7 +162,7 @@ export const MergeTool = () => {
                     <button
                         onClick={handleMerge}
                         disabled={isLoading}
-                        className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 shadow-brand-500/20 shadow-lg px-8 py-3 rounded-xl font-sans font-bold text-white text-sm active:scale-95 transition-all"
+                        className="dashboard-primary-action px-8 py-3 rounded-xl font-sans font-bold text-sm"
                     >
                         <Icon icon="solar:layers-minimalistic-bold" width="18" />
                         {strings.actions.mergeButton}
