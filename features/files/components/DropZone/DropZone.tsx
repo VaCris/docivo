@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 import enData from "@/locales/en/dropzone.json";
 import esData from "@/locales/es/dropzone.json";
@@ -21,6 +22,8 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
     const router = useRouter();
 
     const [isDragging, setIsDragging] = useState(false);
+    const [headerRef, headerRevealed] = useScrollReveal<HTMLDivElement>();
+    const [zoneRef, zoneRevealed] = useScrollReveal<HTMLDivElement>();
 
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -45,7 +48,10 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
     return (
         <section id="upload" className="bg-surface-50 px-6 py-20 md:py-28 border-t border-surface-200">
             <div className={`max-w-6xl mx-auto ${styles.dropzoneContainer}`}>
-                <div className="mx-auto mb-14 max-w-xl text-center">
+                <div
+                    ref={headerRef}
+                    className={`mx-auto mb-14 max-w-xl text-center scroll-reveal scroll-reveal-scale ${headerRevealed ? "revealed" : ""}`}
+                >
                     <h2 className="font-extrabold text-surface-900 text-3xl md:text-4xl tracking-tight">
                         {t.heading.title}
                     </h2>
@@ -56,6 +62,7 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
 
                 <div className="mx-auto max-w-2xl">
                     <div
+                        ref={zoneRef}
                         onClick={handleClick}
                         onDragOver={handleDragOver}
                         onDragLeave={handleDragLeave}
@@ -69,7 +76,7 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
                                 handleClick();
                             }
                         }}
-                        className={`relative flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-10 md:p-16 text-center cursor-pointer transition-all duration-300 ${
+                        className={`relative flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-10 md:p-16 text-center cursor-pointer transition-all duration-300 scroll-reveal scroll-reveal-scale reveal-delay-1 ${zoneRevealed ? "revealed" : ""} ${
                             isDragging
                                 ? styles.dropzoneActive
                                 : "border-surface-300 bg-surface-0 hover:border-surface-400 hover:bg-surface-50/50"
