@@ -78,6 +78,14 @@ html.dark .tool-accent-image {
   --tool-accent: #34D399;
 }
 
+.tool-accent-merge input[type="radio"],
+.tool-accent-split input[type="radio"],
+.tool-accent-ocr input[type="radio"],
+.tool-accent-word input[type="radio"],
+.tool-accent-image input[type="radio"] {
+  accent-color: var(--tool-accent);
+}
+
 .dashboard-tool-accent-surface {
   background: color-mix(in srgb, var(--tool-accent) 11%, var(--color-surface-0));
   border-color: color-mix(in srgb, var(--tool-accent) 48%, var(--color-surface-200));
@@ -100,14 +108,6 @@ html.dark .tool-accent-image {
 .dashboard-tool-choice-selected {
   background: color-mix(in srgb, var(--tool-accent) 11%, var(--color-surface-0));
   border-color: var(--tool-accent) !important;
-}
-
-.dashboard-tool-choice-selected,
-.dashboard-tool-choice-selected * {
-  color: inherit;
-}
-
-.dashboard-tool-choice-selected {
   color: var(--tool-accent);
 }
 
