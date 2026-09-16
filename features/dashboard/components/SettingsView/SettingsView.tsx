@@ -22,12 +22,12 @@ export const SettingsView = () => {
             </div>
 
             <div className="space-y-8">
-                <section className="bg-surface-0 shadow-sm p-6 md:p-8 border border-surface-200 rounded-2xl">
+                <section className="dashboard-panel shadow-sm p-6 md:p-8 border rounded-2xl">
                     <h2 className="flex items-center gap-2 mb-6 font-bold text-surface-800 text-lg">
                         <Icon
                             icon="solar:settings-bold-duotone"
                             width="24"
-                            className="text-surface-400"
+                            className="text-brand-display"
                         />
                         {strings.sections.preferences.title}
                     </h2>
@@ -90,7 +90,7 @@ export const SettingsView = () => {
                     <button className="hover:bg-surface-100 px-6 py-3 rounded-xl font-sans font-bold text-surface-600 text-sm transition-colors">
                         {strings.actions.cancel}
                     </button>
-                    <button className="bg-brand-600 hover:bg-brand-700 shadow-brand-500/20 shadow-lg px-6 py-3 rounded-xl font-sans font-bold text-white text-sm transition-all">
+                    <button className="dashboard-primary-action px-6 py-3 rounded-xl font-sans font-bold text-sm">
                         {strings.actions.saveChanges}
                     </button>
                 </div>
