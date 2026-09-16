@@ -29,7 +29,7 @@ export const HowItWorksSimple = () => {
             <div className="mx-auto max-w-7xl">
                 <div
                     ref={headerRef}
-                    className={`mb-8 flex flex-col items-center text-center scroll-reveal ${headerRevealed ? "revealed" : ""}`}
+                    className={`mb-8 flex flex-col items-center text-center scroll-reveal scroll-reveal-scale ${headerRevealed ? "revealed" : ""}`}
                 >
                     <div className={styles.logoStrip}>
                         <img src="/images/Logo.png" alt="Docivo" className="h-6 w-auto" />
@@ -48,28 +48,34 @@ export const HowItWorksSimple = () => {
                     className={styles.timeline}
                 >
                     <div
-                        className={`${styles.line} scroll-reveal ${timelineRevealed ? "revealed" : ""}`}
+                        className={`${styles.line} ${timelineRevealed ? styles.revealed : ""}`}
                         aria-hidden="true"
                     />
 
-                    {strings.steps.map((step, index) => (
-                        <div
-                            key={step.number}
-                            className={`${styles.step} scroll-reveal ${timelineRevealed ? "revealed" : ""} ${REVEAL_DELAYS[index] ?? ""}`}
-                        >
-                            <div className={styles.dotWrap}>
-                                <div className={styles.dot}>
-                                    <Icon icon={STEP_ICONS[index] ?? STEP_ICONS[0]} width="20" />
-                                </div>
-                            </div>
+                    {strings.steps.map((step, index) => {
+                        const directionClass = index % 2 === 0
+                            ? "scroll-reveal-right"
+                            : "scroll-reveal-left";
 
-                            <GlassPanel variant="light" className={styles.card}>
-                                <span className={styles.cardNumber}>{step.number}</span>
-                                <h3 className={styles.cardTitle}>{step.title}</h3>
-                                <p className={styles.cardDesc}>{step.desc}</p>
-                            </GlassPanel>
-                        </div>
-                    ))}
+                        return (
+                            <div
+                                key={step.number}
+                                className={`${styles.step} scroll-reveal ${directionClass} ${timelineRevealed ? "revealed" : ""} ${REVEAL_DELAYS[index] ?? ""}`}
+                            >
+                                <div className={styles.dotWrap}>
+                                    <div className={styles.dot}>
+                                        <Icon icon={STEP_ICONS[index] ?? STEP_ICONS[0]} width="20" />
+                                    </div>
+                                </div>
+
+                                <GlassPanel variant="light" className={styles.card}>
+                                    <span className={styles.cardNumber}>{step.number}</span>
+                                    <h3 className={styles.cardTitle}>{step.title}</h3>
+                                    <p className={styles.cardDesc}>{step.desc}</p>
+                                </GlassPanel>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
