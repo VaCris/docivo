@@ -59,7 +59,7 @@ export const OcrTool = () => {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100vh-8rem)]">
+        <div className="tool-accent-ocr flex flex-col h-[calc(100vh-8rem)]">
             <div className="mb-8">
                 <h1 className="font-extrabold text-surface-900 text-2xl md:text-3xl tracking-tight">
                     {strings.header.title}
@@ -87,11 +87,9 @@ export const OcrTool = () => {
                         <>
                             <div className="top-6 right-6 left-6 z-10 absolute flex justify-between items-center bg-surface-0 shadow-sm p-4 border border-surface-200 rounded-xl">
                                 <div className="flex items-center gap-3 overflow-hidden">
-                                    <Icon
-                                        icon="solar:scanner-bold-duotone"
-                                        width="24"
-                                        className="text-brand-600 shrink-0"
-                                    />
+                                    <div className="dashboard-tool-accent-surface flex justify-center items-center border rounded-lg w-9 h-9 shrink-0">
+                                        <Icon icon="solar:scanner-bold-duotone" width="22" />
+                                    </div>
 
                                     <div className="truncate">
                                         <p className="font-medium text-surface-500 text-xs">
@@ -105,7 +103,7 @@ export const OcrTool = () => {
 
                                 <button
                                     onClick={() => setFile(null)}
-                                    className="bg-surface-50 px-3 py-1.5 rounded-lg font-sans font-bold text-surface-500 hover:text-brand-600 text-xs transition-colors shrink-0"
+                                    className="bg-surface-50 px-3 py-1.5 rounded-lg font-sans font-bold text-surface-500 hover:dashboard-tool-accent-text text-xs transition-colors shrink-0"
                                 >
                                     {strings.workspace.changeFile}
                                 </button>
@@ -118,12 +116,12 @@ export const OcrTool = () => {
                     )}
                 </div>
 
-                <div className="flex flex-col flex-shrink-0 bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80">
+                <div className="dashboard-panel flex flex-col flex-shrink-0 shadow-sm p-6 border rounded-2xl w-full lg:w-80">
                     <h3 className="flex items-center gap-2 mb-6 font-bold text-surface-800 text-base">
                         <Icon
                             icon="solar:settings-bold-duotone"
                             width="20"
-                            className="text-surface-400"
+                            className="dashboard-tool-accent-text"
                         />
                         {strings.settings.title}
                     </h3>
@@ -140,7 +138,7 @@ export const OcrTool = () => {
                                         <label
                                             key={format}
                                             className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-colors ${outputFormat === format
-                                                ? "border-brand-500 bg-brand-50"
+                                                ? "dashboard-tool-choice-selected"
                                                 : "border-surface-200 hover:bg-surface-50"
                                                 }`}
                                         >
@@ -156,16 +154,8 @@ export const OcrTool = () => {
                                             />
 
                                             <div className="flex flex-col">
-                                                <span
-                                                    className={`text-sm font-semibold leading-tight ${outputFormat === format
-                                                        ? "text-brand-900"
-                                                        : "text-surface-700"
-                                                        }`}
-                                                >
-                                                    {
-                                                        strings.settings
-                                                            .formats[format]
-                                                    }
+                                                <span className={`text-sm font-semibold leading-tight ${outputFormat === format ? "dashboard-tool-accent-text" : "text-surface-700"}`}>
+                                                    {strings.settings.formats[format]}
                                                 </span>
                                             </div>
                                         </label>
@@ -179,7 +169,7 @@ export const OcrTool = () => {
                         <button
                             onClick={handleRun}
                             disabled={!file || isLoading}
-                            className="inline-flex justify-center items-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 shadow-amber-500/20 shadow-lg px-6 py-3.5 rounded-xl w-full font-sans font-bold text-white text-sm active:scale-95 transition-all disabled:cursor-not-allowed"
+                            className="dashboard-primary-action px-6 py-3.5 rounded-xl w-full font-sans font-bold text-sm"
                         >
                             <Icon icon="solar:eye-scan-bold" width="18" />
                             {strings.actions.recognizeText}
