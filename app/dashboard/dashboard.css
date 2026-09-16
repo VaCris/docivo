@@ -1,0 +1,117 @@
+.dashboard-primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-brand-500);
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 238, 0.18);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-primary-action:hover:not(:disabled) {
+  background: var(--color-brand-600);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 36px rgba(0, 0, 238, 0.28);
+}
+
+.dashboard-primary-action:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.dashboard-primary-action:disabled {
+  background: var(--color-surface-200);
+  color: var(--color-surface-500);
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.dashboard-choice-selected {
+  background: color-mix(in srgb, var(--color-brand-display) 10%, var(--color-surface-0));
+  border-color: var(--color-brand-display) !important;
+  color: var(--color-brand-display);
+}
+
+.dashboard-panel {
+  background: color-mix(in srgb, var(--color-surface-0) 96%, transparent);
+  border-color: var(--color-surface-200);
+}
+
+.tool-accent-merge {
+  --tool-accent: #4F46E5;
+}
+
+.tool-accent-split {
+  --tool-accent: #7C3AED;
+}
+
+.tool-accent-ocr {
+  --tool-accent: #D97706;
+}
+
+.tool-accent-word {
+  --tool-accent: #0284C7;
+}
+
+.tool-accent-image {
+  --tool-accent: #059669;
+}
+
+html.dark .tool-accent-merge {
+  --tool-accent: #818CF8;
+}
+
+html.dark .tool-accent-split {
+  --tool-accent: #A78BFA;
+}
+
+html.dark .tool-accent-ocr {
+  --tool-accent: #FBBF24;
+}
+
+html.dark .tool-accent-word {
+  --tool-accent: #38BDF8;
+}
+
+html.dark .tool-accent-image {
+  --tool-accent: #34D399;
+}
+
+.dashboard-tool-accent-surface {
+  background: color-mix(in srgb, var(--tool-accent) 11%, var(--color-surface-0));
+  border-color: color-mix(in srgb, var(--tool-accent) 48%, var(--color-surface-200));
+  color: var(--tool-accent);
+}
+
+.dashboard-tool-accent-text {
+  color: var(--tool-accent);
+}
+
+.dashboard-tool-accent-border {
+  border-color: color-mix(in srgb, var(--tool-accent) 55%, var(--color-surface-200));
+}
+
+.dashboard-tool-accent-hover:hover {
+  background: color-mix(in srgb, var(--tool-accent) 8%, var(--color-surface-0));
+  border-color: var(--tool-accent);
+}
+
+.dashboard-tool-choice-selected {
+  background: color-mix(in srgb, var(--tool-accent) 11%, var(--color-surface-0));
+  border-color: var(--tool-accent) !important;
+}
+
+.dashboard-tool-choice-selected,
+.dashboard-tool-choice-selected * {
+  color: inherit;
+}
+
+.dashboard-tool-choice-selected {
+  color: var(--tool-accent);
+}
+
+.dashboard-tool-count {
+  background: color-mix(in srgb, var(--tool-accent) 12%, var(--color-surface-0));
+  color: var(--tool-accent);
+}
