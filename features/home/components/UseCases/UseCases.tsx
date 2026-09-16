@@ -21,7 +21,7 @@ export const UseCases = () => {
       <div className="mx-auto max-w-7xl">
         <div
           ref={titleRef}
-          className={`mb-16 flex flex-col items-center text-center scroll-reveal ${titleRevealed ? "revealed" : ""}`}
+          className={`mb-16 flex flex-col items-center text-center scroll-reveal scroll-reveal-scale ${titleRevealed ? "revealed" : ""}`}
         >
           <h2 className={styles.title}>
             <span className={styles.titleGradient}>Built for everything you process</span>
@@ -43,11 +43,12 @@ export const UseCases = () => {
 
 const Chip = ({ useCase, index }: { useCase: typeof USE_CASES[number]; index: number }) => {
   const [ref, revealed] = useScrollReveal<HTMLDivElement>();
+  const revealDelay = `reveal-delay-${Math.min(index, 5)}`;
 
   return (
     <div
       ref={ref}
-      className={`${styles.chip} glass-hover scroll-reveal ${revealed ? "revealed" : ""}`}
+      className={`${styles.chip} glass-hover scroll-reveal scroll-reveal-scale ${revealDelay} ${revealed ? "revealed" : ""}`}
       style={{
         animationDelay: `${index * 0.08}s`,
         animationDuration: `${3 + (index % 3)}s`,
