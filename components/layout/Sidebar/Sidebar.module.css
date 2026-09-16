@@ -1,19 +1,17 @@
-
 .sidebar {
     width: 16rem;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: var(--color-surface-0);
+    background-color: color-mix(in srgb, var(--color-surface-0) 97%, transparent);
     border-right: 1px solid var(--color-surface-200);
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
     z-index: 40;
+    backdrop-filter: blur(18px);
 }
-
-
 
 .brand {
     display: flex;
@@ -24,6 +22,7 @@
 }
 
 .navLink {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -32,21 +31,23 @@
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--color-surface-600);
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
-
-
 
 .navLink:hover {
     background-color: var(--color-surface-50);
     color: var(--color-surface-900);
+    transform: translateX(2px);
 }
-
-
 
 .navLinkActive {
-    background-color: var(--color-brand-50);
-    color: var(--color-brand-700);
-    font-weight: 600;
+    background-color: color-mix(in srgb, var(--color-brand-display) 11%, var(--color-surface-0));
+    color: var(--color-brand-display);
+    font-weight: 700;
+    box-shadow: inset 3px 0 0 var(--color-brand-display);
 }
 
+.navLinkActive:hover {
+    background-color: color-mix(in srgb, var(--color-brand-display) 14%, var(--color-surface-0));
+    color: var(--color-brand-display);
+}
