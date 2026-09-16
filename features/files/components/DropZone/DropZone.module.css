@@ -4,11 +4,11 @@
 
 .dropzoneActive {
     border-color: transparent !important;
-    background: rgba(0, 0, 238, 0.03) !important;
+    background: color-mix(in srgb, var(--color-brand-display) 4%, var(--color-surface-0)) !important;
     box-shadow:
-        0 0 0 2px rgba(0, 0, 238, 0.3),
+        0 0 0 2px color-mix(in srgb, var(--color-brand-display) 35%, transparent),
         0 0 24px -4px rgba(0, 0, 238, 0.2),
-        inset 0 0 20px rgba(0, 0, 238, 0.05) !important;
+        inset 0 0 20px color-mix(in srgb, var(--color-brand-display) 6%, transparent) !important;
     backdrop-filter: blur(12px);
 }
 
@@ -18,7 +18,7 @@
     inset: -2px;
     border-radius: inherit;
     padding: 2px;
-    background: linear-gradient(135deg, var(--color-brand-500), var(--color-accent), var(--color-brand-500));
+    background: linear-gradient(135deg, var(--color-brand-display), var(--color-accent), var(--color-brand-display));
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -39,8 +39,8 @@
 
 .dropIconActive {
     transform: scale(1.1);
-    color: var(--color-brand-500);
-    filter: drop-shadow(0 0 8px rgba(0, 0, 238, 0.4));
+    color: var(--color-brand-display);
+    filter: drop-shadow(0 0 8px rgba(0, 0, 238, 0.35));
 }
 
 @keyframes fade-up {

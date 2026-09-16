@@ -15,14 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
-        <head>
-          <Script
-            src="/init-theme.js"
-            strategy="beforeInteractive"
-          />
-        </head>
-        <body suppressHydrationWarning className="antialiased">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <Script
+          src="/init-theme.js"
+          strategy="beforeInteractive"
+        />
+      </head>
+      <body suppressHydrationWarning className="antialiased">
         <LanguageProvider>
           <ThemeProvider>
             <a

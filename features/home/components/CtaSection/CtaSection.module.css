@@ -20,7 +20,6 @@
     background: var(--color-surface-0);
     border: 1px solid var(--color-surface-200);
     text-align: center;
-    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
 }
 
@@ -30,7 +29,6 @@
     }
 }
 
-/* Decorative orbs */
 .orb {
     position: absolute;
     border-radius: 50%;
@@ -52,7 +50,7 @@
 .orb2 {
     width: 250px;
     height: 250px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.3) 0%, transparent 70%);
     bottom: -60px;
     left: -40px;
     animation-delay: 2s;
@@ -87,7 +85,7 @@
 }
 
 .gradientText {
-    background: linear-gradient(135deg, var(--color-brand-600) 0%, var(--color-accent) 100%);
+    background: linear-gradient(135deg, var(--color-brand-display) 0%, var(--color-accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -123,8 +121,8 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    background: var(--color-surface-900);
-    color: var(--color-surface-0);
+    background: var(--color-brand-500);
+    color: #FFFFFF;
     border: none;
     border-radius: 20px;
     font-family: var(--font-sans);
@@ -132,13 +130,14 @@
     font-size: 0.9375rem;
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 0 20px rgba(15, 23, 42, 0.25);
+    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
 }
 
 .primaryBtn:hover {
+    background: var(--color-brand-600);
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.35);
+    box-shadow: 0 14px 38px rgba(0, 0, 238, 0.32), 0 0 0 1px rgba(136, 136, 255, 0.16);
 }
 
 .secondaryBtn {
@@ -162,24 +161,11 @@
 .secondaryBtn:hover {
     border-color: var(--color-surface-500);
     color: var(--color-surface-900);
+    background: var(--color-surface-100);
     transform: translateY(-2px);
 }
 
-@keyframes fade-up {
-    from {
-        opacity: 0;
-        transform: translateY(24px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .ctaCard {
-        animation: none;
-    }
     .orb {
         animation: none;
     }

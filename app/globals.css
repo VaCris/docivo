@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @font-face {
   font-family: "Inter";
   src: url("/fonts/inter-latin.woff2") format("woff2");
@@ -30,6 +32,7 @@
   --color-brand-700: #0000AA;
   --color-brand-800: #000088;
   --color-brand-900: #000066;
+  --color-brand-display: #304CFF;
 
   --color-accent: #0080FF;
 
@@ -77,7 +80,6 @@
   }
 
   @keyframes float {
-
     0%,
     100% {
       transform: translateY(0px);
@@ -102,17 +104,20 @@
   html.dark {
     color-scheme: dark;
 
-    --color-surface-0: #111111;
-    --color-surface-50: #1A1A1A;
-    --color-surface-100: #222222;
-    --color-surface-200: #2E2E2E;
-    --color-surface-300: #404040;
-    --color-surface-400: #6B6B6B;
-    --color-surface-500: #999999;
-    --color-surface-600: #C8C8C8;
-    --color-surface-700: #E8E8E8;
-    --color-surface-800: #F5F5F5;
-    --color-surface-900: #FAFAFA;
+    --color-brand-display: #8888FF;
+
+    --color-surface-0: #0B0D12;
+    --color-surface-50: #11141B;
+    --color-surface-100: #181C25;
+    --color-surface-200: #252A35;
+    --color-surface-300: #353B48;
+    --color-surface-400: #667085;
+    --color-surface-500: #A6B0BF;
+    --color-surface-600: #B8C0CC;
+    --color-surface-700: #D5DAE2;
+    --color-surface-800: #EAECF0;
+    --color-surface-900: #F8FAFC;
+    --color-surface-950: #FFFFFF;
   }
 
   ::selection {
@@ -139,7 +144,7 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background-color: var(--color-brand-500);
+    background-color: var(--color-brand-display);
     transition: all 0.3s ease;
     transform: translateX(-50%);
     border-radius: 1px;
@@ -155,11 +160,11 @@
   html.dark .bg-white\/90,
   html.dark .bg-white\/92,
   html.dark .bg-white\/95 {
-    background-color: rgba(15, 23, 42, 0.92) !important;
+    background-color: color-mix(in srgb, var(--color-surface-0) 92%, transparent) !important;
   }
 
   html.dark .hover\:bg-white:hover {
-    background-color: rgba(30, 41, 59, 0.95) !important;
+    background-color: color-mix(in srgb, var(--color-surface-50) 95%, transparent) !important;
   }
 
   html.dark .bg-slate-50,
@@ -169,7 +174,7 @@
 
   html.dark .from-white {
     --tw-gradient-from: var(--color-surface-0) var(--tw-gradient-from-position) !important;
-    --tw-gradient-to: rgb(2 6 23 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-to: rgb(11 13 18 / 0) var(--tw-gradient-to-position) !important;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
   }
 
@@ -183,64 +188,42 @@
 
   html.dark .from-surface-50 {
     --tw-gradient-from: var(--color-surface-50) var(--tw-gradient-from-position) !important;
-    --tw-gradient-to: rgb(15 23 42 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-to: rgb(17 20 27 / 0) var(--tw-gradient-to-position) !important;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
   }
 
   html.dark .border-white,
   html.dark .border-white\/10,
   html.dark .border-white\/20 {
-    border-color: rgba(51, 65, 85, 0.75) !important;
+    border-color: color-mix(in srgb, var(--color-surface-300) 75%, transparent) !important;
   }
 
   html.dark .shadow-surface-200\/40,
   html.dark .shadow-surface-200\/60 {
-    --tw-shadow-color: rgba(2, 6, 23, 0.45) !important;
+    --tw-shadow-color: rgba(0, 0, 0, 0.45) !important;
   }
 
-html.dark input,
-html.dark select,
-html.dark textarea {
+  html.dark input,
+  html.dark select,
+  html.dark textarea {
     background-color: var(--color-surface-50);
     color: var(--color-surface-800);
     border-color: var(--color-surface-200);
-}
+  }
 
-html.dark input::placeholder,
-html.dark textarea::placeholder {
+  html.dark input::placeholder,
+  html.dark textarea::placeholder {
     color: var(--color-surface-500);
-}
+  }
 
-html.dark canvas {
+  html.dark canvas {
     background-color: var(--color-surface-0);
-}
+  }
 
-html.dark .text-slate-900,
-html.dark .text-slate-800 {
+  html.dark .text-slate-900,
+  html.dark .text-slate-800 {
     color: var(--color-surface-800) !important;
-}
-
-html.dark .text-white {
-    color: var(--color-surface-0) !important;
-}
-
-html.dark .ctaCard .subtitle {
-    color: var(--color-surface-200) !important;
-}
-
-html.dark .ctaCard .primaryBtn {
-    color: var(--color-surface-900) !important;
-}
-
-html.dark .ctaCard .secondaryBtn {
-    color: var(--color-surface-0) !important;
-    border-color: rgba(255, 255, 255, 0.25) !important;
-}
-
-html.dark .ctaCard .secondaryBtn:hover {
-    color: var(--color-surface-900) !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-}
+  }
 
   ::-webkit-scrollbar {
     width: 6px;
@@ -281,13 +264,55 @@ html.dark .ctaCard .secondaryBtn:hover {
 
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    filter: blur(4px);
+    transform: translateY(44px) scale(0.975);
+    transition:
+      opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.78s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.55s ease;
+    will-change: opacity, transform, filter;
+  }
+
+  .scroll-reveal-left {
+    transform: translateX(-64px) translateY(12px) scale(0.98);
+  }
+
+  .scroll-reveal-right {
+    transform: translateX(64px) translateY(12px) scale(0.98);
+  }
+
+  .scroll-reveal-scale {
+    transform: translateY(28px) scale(0.92);
   }
 
   .scroll-reveal.revealed {
     opacity: 1;
-    transform: translateY(0);
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .reveal-delay-0 {
+    transition-delay: 0ms;
+  }
+
+  .reveal-delay-1 {
+    transition-delay: 100ms;
+  }
+
+  .reveal-delay-2 {
+    transition-delay: 200ms;
+  }
+
+  .reveal-delay-3 {
+    transition-delay: 300ms;
+  }
+
+  .reveal-delay-4 {
+    transition-delay: 400ms;
+  }
+
+  .reveal-delay-5 {
+    transition-delay: 500ms;
   }
 
   .glass-hover {
@@ -301,8 +326,12 @@ html.dark .ctaCard .secondaryBtn:hover {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .scroll-reveal {
+    .scroll-reveal,
+    .scroll-reveal-left,
+    .scroll-reveal-right,
+    .scroll-reveal-scale {
       opacity: 1;
+      filter: none;
       transform: none;
       transition: none;
     }

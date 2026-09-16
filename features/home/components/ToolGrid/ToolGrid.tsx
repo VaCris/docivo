@@ -26,14 +26,14 @@ export const ToolGrid = () => {
   const [sectionRef, sectionRevealed] = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section id="tools" className={`${styles.section} dark:bg-surface-900 dark:border-surface-300`}>
+    <section id="tools" className={styles.section}>
       <div className="mx-auto max-w-7xl">
         <div
           ref={sectionRef}
           className={`mb-16 flex flex-col items-center text-center scroll-reveal ${sectionRevealed ? "revealed" : ""}`}
         >
           <div className={styles.sectionBadge}>
-            <Icon icon="solar:widget-4-linear" width="14" className="text-brand-600" />
+            <Icon icon="solar:widget-4-linear" width="14" className="text-brand-display" />
             {strings.badge}
           </div>
           <h2 className={styles.sectionTitle}>
@@ -43,7 +43,6 @@ export const ToolGrid = () => {
         </div>
 
         <div className={styles.constellation}>
-          {/* SVG connection lines */}
           <svg className={styles.connections} viewBox="0 0 800 400" fill="none" aria-hidden="true">
             <line x1="150" y1="120" x2="400" y2="200" stroke="var(--color-surface-200)" strokeWidth="1" strokeDasharray="4 4" />
             <line x1="400" y1="200" x2="650" y2="100" stroke="var(--color-surface-200)" strokeWidth="1" strokeDasharray="4 4" />
@@ -63,19 +62,18 @@ export const ToolGrid = () => {
                 className={`${styles.toolNode} scroll-reveal ${sectionRevealed ? "revealed" : ""} ${delayClass}`}
                 aria-label={`${toolContent.title} - ${toolContent.desc}`}
               >
-                <GlassPanel variant="subtle" className={`${styles.toolCard} dark:bg-surface-800/60`}>
-                  <div className={`${styles.toolIconWrap} dark:bg-surface-700/50 dark:border-surface-300`}>
+                <GlassPanel variant="subtle" className={styles.toolCard}>
+                  <div className={styles.toolIconWrap}>
                     <Icon icon={tool.icon} width="24" />
                   </div>
-                  <span className={`${styles.toolLabel} dark:text-surface-100`}>{toolContent.title}</span>
+                  <span className={styles.toolLabel}>{toolContent.title}</span>
                 </GlassPanel>
 
-                {/* Tooltip */}
-                <div className={`${styles.tooltip} dark:bg-surface-800 dark:border-surface-300 dark:shadow-black/40`}>
-                  <p className={`${styles.tooltipTitle} dark:text-surface-100`}>{toolContent.title}</p>
-                  <p className={`${styles.tooltipDesc} dark:text-surface-400`}>{toolContent.desc}</p>
+                <div className={styles.tooltip}>
+                  <p className={styles.tooltipTitle}>{toolContent.title}</p>
+                  <p className={styles.tooltipDesc}>{toolContent.desc}</p>
                   {meta && (
-                    <span className={`${styles.tooltipBadge} ${meta.badge === "local" ? styles.badgeLocal : styles.badgeCloud} dark:bg-surface-700 ${meta.badge === "local" ? "dark:text-brand-400" : "dark:text-brand-300"}`}>
+                    <span className={`${styles.tooltipBadge} ${meta.badge === "local" ? styles.badgeLocal : styles.badgeCloud}`}>
                       {strings.meta[meta.badge]}
                     </span>
                   )}
@@ -84,7 +82,6 @@ export const ToolGrid = () => {
             );
           })}
 
-          {/* Coming soon */}
           <div className={`${styles.comingSoonNode} scroll-reveal ${sectionRevealed ? "revealed" : ""} reveal-delay-5`}>
             <div className={`${styles.toolIconWrap} ${styles.comingSoonIcon}`}>
               <Icon icon="solar:lock-linear" width="24" />

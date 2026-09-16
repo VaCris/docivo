@@ -19,8 +19,9 @@
 
 .navbarScrolled {
     padding: 0.5rem 0;
-    background: rgba(255, 255, 255, 0.85);
+    background: color-mix(in srgb, var(--color-surface-0) 85%, transparent);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom-color: var(--color-surface-200);
 }
 

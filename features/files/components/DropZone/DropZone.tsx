@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 import enData from "@/locales/en/dropzone.json";
 import esData from "@/locales/es/dropzone.json";
@@ -21,6 +22,8 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
     const router = useRouter();
 
     const [isDragging, setIsDragging] = useState(false);
+    const [headerRef, headerRevealed] = useScrollReveal<HTMLDivElement>();
+    const [zoneRef, zoneRevealed] = useScrollReveal<HTMLDivElement>();
 
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -43,19 +46,23 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
     };
 
     return (
-        <section id="upload" className="bg-surface-50 px-6 py-20 md:py-28 border-t border-surface-200 dark:bg-surface-900 dark:border-surface-300">
+        <section id="upload" className="bg-surface-50 px-6 py-20 md:py-28 border-t border-surface-200">
             <div className={`max-w-6xl mx-auto ${styles.dropzoneContainer}`}>
-                <div className="mx-auto mb-14 max-w-xl text-center">
-                    <h2 className={`font-extrabold text-surface-900 text-3xl md:text-4xl tracking-tight dark:text-surface-100`}>
+                <div
+                    ref={headerRef}
+                    className={`mx-auto mb-14 max-w-xl text-center scroll-reveal scroll-reveal-scale ${headerRevealed ? "revealed" : ""}`}
+                >
+                    <h2 className="font-extrabold text-surface-900 text-3xl md:text-4xl tracking-tight">
                         {t.heading.title}
                     </h2>
-                    <p className={`mt-4 text-surface-500 text-base leading-relaxed dark:text-surface-400`}>
+                    <p className="mt-4 text-surface-500 text-base leading-relaxed">
                         {t.heading.subtitle}
                     </p>
                 </div>
 
                 <div className="mx-auto max-w-2xl">
                     <div
+                        ref={zoneRef}
                         onClick={handleClick}
                         onDragOver={handleDragOver}
                         onDragLeave={handleDragLeave}
@@ -64,35 +71,37 @@ export const DropZone = ({ onFiles }: DropZoneProps) => {
                         tabIndex={0}
                         aria-label="Go to dashboard"
                         onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
+                            if (e.key === "Enter" || e.key === " ") {
                                 e.preventDefault();
                                 handleClick();
                             }
                         }}
-                        className={`relative flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-10 md:p-16 text-center cursor-pointer transition-all duration-300 ${isDragging
+                        className={`relative flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-10 md:p-16 text-center cursor-pointer transition-all duration-300 scroll-reveal scroll-reveal-scale reveal-delay-1 ${zoneRevealed ? "revealed" : ""} ${
+                            isDragging
                                 ? styles.dropzoneActive
                                 : "border-surface-300 bg-surface-0 hover:border-surface-400 hover:bg-surface-50/50"
-                            } dark:border-surface-300 dark:bg-surface-800`}
+                        }`}
                     >
                         <div className="mb-6">
-                            <div className={`flex justify-center items-center bg-surface-50 mx-auto border border-surface-100 rounded-2xl w-16 h-16 dark:bg-surface-700/50 dark:border-surface-600`}>
+                            <div className="flex justify-center items-center bg-surface-50 mx-auto border border-surface-100 rounded-2xl w-16 h-16">
                                 <Icon
                                     icon={DROPZONE_CONFIG.icons.uploadMain}
                                     width="28"
-                                    className={`transition-all duration-300 ${isDragging ? styles.dropIconActive : "text-surface-400 dark:text-surface-500"
-                                        }`}
+                                    className={`transition-all duration-300 ${
+                                        isDragging ? styles.dropIconActive : "text-surface-400"
+                                    }`}
                                 />
                             </div>
                         </div>
 
-                        <p className={`mb-2 font-semibold text-surface-700 text-base dark:text-surface-200`}>
+                        <p className="mb-2 font-semibold text-surface-700 text-base">
                             {t.uploadArea.title}
                         </p>
-                        <p className={`mb-6 text-surface-400 text-sm dark:text-surface-500`}>
+                        <p className="mb-6 text-surface-500 text-sm">
                             {t.uploadArea.hint}
                         </p>
 
-                        <button className="inline-flex justify-center items-center gap-2 bg-brand-600 px-6 py-2.5 rounded-xl font-sans font-semibold text-surface-900 text-sm pointer-events-none dark:text-white">
+                        <button className="inline-flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 px-6 py-2.5 rounded-xl font-sans font-semibold text-white text-sm pointer-events-none transition-colors">
                             <Icon icon={DROPZONE_CONFIG.icons.folderOpen} width="16" />
                             {t.uploadArea.button}
                         </button>
