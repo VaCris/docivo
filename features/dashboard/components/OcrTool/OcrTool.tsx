@@ -103,7 +103,7 @@ export const OcrTool = () => {
 
                                 <button
                                     onClick={() => setFile(null)}
-                                    className="bg-surface-50 px-3 py-1.5 rounded-lg font-sans font-bold text-surface-500 hover:dashboard-tool-accent-text text-xs transition-colors shrink-0"
+                                    className="dashboard-tool-accent-text bg-surface-50 px-3 py-1.5 rounded-lg font-sans font-bold text-xs transition-colors shrink-0"
                                 >
                                     {strings.workspace.changeFile}
                                 </button>
