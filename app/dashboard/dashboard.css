@@ -78,14 +78,6 @@ html.dark .tool-accent-image {
   --tool-accent: #34D399;
 }
 
-.tool-accent-merge input[type="radio"],
-.tool-accent-split input[type="radio"],
-.tool-accent-ocr input[type="radio"],
-.tool-accent-word input[type="radio"],
-.tool-accent-image input[type="radio"] {
-  accent-color: var(--tool-accent);
-}
-
 .dashboard-tool-accent-surface {
   background: color-mix(in srgb, var(--tool-accent) 11%, var(--color-surface-0));
   border-color: color-mix(in srgb, var(--tool-accent) 48%, var(--color-surface-200));
@@ -114,4 +106,125 @@ html.dark .tool-accent-image {
 .dashboard-tool-count {
   background: color-mix(in srgb, var(--tool-accent) 12%, var(--color-surface-0));
   color: var(--tool-accent);
+}
+
+.dashboard-radio {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-grid;
+  place-content: center;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 1rem;
+  margin: 0;
+  border: 1.5px solid var(--color-surface-400);
+  border-radius: 9999px;
+  background: var(--color-surface-0);
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.dashboard-radio::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background: var(--tool-accent, var(--color-brand-display));
+  transform: scale(0);
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dashboard-radio:checked {
+  border-color: var(--tool-accent, var(--color-brand-display));
+  background: color-mix(in srgb, var(--tool-accent, var(--color-brand-display)) 9%, var(--color-surface-0));
+}
+
+.dashboard-radio:checked::before {
+  transform: scale(1);
+}
+
+.dashboard-radio:focus-visible,
+.dashboard-select:focus-visible,
+.dashboard-uploader:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-brand-display) 24%, transparent);
+  outline-offset: 2px;
+}
+
+.dashboard-radio:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.dashboard-select {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 2.875rem;
+  width: 100%;
+  padding: 0.7rem 2.75rem 0.7rem 0.95rem;
+  border: 1px solid var(--color-surface-200);
+  border-radius: 0.75rem;
+  background: var(--color-surface-50);
+  color: var(--color-surface-800);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.dashboard-select:hover {
+  border-color: var(--color-surface-300);
+  background: color-mix(in srgb, var(--color-surface-50) 80%, var(--color-surface-0));
+}
+
+.dashboard-select:focus {
+  border-color: var(--color-brand-display);
+}
+
+.dashboard-select:disabled {
+  cursor: not-allowed;
+  color: var(--color-surface-500);
+  background: var(--color-surface-100);
+}
+
+.dashboard-uploader {
+  position: relative;
+  outline: none;
+}
+
+.dashboard-uploader::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 0.18s ease;
+}
+
+.dashboard-uploader:focus-visible::after,
+.dashboard-uploader:focus-within::after {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand-display) 22%, transparent);
+}
+
+html.dark .dashboard-radio {
+  background: var(--color-surface-50);
+  border-color: var(--color-surface-400);
+}
+
+html.dark .dashboard-select {
+  background: var(--color-surface-50);
+  border-color: var(--color-surface-200);
+  color: var(--color-surface-800);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-primary-action,
+  .dashboard-radio,
+  .dashboard-radio::before,
+  .dashboard-select,
+  .dashboard-uploader::after {
+    transition: none;
+  }
 }
