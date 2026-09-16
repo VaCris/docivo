@@ -96,7 +96,7 @@ export const Navbar = () => {
 
                             <Link
                                 href="/dashboard"
-                                className="group inline-flex items-center gap-1.5 bg-surface-900 hover:bg-surface-800 px-4 py-2 rounded-lg font-sans font-semibold text-surface-0 text-sm transition-all duration-200"
+                                className="group inline-flex items-center gap-1.5 bg-brand-500 hover:bg-brand-600 px-4 py-2 rounded-lg font-sans font-semibold text-white text-sm transition-all duration-200"
                             >
                                 {strings.actions.tryNow}
                                 <Icon
@@ -220,7 +220,7 @@ export const Navbar = () => {
                             <Link
                                 href="/dashboard"
                                 onClick={() => setMenuOpen(false)}
-                                className="group flex justify-center items-center gap-2 bg-surface-900 hover:bg-surface-800 shadow-sm hover:shadow-md px-4 py-3 rounded-xl w-full font-sans font-semibold text-surface-0 text-sm text-center transition-all duration-200"
+                                className="group flex justify-center items-center gap-2 bg-brand-500 hover:bg-brand-600 shadow-sm hover:shadow-md px-4 py-3 rounded-xl w-full font-sans font-semibold text-white text-sm text-center transition-all duration-200"
                             >
                                 {strings.actions.tryNow}
                                 <Icon
