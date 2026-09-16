@@ -86,7 +86,7 @@ export const SplitTool = () => {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100vh-8rem)]">
+        <div className="tool-accent-split flex flex-col h-[calc(100vh-8rem)]">
             <div className="mb-8">
                 <h1 className="font-extrabold text-surface-900 text-2xl md:text-3xl tracking-tight">
                     {strings.header.title}
@@ -97,7 +97,7 @@ export const SplitTool = () => {
             </div>
 
             <div className="flex lg:flex-row flex-col flex-1 gap-6 overflow-hidden">
-                <div className="relative flex flex-col flex-1 bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl overflow-y-auto">
+                <div className="dashboard-panel relative flex flex-col flex-1 shadow-sm p-6 border rounded-2xl overflow-y-auto">
                     <FileUploader
                         accept="application/pdf"
                         onFiles={(files) => {
@@ -110,12 +110,8 @@ export const SplitTool = () => {
 
                     <div className="flex justify-between items-center mb-6 pb-4 border-surface-100 border-b">
                         <div className="flex items-center gap-3">
-                            <div className="flex justify-center items-center bg-brand-50 rounded-xl w-10 h-10">
-                                <Icon
-                                    icon="solar:file-bold-duotone"
-                                    width="24"
-                                    className="text-brand-600"
-                                />
+                            <div className="dashboard-tool-accent-surface flex justify-center items-center border rounded-xl w-10 h-10">
+                                <Icon icon="solar:file-bold-duotone" width="24" />
                             </div>
 
                             <div>
@@ -137,7 +133,7 @@ export const SplitTool = () => {
                             <button
                                 type="button"
                                 onClick={() => setSelectedPages(orderedPages)}
-                                className="bg-brand-50 px-3 py-1.5 rounded-lg font-sans font-semibold text-brand-600 hover:text-brand-700 text-xs transition-colors"
+                                className="dashboard-tool-accent-surface px-3 py-1.5 border rounded-lg font-sans font-semibold text-xs transition-colors"
                             >
                                 {strings.workspace.selectAll}
                             </button>
@@ -172,24 +168,21 @@ export const SplitTool = () => {
                                 >
                                     <div
                                         className={`w-full aspect-[1/1.4] rounded-xl flex items-center justify-center shadow-sm transition-all border-2 ${isSelected
-                                            ? "bg-brand-50 border-brand-500 shadow-brand-500/20"
+                                            ? "dashboard-tool-choice-selected"
                                             : "bg-surface-0 border-surface-200 group-hover:border-surface-300"
                                             }`}
                                     >
-                                        <div className="-top-2 -left-2 z-20 absolute flex justify-center items-center bg-surface-800 rounded-full w-6 h-6 font-bold text-white text-xs">
+                                        <div className="-top-2 -left-2 z-20 absolute flex justify-center items-center bg-surface-800 rounded-full w-6 h-6 font-bold text-surface-0 text-xs">
                                             {index + 1}
                                         </div>
 
                                         <div
                                             className={`absolute top-3 left-3 w-6 h-6 rounded-full flex items-center justify-center transition-all ${isSelected
-                                                ? "bg-brand-500 text-white scale-100"
+                                                ? "dashboard-tool-accent-surface scale-100"
                                                 : "bg-surface-100 border border-surface-200 text-transparent opacity-0 group-hover:opacity-100 scale-90"
                                                 }`}
                                         >
-                                            <Icon
-                                                icon="solar:check-read-linear"
-                                                width="14"
-                                            />
+                                            <Icon icon="solar:check-read-linear" width="14" />
                                         </div>
 
                                         {file && (
@@ -197,12 +190,7 @@ export const SplitTool = () => {
                                         )}
                                     </div>
 
-                                    <p
-                                        className={`mt-3 text-xs font-bold transition-colors ${isSelected
-                                            ? "text-brand-600"
-                                            : "text-surface-500"
-                                            }`}
-                                    >
+                                    <p className={`mt-3 text-xs font-bold transition-colors ${isSelected ? "dashboard-tool-accent-text" : "text-surface-500"}`}>
                                         Page {page}
                                     </p>
                                 </div>
@@ -211,7 +199,7 @@ export const SplitTool = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl w-full lg:w-80 shrink-0">
+                <div className="dashboard-panel flex flex-col shadow-sm p-6 border rounded-2xl w-full lg:w-80 shrink-0">
                     <h3 className="mb-6 font-bold text-surface-800 text-base">
                         {strings.sidebar.title}
                     </h3>
@@ -223,46 +211,26 @@ export const SplitTool = () => {
                             </p>
 
                             <div className="space-y-2">
-                                <label
-                                    className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer border transition-colors ${mode === "extract"
-                                        ? "bg-brand-50 border-2 border-brand-500"
-                                        : "hover:bg-surface-50 border-surface-200"
-                                        }`}
-                                >
+                                <label className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer border transition-colors ${mode === "extract" ? "dashboard-tool-choice-selected" : "hover:bg-surface-50 border-surface-200"}`}>
                                     <input
                                         type="radio"
                                         checked={mode === "extract"}
                                         onChange={() => setMode("extract")}
                                         className="mt-1"
                                     />
-                                    <span
-                                        className={`text-sm ${mode === "extract"
-                                            ? "font-semibold text-brand-900"
-                                            : "font-medium text-surface-600"
-                                            }`}
-                                    >
+                                    <span className={`text-sm ${mode === "extract" ? "font-semibold dashboard-tool-accent-text" : "font-medium text-surface-600"}`}>
                                         {strings.sidebar.modes.extract}
                                     </span>
                                 </label>
 
-                                <label
-                                    className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer border transition-colors ${mode === "separate"
-                                        ? "bg-brand-50 border-2 border-brand-500"
-                                        : "hover:bg-surface-50 border-surface-200"
-                                        }`}
-                                >
+                                <label className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer border transition-colors ${mode === "separate" ? "dashboard-tool-choice-selected" : "hover:bg-surface-50 border-surface-200"}`}>
                                     <input
                                         type="radio"
                                         checked={mode === "separate"}
                                         onChange={() => setMode("separate")}
                                         className="mt-1"
                                     />
-                                    <span
-                                        className={`text-sm ${mode === "separate"
-                                            ? "font-semibold text-brand-900"
-                                            : "font-medium text-surface-600"
-                                            }`}
-                                    >
+                                    <span className={`text-sm ${mode === "separate" ? "font-semibold dashboard-tool-accent-text" : "font-medium text-surface-600"}`}>
                                         {strings.sidebar.modes.separate}
                                     </span>
                                 </label>
@@ -286,7 +254,7 @@ export const SplitTool = () => {
                             <span className="text-surface-500 text-sm">
                                 {strings.sidebar.summary}
                             </span>
-                            <span className="bg-brand-50 px-2 py-0.5 rounded-md font-bold text-brand-600 text-sm">
+                            <span className="dashboard-tool-count px-2 py-0.5 rounded-md font-bold text-sm">
                                 {selectedPages.length}
                             </span>
                         </div>
@@ -295,7 +263,7 @@ export const SplitTool = () => {
                             type="button"
                             onClick={handleRun}
                             disabled={!file || selectedPages.length === 0 || isLoading}
-                            className="inline-flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 disabled:opacity-50 px-6 py-3.5 rounded-xl w-full font-sans font-bold text-white text-sm"
+                            className="dashboard-primary-action px-6 py-3.5 rounded-xl w-full font-sans font-bold text-sm"
                         >
                             <Icon icon="solar:scissors-bold" width="18" />
                             {strings.actions.splitButton}
