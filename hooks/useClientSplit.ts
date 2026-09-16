@@ -60,35 +60,39 @@ export function useClientSplit() {
                 progress?.onGenerating?.();
                 await sleep(280);
 
+                let downloadBlob: Blob;
+                let downloadName: string;
+
                 if (mode === "extract") {
-                    const blob = blobs[0];
-                    const url = URL.createObjectURL(blob);
-
-                    const a = document.createElement("a");
-                    a.href = url;
-                    a.download = `docivo-${jobId}.pdf`;
-                    a.click();
-
-                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+                    downloadBlob = blobs[0];
+                    downloadName = `docivo-${jobId}.pdf`;
                 } else {
-                    const zipBlob = await createZipFromBlobs(
+                    downloadBlob = await createZipFromBlobs(
                         blobs.map((blob, index) => ({
                             name: `docivo-${jobId}-${index + 1}.pdf`,
                             blob,
                         }))
                     );
-
-                    const url = URL.createObjectURL(zipBlob);
-                    const a = document.createElement("a");
-                    a.href = url;
-                    a.download = `docivo-${jobId}.zip`;
-                    a.click();
-                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+                    downloadName = `docivo-${jobId}.zip`;
                 }
 
+                const url = URL.createObjectURL(downloadBlob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = downloadName;
+
+                const triggerDownload = () => a.click();
+
                 jobStorage.updateStatus(jobId, "success");
+
+                if (progress?.onSuccess) {
+                    await progress.onSuccess(triggerDownload);
+                } else {
+                    triggerDownload();
+                }
+
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
                 setStatus("success");
-                progress?.onSuccess?.();
                 return true;
             } catch {
                 jobStorage.updateStatus(jobId, "failure");
