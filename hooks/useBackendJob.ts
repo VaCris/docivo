@@ -77,13 +77,20 @@ export function useBackendJob() {
         const a = document.createElement("a");
         a.href = url;
         a.download = filename(job_id);
-        a.click();
+
+        const triggerDownload = () => a.click();
+
+        jobStorage.updateStatus(job_id, "success");
+
+        if (progress?.onSuccess) {
+          await progress.onSuccess(triggerDownload);
+        } else {
+          triggerDownload();
+        }
 
         setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-        jobStorage.updateStatus(job_id, "success");
         setStatus("success");
-        progress?.onSuccess?.();
         return true;
       } catch {
         setStatus("error");
