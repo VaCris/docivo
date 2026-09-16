@@ -105,7 +105,7 @@ export const FileUploader = ({
                 <Icon
                     icon={isPreparing ? "solar:refresh-circle-linear" : "solar:upload-linear"}
                     width="24"
-                    className={`text-surface-500 group-hover:text-brand-600 dark:group-hover:text-brand-300 ${isPreparing ? "animate-spin text-brand-display" : ""}`}
+                    className={`text-surface-500 group-hover:text-brand-600 dark:group-hover:text-brand-300 ${isPreparing ? "animate-spin motion-reduce:animate-none text-brand-display" : ""}`}
                 />
             </div>
 
@@ -113,7 +113,7 @@ export const FileUploader = ({
                 {isPreparing ? preparingLabel : resolvedTitle}
             </p>
 
-            <p className="mt-1 text-surface-400 text-xs text-center">
+            <p className="mt-1 text-surface-400 text-xs text-center" aria-live="polite">
                 {isPreparing
                     ? currentLang === "es" ? "Validando y preparando la vista previa" : "Validating and preparing preview"
                     : subtitle || defaultSubtitle}
