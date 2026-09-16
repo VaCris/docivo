@@ -32,5 +32,11 @@
         "error": "Error converting PDF to Word",
         "validation_error": "Invalid file",
         "validation_desc": "Select a PDF file"
+    },
+    "feedback": {
+        "starting": "Starting work...",
+        "processing": "Processing PDF document...",
+        "generating": "Generating Word document...",
+        "success": "Word file generated successfully"
     }
 }
