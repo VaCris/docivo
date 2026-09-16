@@ -32,11 +32,11 @@ export const FileUploader = ({
         <label
             className={`
                 group flex flex-col justify-center items-center
-                hover:bg-brand-50
+                hover:bg-brand-500/5 dark:hover:bg-brand-300/10
                 p-6
-                border-2 border-dashed border-surface-300 hover:border-brand-500
+                border-2 border-dashed border-surface-300 hover:border-brand-500 dark:hover:border-brand-300
                 rounded-xl
-                transition-colors cursor-pointer
+                transition-all duration-200 cursor-pointer
                 w-full
                 ${className}
             `}
@@ -53,15 +53,15 @@ export const FileUploader = ({
                 }}
             />
 
-            <div className="flex justify-center items-center bg-surface-100 group-hover:bg-brand-100 mb-3 rounded-full w-12 h-12 transition-colors">
+            <div className="flex justify-center items-center bg-surface-100 group-hover:bg-brand-500/10 mb-3 rounded-full w-12 h-12 transition-colors">
                 <Icon
                     icon="solar:upload-linear"
                     width="24"
-                    className="text-surface-500 group-hover:text-brand-600"
+                    className="text-surface-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"
                 />
             </div>
 
-            <p className="font-bold text-surface-600 group-hover:text-brand-700 text-sm text-center">
+            <p className="font-bold text-surface-600 group-hover:text-brand-700 dark:group-hover:text-brand-200 text-sm text-center">
                 {title || defaultTitle}
             </p>
 
