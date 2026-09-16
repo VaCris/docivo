@@ -97,7 +97,6 @@ export function useClientSplit() {
 
                 sileo.error({
                     title: t.split.notifications.error,
-                    description: "Unexpected error",
                 });
                 return false;
             }
