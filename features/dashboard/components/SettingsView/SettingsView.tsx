@@ -41,7 +41,7 @@ export const SettingsView = () => {
                                 <select
                                     value={currentLang}
                                     onChange={toggleLanguage}
-                                    className="bg-surface-50 px-4 py-3 pr-10 border border-surface-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 w-full font-medium text-surface-800 text-sm transition-colors appearance-none"
+                                    className="dashboard-select"
                                 >
                                     <option value="en">English</option>
                                     <option value="es">Español</option>
@@ -64,7 +64,7 @@ export const SettingsView = () => {
                                     onChange={(event) =>
                                         setTheme(event.target.value as Theme)
                                     }
-                                    className="bg-surface-50 px-4 py-3 pr-10 border border-surface-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 w-full font-medium text-surface-800 text-sm transition-colors appearance-none"
+                                    className="dashboard-select"
                                 >
                                     <option value="light">
                                         {strings.sections.preferences.themes.light}
