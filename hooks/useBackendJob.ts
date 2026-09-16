@@ -90,7 +90,6 @@ export function useBackendJob() {
         progress?.onError?.();
         sileo.error({
           title: strings.error,
-          description: strings.validation_desc,
         });
         return false;
       }
