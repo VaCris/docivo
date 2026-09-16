@@ -1,17 +1,19 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useClientSplit } from "@/hooks/useClientSplit";
+import { useToolProcessFeedback } from "@/hooks/useToolProcessFeedback";
 import { PdfPreview } from "@/features/files/components/PdfPreview/PdfPreview";
 import { FileUploader } from "@/features/files/components/FileUploader/FileUploader";
+import { ToolProcessFeedback } from "@/components/feedback/ToolProcessFeedback/ToolProcessFeedback";
 
 export const SplitTool = () => {
     const { t } = useLanguage();
     const strings = t.split;
-
     const { run, isLoading } = useClientSplit();
+    const feedback = useToolProcessFeedback(strings.feedback);
 
     const [file, setFile] = useState<File | null>(null);
     const [totalPages, setTotalPages] = useState(0);
@@ -49,7 +51,7 @@ export const SplitTool = () => {
     const togglePage = (page: number) => {
         setSelectedPages((prev) =>
             prev.includes(page)
-                ? prev.filter((p) => p !== page)
+                ? prev.filter((item) => item !== page)
                 : [...prev, page]
         );
     };
@@ -75,18 +77,20 @@ export const SplitTool = () => {
         setDragIndex(null);
     };
 
-    const handleRun = () => {
+    const handleRun = async () => {
         if (!file) return;
 
         const orderedSelection = orderedPages.filter((page) =>
             selectedPages.includes(page)
         );
 
-        run(file, orderedSelection, mode);
+        await run(file, orderedSelection, mode, feedback.callbacks);
     };
 
     return (
         <div className="tool-accent-split flex flex-col h-[calc(100vh-8rem)]">
+            <ToolProcessFeedback stage={feedback.stage} message={feedback.message} />
+
             <div className="mb-8">
                 <h1 className="font-extrabold text-surface-900 text-2xl md:text-3xl tracking-tight">
                     {strings.header.title}
@@ -216,7 +220,7 @@ export const SplitTool = () => {
                                         type="radio"
                                         checked={mode === "extract"}
                                         onChange={() => setMode("extract")}
-                                        className="mt-1"
+                                        className="dashboard-radio mt-1"
                                     />
                                     <span className={`text-sm ${mode === "extract" ? "font-semibold dashboard-tool-accent-text" : "font-medium text-surface-600"}`}>
                                         {strings.sidebar.modes.extract}
@@ -228,7 +232,7 @@ export const SplitTool = () => {
                                         type="radio"
                                         checked={mode === "separate"}
                                         onChange={() => setMode("separate")}
-                                        className="mt-1"
+                                        className="dashboard-radio mt-1"
                                     />
                                     <span className={`text-sm ${mode === "separate" ? "font-semibold dashboard-tool-accent-text" : "font-medium text-surface-600"}`}>
                                         {strings.sidebar.modes.separate}
