@@ -213,6 +213,11 @@ html.dark .dashboard-radio {
   border-color: var(--color-surface-400);
 }
 
+html.dark .dashboard-radio:checked {
+  border-color: var(--tool-accent, var(--color-brand-display));
+  background: color-mix(in srgb, var(--tool-accent, var(--color-brand-display)) 12%, var(--color-surface-50));
+}
+
 html.dark .dashboard-select {
   background: var(--color-surface-50);
   border-color: var(--color-surface-200);
