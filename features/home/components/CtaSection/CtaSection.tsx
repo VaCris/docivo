@@ -16,7 +16,7 @@ export const CtaSection = () => {
             <div className="mx-auto max-w-7xl">
                 <div
                     ref={cardRef}
-                    className={`${styles.ctaCard} ${cardRevealed ? styles.revealed : ""}`}
+                    className={`${styles.ctaCard} scroll-reveal scroll-reveal-scale ${cardRevealed ? "revealed" : ""}`}
                 >
                     <div className={`${styles.orb} ${styles.orb1}`} aria-hidden="true" />
                     <div className={`${styles.orb} ${styles.orb2}`} aria-hidden="true" />
