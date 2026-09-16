@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { Icon } from "@iconify/react";
 import { useLanguage } from "@/hooks/useLanguage";
 
@@ -7,11 +8,8 @@ type Props = {
     accept: string;
     multiple?: boolean;
     onFiles: (files: File[]) => void;
-
-    // opcional → override si algún tool quiere cambiar texto
     title?: string;
     subtitle?: string;
-
     className?: string;
 };
 
@@ -24,13 +22,25 @@ export const FileUploader = ({
     className = "",
 }: Props) => {
     const { t } = useLanguage();
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     const defaultTitle = t.dropzone?.heading.title || "Upload file";
     const defaultSubtitle = t.dropzone?.heading.subtitle || "PDF only";
+    const resolvedTitle = title || defaultTitle;
 
     return (
         <label
+            role="button"
+            tabIndex={0}
+            aria-label={resolvedTitle}
+            onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    inputRef.current?.click();
+                }
+            }}
             className={`
+                dashboard-uploader
                 group flex flex-col justify-center items-center
                 hover:bg-brand-500/5 dark:hover:bg-brand-300/10
                 p-6
@@ -42,14 +52,16 @@ export const FileUploader = ({
             `}
         >
             <input
+                ref={inputRef}
                 type="file"
                 accept={accept}
                 multiple={multiple}
-                className="hidden"
-                onChange={(e) => {
-                    if (!e.target.files) return;
-                    onFiles(Array.from(e.target.files));
-                    e.target.value = "";
+                tabIndex={-1}
+                className="sr-only"
+                onChange={(event) => {
+                    if (!event.target.files) return;
+                    onFiles(Array.from(event.target.files));
+                    event.target.value = "";
                 }}
             />
 
@@ -62,7 +74,7 @@ export const FileUploader = ({
             </div>
 
             <p className="font-bold text-surface-600 group-hover:text-brand-700 dark:group-hover:text-brand-200 text-sm text-center">
-                {title || defaultTitle}
+                {resolvedTitle}
             </p>
 
             <p className="mt-1 text-surface-400 text-xs text-center">
