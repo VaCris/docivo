@@ -30,5 +30,11 @@
         "validation_error": "Invalid selection",
         "validation_desc": "Select at least one page"
     },
+    "feedback": {
+        "starting": "Starting work...",
+        "processing": "Processing selected pages...",
+        "generating": "Generating split files...",
+        "success": "Split PDF generated successfully"
+    },
     "rangeLabel": "Page order"
 }
