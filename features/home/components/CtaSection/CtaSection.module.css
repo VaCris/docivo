@@ -122,8 +122,8 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    background: var(--color-surface-900);
-    color: var(--color-surface-0);
+    background: var(--color-brand-500);
+    color: #FFFFFF;
     border: none;
     border-radius: 20px;
     font-family: var(--font-sans);
@@ -132,12 +132,13 @@
     cursor: pointer;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 0 20px rgba(15, 23, 42, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 238, 0.2);
 }
 
 .primaryBtn:hover {
+    background: var(--color-brand-600);
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 238, 0.3);
 }
 
 .secondaryBtn {
