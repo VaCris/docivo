@@ -5,6 +5,7 @@ import { sileo } from "sileo";
 import { jobStorage } from "@/utils/jobStorage";
 import { toolsService } from "@/services/tools/tools.service";
 import type { PersistedJobStatus } from "@/types/job-cache";
+import type { ToolProgressCallbacks } from "@/hooks/useToolProcessFeedback";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -21,18 +22,8 @@ type UseBackendJobOptions = {
   strings: BackendJobStrings;
   start: () => Promise<{ job_id: string }>;
   filename: (jobId: string) => string;
+  progress?: ToolProgressCallbacks;
 };
-
-const SILEO_STYLE = {
-  fill: "#FFFFFF",
-  roundness: 16,
-  styles: {
-    title: "text-slate-900! font-semibold",
-    description: "text-slate-500!",
-    badge: "bg-slate-100! text-slate-600! border border-slate-200/50!",
-    button: "bg-[#1E3A8A]! text-white! hover:bg-[#1E3A8A]/90!",
-  },
-} as const;
 
 const sleep = (ms: number) =>
   new Promise<void>((resolve) => setTimeout(resolve, ms));
@@ -44,69 +35,64 @@ export function useBackendJob() {
   const [status, setStatus] = useState<Status>("idle");
 
   const run = useCallback(
-    async ({ tool, strings, start, filename }: UseBackendJobOptions) => {
+    async ({ tool, strings, start, filename, progress }: UseBackendJobOptions) => {
       setStatus("loading");
+      progress?.onStarting?.();
 
       try {
-        await sileo.promise(
-          (async () => {
-            const { job_id } = await start();
+        await sleep(350);
+        const { job_id } = await start();
 
-            jobStorage.upsert({
-              jobId: job_id,
-              tool,
-              status: "pending",
-              createdAt: Date.now(),
-              updatedAt: Date.now(),
-              lastUsedAt: Date.now(),
-            });
+        jobStorage.upsert({
+          jobId: job_id,
+          tool,
+          status: "pending",
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          lastUsedAt: Date.now(),
+        });
 
-            let currentStatus: PersistedJobStatus = "pending";
+        progress?.onProcessing?.();
 
-            while (!isFinalStatus(currentStatus)) {
-              await sleep(1500);
+        let currentStatus: PersistedJobStatus = "pending";
 
-              const res = await toolsService.jobs.getStatus(job_id);
-              currentStatus = res.status;
+        while (!isFinalStatus(currentStatus)) {
+          await sleep(1500);
 
-              jobStorage.updateStatus(job_id, currentStatus);
-            }
+          const res = await toolsService.jobs.getStatus(job_id);
+          currentStatus = res.status;
 
-            if (currentStatus === "failure") {
-              throw new Error(strings.error);
-            }
+          jobStorage.updateStatus(job_id, currentStatus);
+        }
 
-            const blob = await toolsService.jobs.download(job_id);
-            const url = URL.createObjectURL(blob);
+        if (currentStatus === "failure") {
+          throw new Error(strings.error);
+        }
 
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = filename(job_id);
-            a.click();
+        progress?.onGenerating?.();
 
-            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        const blob = await toolsService.jobs.download(job_id);
+        const url = URL.createObjectURL(blob);
 
-            jobStorage.updateStatus(job_id, "success");
-          })(),
-          {
-            loading: {
-              title: strings.loading,
-              ...SILEO_STYLE,
-            },
-            success: {
-              title: strings.success,
-              ...SILEO_STYLE,
-            },
-            error: {
-              title: strings.error,
-              ...SILEO_STYLE,
-            },
-          }
-        );
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename(job_id);
+        a.click();
 
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        jobStorage.updateStatus(job_id, "success");
         setStatus("success");
-      } catch (error) {
+        progress?.onSuccess?.();
+        return true;
+      } catch {
         setStatus("error");
+        progress?.onError?.();
+        sileo.error({
+          title: strings.error,
+          description: strings.validation_desc,
+        });
+        return false;
       }
     },
     []
