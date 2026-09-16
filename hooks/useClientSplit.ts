@@ -6,26 +6,32 @@ import { sileo } from "sileo";
 import { useLanguage } from "@/hooks/useLanguage";
 import { jobStorage } from "@/utils/jobStorage";
 import { createZipFromBlobs } from "@/utils/zip";
+import type { ToolProgressCallbacks } from "@/hooks/useToolProcessFeedback";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const SILEO_STYLE = {
-    fill: "#FFFFFF",
-    roundness: 16,
-    styles: {
-        title: "text-slate-900! font-semibold",
-        description: "text-slate-500!",
-        badge: "bg-slate-100! text-slate-600! border border-slate-200/50!",
-        button: "bg-[#1E3A8A]! text-white! hover:bg-[#1E3A8A]/90!",
-    },
-} as const;
+const sleep = (ms: number) =>
+    new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 export function useClientSplit() {
     const [status, setStatus] = useState<Status>("idle");
     const { t } = useLanguage();
 
     const run = useCallback(
-        async (file: File, pages: number[], mode: "extract" | "separate") => {
+        async (
+            file: File,
+            pages: number[],
+            mode: "extract" | "separate",
+            progress?: ToolProgressCallbacks
+        ) => {
+            if (pages.length === 0) {
+                sileo.error({
+                    title: t.split.notifications.validation_error,
+                    description: t.split.notifications.validation_desc,
+                });
+                return false;
+            }
+
             const jobId = crypto.randomUUID();
 
             jobStorage.upsert({
@@ -35,83 +41,68 @@ export function useClientSplit() {
                 createdAt: Date.now(),
             });
 
-            if (pages.length === 0) {
-                sileo.error({
-                    title: t.split.notifications.validation_error,
-                    description: t.split.notifications.validation_desc,
-                    ...SILEO_STYLE,
-                });
-                return;
-            }
-
             setStatus("loading");
+            progress?.onStarting?.();
 
             try {
+                await sleep(350);
+                progress?.onProcessing?.();
                 jobStorage.updateStatus(jobId, "started");
 
-                await sileo.promise(
-                    (async () => {
-                        const blobs = await splitPdf(file, {
-                            mode,
-                            pages,
-                        });
+                const [blobs] = await Promise.all([
+                    splitPdf(file, {
+                        mode,
+                        pages,
+                    }),
+                    sleep(450),
+                ]);
 
-                        if (mode === "extract") {
-                            const blob = blobs[0];
-                            const url = URL.createObjectURL(blob);
+                progress?.onGenerating?.();
+                await sleep(280);
 
-                            const a = document.createElement("a");
-                            a.href = url;
-                            a.download = `docivo-${jobId}.pdf`;
-                            a.click();
+                let downloadBlob: Blob;
+                let downloadName: string;
 
-                            URL.revokeObjectURL(url);
-                            return;
-                        }
+                if (mode === "extract") {
+                    downloadBlob = blobs[0];
+                    downloadName = `docivo-${jobId}.pdf`;
+                } else {
+                    downloadBlob = await createZipFromBlobs(
+                        blobs.map((blob, index) => ({
+                            name: `docivo-${jobId}-${index + 1}.pdf`,
+                            blob,
+                        }))
+                    );
+                    downloadName = `docivo-${jobId}.zip`;
+                }
 
-                        const zipBlob = await createZipFromBlobs(
-                            blobs.map((blob, index) => ({
-                                name: `docivo-${jobId}-${index + 1}.pdf`,
-                                blob,
-                            }))
-                        );
+                const url = URL.createObjectURL(downloadBlob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = downloadName;
 
-                        const url = URL.createObjectURL(zipBlob);
-
-                        const a = document.createElement("a");
-                        a.href = url;
-                        a.download = `docivo-${jobId}.zip`;
-                        a.click();
-
-                        URL.revokeObjectURL(url);
-                    })(),
-                    {
-                        loading: {
-                            title: t.split.notifications.loading,
-                            ...SILEO_STYLE,
-                        },
-                        success: {
-                            title: t.split.notifications.success,
-                            ...SILEO_STYLE,
-                        },
-                        error: {
-                            title: t.split.notifications.error,
-                            ...SILEO_STYLE,
-                        },
-                    }
-                );
+                const triggerDownload = () => a.click();
 
                 jobStorage.updateStatus(jobId, "success");
+
+                if (progress?.onSuccess) {
+                    await progress.onSuccess(triggerDownload);
+                } else {
+                    triggerDownload();
+                }
+
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
                 setStatus("success");
-            } catch (error) {
+                return true;
+            } catch {
                 jobStorage.updateStatus(jobId, "failure");
                 setStatus("error");
+                progress?.onError?.();
 
                 sileo.error({
                     title: t.split.notifications.error,
-                    description: "Unexpected error",
-                    ...SILEO_STYLE,
                 });
+                return false;
             }
         },
         [t]

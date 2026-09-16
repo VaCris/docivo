@@ -19,5 +19,11 @@
         "success_desc": "The merge was completed without sending data to the server.",
         "error_title": "Engine failure",
         "error_desc": "The merge could not be processed. Check file permissions."
+    },
+    "feedback": {
+        "starting": "Starting work...",
+        "processing": "Processing PDF files...",
+        "generating": "Generating merged PDF...",
+        "success": "Merged PDF generated successfully"
     }
 }

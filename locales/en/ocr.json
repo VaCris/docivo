@@ -27,5 +27,11 @@
         "error": "Error processing OCR",
         "validation_error": "Invalid file",
         "validation_desc": "Select a PDF file"
+    },
+    "feedback": {
+        "starting": "Starting work...",
+        "processing": "Processing document with OCR...",
+        "generating": "Preparing recognized text...",
+        "success": "Text recognized successfully"
     }
 }

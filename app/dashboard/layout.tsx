@@ -1,27 +1,33 @@
 import React from "react";
 import { Sidebar } from "@/components/layout/Sidebar/Sidebar";
-import { LanguageProvider } from "@/hooks/useLanguage"
+import { LanguageProvider } from "@/hooks/useLanguage";
 import { Toaster } from "sileo";
+import "./dashboard.css";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
         <LanguageProvider>
-            <div className="flex bg-surface-50 min-h-screen">
+            <div className="flex bg-surface-50 min-h-screen transition-colors">
                 <Sidebar />
 
                 <main className="flex-1 ml-64 p-8 md:p-10">
                     {children}
 
                     <Toaster
+                        position="top-right"
+                        offset={{
+                            top: "clamp(16px, 2vw, 24px)",
+                            right: "clamp(16px, 2vw, 24px)",
+                        }}
                         options={{
-                            fill: "#FFFFFF",
+                            fill: "var(--color-surface-0)",
                             roundness: 16,
                             styles: {
-                                title: "text-slate-900! font-semibold",
-                                description: "text-slate-500!",
-                                badge: "bg-slate-100! text-slate-600! border border-slate-200/50!",
+                                title: "text-surface-900! font-semibold",
+                                description: "text-surface-500!",
+                                badge: "bg-surface-100! text-surface-600! border border-surface-200!",
                                 button:
-                                    "bg-[#1E3A8A]! text-white! hover:bg-[#1E3A8A]/90! transition-colors!",
+                                    "bg-brand-600! text-white! hover:bg-brand-700! transition-colors!",
                             },
                         }}
                     />

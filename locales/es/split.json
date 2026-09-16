@@ -30,5 +30,11 @@
         "validation_error": "Selección no válida",
         "validation_desc": "Selecciona al menos una página"
     },
+    "feedback": {
+        "starting": "Comenzando a trabajar...",
+        "processing": "Procesando páginas seleccionadas...",
+        "generating": "Generando archivos divididos...",
+        "success": "PDF dividido generado correctamente"
+    },
     "rangeLabel": "Orden de páginas"
 }

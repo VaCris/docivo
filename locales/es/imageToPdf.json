@@ -36,5 +36,11 @@
         "error": "Error al crear el PDF",
         "validation_error": "Selección inválida",
         "validation_desc": "Selecciona al menos una imagen"
+    },
+    "feedback": {
+        "starting": "Comenzando a trabajar...",
+        "processing": "Procesando imágenes seleccionadas...",
+        "generating": "Generando PDF...",
+        "success": "PDF de imágenes generado correctamente"
     }
 }

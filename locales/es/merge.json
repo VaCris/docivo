@@ -19,5 +19,11 @@
         "success_desc": "La unión se completó sin enviar datos al servidor.",
         "error_title": "Fallo en el motor",
         "error_desc": "No se pudo procesar la unión. Verifica los permisos del archivo."
+    },
+    "feedback": {
+        "starting": "Comenzando a trabajar...",
+        "processing": "Procesando archivos PDF...",
+        "generating": "Generando PDF combinado...",
+        "success": "PDF combinado generado correctamente"
     }
 }

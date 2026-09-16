@@ -1,11 +1,11 @@
 "use client";
 
-import React from 'react';
-import { Icon } from '@iconify/react';
-import { useLanguage } from '@/hooks/useLanguage';
-import { useJobs } from '@/hooks/useJobs';
+import React from "react";
+import { Icon } from "@iconify/react";
+import { useLanguage } from "@/hooks/useLanguage";
+import { useJobs } from "@/hooks/useJobs";
 
-import { STATUS_STYLES } from './RecentFiles.config';
+import { STATUS_STYLES } from "./RecentFiles.config";
 import { mapJobStatusToUI } from "@/utils/jobStatus";
 
 const TOOL_LABELS: Record<string, string> = {
@@ -13,7 +13,15 @@ const TOOL_LABELS: Record<string, string> = {
     split: "Split",
     ocr: "OCR",
     "pdf-to-word": "PDF → Word",
-    "image-to-pdf": "Image → PDF"
+    "image-to-pdf": "Image → PDF",
+};
+
+const TOOL_BADGE_STYLES: Record<string, string> = {
+    merge: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300",
+    split: "bg-violet-500/10 text-violet-700 dark:text-violet-300",
+    ocr: "bg-amber-500/10 text-amber-700 dark:text-amber-300",
+    "pdf-to-word": "bg-sky-500/10 text-sky-700 dark:text-sky-300",
+    "image-to-pdf": "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
 };
 
 export const RecentFiles = () => {
@@ -24,21 +32,20 @@ export const RecentFiles = () => {
         .slice(0, 10);
 
     return (
-        <div className="bg-surface-0 shadow-sm border border-surface-200 rounded-2xl overflow-hidden">
-            <div className="flex justify-between items-center bg-surface-0 px-6 py-5 border-surface-100 border-b">
+        <div className="dashboard-panel shadow-sm border rounded-2xl overflow-hidden">
+            <div className="flex justify-between items-center px-6 py-5 border-surface-100 border-b">
                 <div>
                     <h2 className="font-bold text-surface-900 text-lg">{t.recentFiles.title}</h2>
                     <p className="text-surface-500 text-sm">{t.recentFiles.subtitle}</p>
                 </div>
 
-                <button className="hover:bg-brand-50 p-2 rounded-lg text-surface-400 hover:text-brand-600 transition-colors">
+                <button className="hover:bg-brand-500/10 p-2 rounded-lg text-surface-400 hover:text-brand-display transition-colors">
                     <Icon icon="solar:menu-dots-bold" width="24" />
                 </button>
             </div>
 
             <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
-
                     <thead>
                         <tr className="bg-surface-50 border-surface-100 border-b font-semibold text-surface-500 text-xs uppercase tracking-wider">
                             <th className="px-6 py-4">{t.recentFiles.columns.name}</th>
@@ -49,10 +56,8 @@ export const RecentFiles = () => {
                     </thead>
 
                     <tbody className="divide-y divide-surface-100">
-
                         {files.map((file) => (
-                            <tr key={file.jobId} className="group hover:bg-surface-50/50 transition-colors">
-
+                            <tr key={file.jobId} className="group hover:bg-surface-50/70 transition-colors">
                                 <td className="px-6 py-4">
                                     <div>
                                         <p className="font-semibold text-surface-800 text-sm line-clamp-1">
@@ -65,7 +70,7 @@ export const RecentFiles = () => {
                                 </td>
 
                                 <td className="px-6 py-4">
-                                    <span className="inline-flex items-center gap-1.5 bg-surface-100 px-2.5 py-1 rounded-md font-semibold text-surface-600 text-xs">
+                                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-semibold text-xs ${TOOL_BADGE_STYLES[file.tool] ?? "bg-surface-100 text-surface-600"}`}>
                                         {TOOL_LABELS[file.tool] ?? file.tool}
                                     </span>
                                 </td>
@@ -88,7 +93,6 @@ export const RecentFiles = () => {
                                 </td>
                             </tr>
                         ))}
-
                     </tbody>
                 </table>
             </div>

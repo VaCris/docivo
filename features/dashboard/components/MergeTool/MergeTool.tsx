@@ -4,7 +4,10 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useClientMerge } from "@/hooks/useClientMerge";
+import { useToolProcessFeedback } from "@/hooks/useToolProcessFeedback";
 import { PdfPreview } from "@/features/files/components/PdfPreview/PdfPreview";
+import { FileUploader } from "@/features/files/components/FileUploader/FileUploader";
+import { ToolProcessFeedback } from "@/components/feedback/ToolProcessFeedback/ToolProcessFeedback";
 
 type FileItem = {
     id: string;
@@ -17,21 +20,22 @@ export const MergeTool = () => {
     const { t } = useLanguage();
     const strings = t.merge;
     const { run, isLoading } = useClientMerge();
+    const feedback = useToolProcessFeedback(strings.feedback);
 
     const [files, setFiles] = useState<FileItem[]>([]);
     const [dragIndex, setDragIndex] = useState<number | null>(null);
 
     const handleAddFiles = (newFiles: File[]) => {
-        const valid = newFiles.filter(f => f.type === "application/pdf");
+        const valid = newFiles.filter((file) => file.type === "application/pdf");
 
-        setFiles(prev => {
-            const existing = new Set(prev.map(f => f.file.name));
+        setFiles((prev) => {
+            const existing = new Set(prev.map((item) => item.file.name));
 
             const unique = valid
-                .filter(f => !existing.has(f.name))
-                .map(f => ({
+                .filter((file) => !existing.has(file.name))
+                .map((file) => ({
                     id: crypto.randomUUID(),
-                    file: f
+                    file,
                 }));
 
             return [...prev, ...unique];
@@ -39,7 +43,7 @@ export const MergeTool = () => {
     };
 
     const handleRemove = (id: string) => {
-        setFiles(prev => prev.filter(f => f.id !== id));
+        setFiles((prev) => prev.filter((item) => item.id !== id));
     };
 
     const handleClear = () => {
@@ -48,12 +52,17 @@ export const MergeTool = () => {
     };
 
     const handleMerge = async () => {
-        await run(files.map(f => f.file));
-        setFiles([]);
-        previewCache.clear();
+        const succeeded = await run(
+            files.map((item) => item.file),
+            feedback.callbacks
+        );
+
+        if (succeeded) {
+            setFiles([]);
+            previewCache.clear();
+        }
     };
 
-    // DRAG & DROP
     const handleDragStart = (index: number) => {
         setDragIndex(index);
     };
@@ -61,7 +70,7 @@ export const MergeTool = () => {
     const handleDragEnter = (index: number) => {
         if (dragIndex === null || dragIndex === index) return;
 
-        setFiles(prev => {
+        setFiles((prev) => {
             const updated = [...prev];
             const [moved] = updated.splice(dragIndex, 1);
             updated.splice(index, 0, moved);
@@ -76,7 +85,9 @@ export const MergeTool = () => {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100vh-8rem)]">
+        <div className="tool-accent-merge flex flex-col h-[calc(100vh-8rem)]">
+            <ToolProcessFeedback stage={feedback.stage} message={feedback.message} />
+
             <div className="mb-8">
                 <h1 className="font-extrabold text-surface-900 text-2xl md:text-3xl tracking-tight">
                     {strings.header.title}
@@ -86,7 +97,7 @@ export const MergeTool = () => {
                 </p>
             </div>
 
-            <div className="relative flex flex-col flex-1 bg-surface-0 shadow-sm p-6 border border-surface-200 rounded-2xl overflow-hidden">
+            <div className="dashboard-panel relative flex flex-col flex-1 shadow-sm p-6 border rounded-2xl overflow-hidden">
                 <div className="flex justify-between items-center mb-6">
                     <button
                         onClick={handleClear}
@@ -104,9 +115,9 @@ export const MergeTool = () => {
                             onDragStart={() => handleDragStart(index)}
                             onDragEnter={() => handleDragEnter(index)}
                             onDragEnd={handleDragEnd}
-                            className="group relative flex flex-col justify-center items-center bg-surface-50 hover:shadow-md p-4 border border-surface-200 hover:border-brand-400 rounded-xl text-center transition-all cursor-move"
+                            className="dashboard-tool-accent-hover group relative flex flex-col justify-center items-center bg-surface-50 hover:shadow-md p-4 border border-surface-200 rounded-xl text-center transition-all cursor-move"
                         >
-                            <div className="-top-2 -left-2 z-10 absolute flex justify-center items-center bg-surface-800 rounded-full w-6 h-6 font-bold text-white text-xs">
+                            <div className="dashboard-tool-accent-surface -top-2 -left-2 z-10 absolute flex justify-center items-center border rounded-full w-6 h-6 font-bold text-xs">
                                 {index + 1}
                             </div>
 
@@ -129,42 +140,21 @@ export const MergeTool = () => {
                         </div>
                     ))}
 
-                    <label className="group flex flex-col justify-center items-center hover:bg-brand-50 p-4 border-2 border-surface-300 hover:border-brand-500 border-dashed rounded-xl min-h-[140px] transition-colors cursor-pointer">
-                        <input
-                            type="file"
-                            multiple
-                            accept="application/pdf"
-                            className="hidden"
-                            onChange={(e) => {
-                                if (!e.target.files) return;
-                                handleAddFiles(Array.from(e.target.files));
-                                e.target.value = "";
-                            }}
-                        />
-
-                        <div className="flex justify-center items-center bg-surface-100 group-hover:bg-brand-100 mb-2 rounded-full w-10 h-10 transition-colors">
-                            <Icon
-                                icon="solar:add-circle-linear"
-                                width="24"
-                                className="text-surface-500 group-hover:text-brand-600"
-                            />
-                        </div>
-
-                        <p className="font-bold text-surface-600 group-hover:text-brand-700 text-xs">
-                            {strings.workspace.addMore}
-                        </p>
-
-                        <p className="mt-0.5 text-[10px] text-surface-400">
-                            {strings.workspace.dropHint}
-                        </p>
-                    </label>
+                    <FileUploader
+                        accept="application/pdf"
+                        multiple
+                        onFiles={handleAddFiles}
+                        title={strings.workspace.addMore}
+                        subtitle={strings.workspace.dropHint}
+                        className="min-h-[140px]"
+                    />
                 </div>
 
                 <div className="flex justify-end mt-auto pt-6 border-surface-100 border-t">
                     <button
                         onClick={handleMerge}
                         disabled={isLoading}
-                        className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 shadow-brand-500/20 shadow-lg px-8 py-3 rounded-xl font-sans font-bold text-white text-sm active:scale-95 transition-all"
+                        className="dashboard-primary-action px-8 py-3 rounded-xl font-sans font-bold text-sm"
                     >
                         <Icon icon="solar:layers-minimalistic-bold" width="18" />
                         {strings.actions.mergeButton}

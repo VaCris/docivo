@@ -32,5 +32,11 @@
         "error": "Error al convertir PDF a Word",
         "validation_error": "Archivo inválido",
         "validation_desc": "Selecciona un archivo PDF"
+    },
+    "feedback": {
+        "starting": "Comenzando a trabajar...",
+        "processing": "Procesando documento PDF...",
+        "generating": "Generando archivo Word...",
+        "success": "Archivo Word generado correctamente"
     }
 }
